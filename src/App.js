@@ -4,7 +4,8 @@ import {
   Routes,
   Navigate
 } from 'react-router-dom'
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import './App.css';
 import Navbar from './components/layout/Navbar'
 import Login from './components/pages/Login'
 import Welcome from './components/pages/Welcome'
@@ -12,6 +13,8 @@ import Register from './components/pages/Register'
 import Profile from './components/pages/Profile'
 import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode'
+import EventDetails from "./components/pages/EventDetails";
+import axios from 'axios';
 
 function App() {
   // state wi the user data when the user is logged in
@@ -33,6 +36,25 @@ function App() {
     // set the user state to be null
     setCurrentUser(null)
   }
+  // make the auth headers
+  // const options = {
+  //   headers: {
+  //     'Authorization': token
+  //   }
+  // }
+  // hit the auth locked endpoint
+  // axios.get(url, options)
+  // axios.post(url, body, options) (same thing w put)
+  const [events, setEvents]= useState([])
+  useEffect(async () => { 
+    const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
+    setEvents(eventData.data)
+  }, [])
+
+  console.log(events)
+
+  
+
    return (
     <Router>
       <Navbar handleLogout={handleLogout} currentUser={currentUser}/>
@@ -54,6 +76,9 @@ function App() {
             element={<Profile />}
           /> 
           */}
+           <Route 
+          path='/events/:id'
+          element={<EventDetails/>} />
           
           <Route 
             path="/profile"
