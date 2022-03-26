@@ -4,7 +4,8 @@ import {
   Routes,
   Navigate
 } from 'react-router-dom'
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import './App.css';
 import Navbar from './components/layout/Navbar'
 import Login from './components/pages/Login'
 import Welcome from './components/pages/Welcome'

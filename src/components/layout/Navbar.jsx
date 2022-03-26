@@ -26,7 +26,7 @@ export default function Navbar({ handleLogout, currentUser }) {
 
   return (
     <nav>
-      <Link to="/">User App</Link>
+      <Link to="/">home</Link>
 
       {currentUser ? loggedIn : loggedOut}
     </nav>
