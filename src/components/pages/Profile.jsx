@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import CreateEvent from '../CreateEvent'
 
-export default function Profile({ currentUser }) {
+export default function Profile({ currentUser, events, setEvents }) {
   const [msg, setMsg] = useState('') 
+  const [formData, setFormData] = useState({})
+  
+  
   // use useEffect to get data from the back
   useEffect(() => {
     (async () => {
@@ -26,10 +30,23 @@ export default function Profile({ currentUser }) {
         console.log(err)
       }
     })()
-   }, [])
+  }, [])
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/create/${currentUser.id}`, formData)
+      .then(( response ) => { 
+        setFormData({})
+        return axios.get(process.env.REACT_APP_SERVER_URL + "/api-v1/events")
+      })
+      .then((response) => setEvents(response.data))
+      .catch(console.log)
+  }
+  
   return (
-    <div>
+    <>
       <h3>{currentUser.name}'s Profile</h3>
 
       <p>your email is {currentUser.email}</p>
@@ -37,6 +54,8 @@ export default function Profile({ currentUser }) {
       <h4>The message from the auth locked route is:</h4>
       
       <h6>{msg}</h6>
-    </div>
+
+      <CreateEvent handleSubmit={handleSubmit} eventForm={formData} setEventForm = {setFormData}/>
+    </>
   )
 }
