@@ -8,7 +8,7 @@ export default function EventDetails({ event }) {
     const { id } = useParams()
     const [details, setDetails]= useState([])
     const [date, setDate] = useState()
-    const [attendeeCount, setAttendeeCount] = useState()
+    const [attendees, setAttendees] = useState([])
     const [host,setHost]= useState()
 
     useEffect(() => { 
@@ -17,9 +17,14 @@ export default function EventDetails({ event }) {
             setDetails(eventDetails.data)
             setDate(dayjs(eventDetails.data.date).format('dddd MMMM D YYYY'))
             setHost(eventDetails.data.host.name) 
+            eventDetails.data.attendees.forEach(attendee => {
+                setAttendees([...attendees, attendee.name])
+            })
     }
     fetchData()
-  }, [])
+    }, [])
+
+
 
     return(
         <>
@@ -41,7 +46,7 @@ export default function EventDetails({ event }) {
                 </Tab>
 
                 <Tab eventKey="attendees" title={`Attendees`}>
-                    {details.attendees}
+                    {attendees}
                 </Tab>
             </Tabs>
 
