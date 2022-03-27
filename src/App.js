@@ -66,9 +66,6 @@ function App() {
 
       <div className="App">
         <Routes>
-
-      
-
         <Route 
             path="/register"
             element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
