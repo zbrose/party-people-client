@@ -53,11 +53,12 @@ function App() {
       const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
       setEvents(eventData.data)
       setFilter(eventData.data)
-      console.log(events)
     }
     fetchData()
   }, [])
   
+  console.log('events',events)
+  console.log('filter',filter)
 
    return (
     <Router>
