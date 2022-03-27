@@ -46,10 +46,14 @@ function App() {
   // axios.get(url, options)
   // axios.post(url, body, options) (same thing w put)
   const [events, setEvents]= useState([])
-  useEffect(async () => { 
-    const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
-    setEvents(eventData.data)
+  useEffect(() => { 
+    async function fetchData(){
+      const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
+      setEvents(eventData.data)
+    }
+    fetchData()
   }, [])
+  
 
   console.log(events)
 
@@ -63,7 +67,7 @@ function App() {
         <Routes>
           <Route 
             path='/'
-            element={<Welcome />}
+            element={<Welcome events={events}  />}
           />
 
           <Route 
