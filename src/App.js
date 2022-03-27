@@ -68,12 +68,13 @@ function App() {
         <Routes>
 
           <Route 
-            path='/'
+            path='/' />
 
         <Route 
             path="/register"
             element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
+
           <Route 
             path="/login"
             element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
