@@ -67,8 +67,7 @@ function App() {
       <div className="App">
         <Routes>
 
-          <Route 
-            path='/' />
+      
 
         <Route 
             path="/register"
