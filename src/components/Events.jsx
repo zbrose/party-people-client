@@ -9,13 +9,11 @@ import axios from 'axios';
 
 function Events({events, filter, setFilter, currentUser}) {
 
-    console.log(filter[0].category)
-
-  
     const filterEvents = (e) => {
         const results = events.filter(event=>event.category === e.target.innerText)
         setFilter(results)
     }
+    console.log(filter)
   
     // const handleClick = (event) => {
     //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
@@ -62,7 +60,7 @@ function Events({events, filter, setFilter, currentUser}) {
         <>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Filter Events By:  {filter===events ? 'All Events' : filter[0].category}
+                Filter Events By:  {filter===events ? 'All Events' : 'hello' }
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
