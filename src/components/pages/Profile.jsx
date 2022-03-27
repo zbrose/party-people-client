@@ -5,7 +5,6 @@ import CreateEvent from '../CreateEvent'
 export default function Profile({ currentUser, events, setEvents }) {
   const [msg, setMsg] = useState('') 
   const [formData, setFormData] = useState({})
-  console.log(currentUser)
   
   
   // use useEffect to get data from the back
