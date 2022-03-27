@@ -17,6 +17,7 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
       const results = events.filter(event=>event.category === filter)
       setEvents(results)
       console.log(results)
+      console.log(filter)
   }
 
   const handleClick = (event) => {
@@ -115,6 +116,7 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
         <Dropdown.Item onClick={()=>filterEvents('Gaming')}>Gaming</Dropdown.Item>
         <Dropdown.Item onClick={()=>filterEvents('Concert')}>Concerts</Dropdown.Item>
         <Dropdown.Item onClick={()=>filterEvents('Study')}>Study Sessions</Dropdown.Item>
+        <Dropdown.Item onClick={()=>filterEvents('comedy')}>Comedy</Dropdown.Item>
         <Dropdown.Item onClick={()=>filterEvents('Other')}>Other</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

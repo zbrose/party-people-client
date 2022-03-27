@@ -78,7 +78,7 @@ function App() {
           
           <Route 
             path='/'
-            element={<Welcome events={events}  />}
+            element={<Welcome events={events} setEvents={setEvents}  />}
           />
          {/* 
           <Route 
