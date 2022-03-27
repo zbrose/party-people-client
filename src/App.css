@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.login,
+.image {
+  min-height:60vh;
+  
+}
+.bg-image {
+  background-image: url('https://pranitakocharekar.com/wp-content/uploads/2017/06/15.Bear3_.gif');
+  background-size: cover;
+  background-position: center center;
+}
+
+.bg-imageTwo {
+  background-image: url('https://acegif.com/wp-content/uploads/upgifsok/party-15.gif');
+  background-size: cover;
+  background-position: center center;
+}
+
+.backgroundLogin{
+  text-align: contain;
+  background-color: white;
+  padding: 50px;
+  min-height: 100vh;
+}
+.card{
+  text-align: center;
+ 
+  height: 2%;
+
+  
+}
