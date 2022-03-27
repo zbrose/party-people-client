@@ -2,7 +2,8 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate
+  Navigate,
+  NavLink,
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -65,14 +66,22 @@ function App() {
 
       <div className="App">
         <Routes>
+
           <Route 
             path='/'
-            element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} />}
-          />
 
+        <Route 
+            path="/register"
+            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+          />
           <Route 
             path="/login"
             element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+          />
+          
+          <Route 
+            path='/'
+            element={<Welcome events={events}  />}
           />
          {/* 
           <Route 
@@ -82,18 +91,14 @@ function App() {
           */}
            <Route 
           path='/events/:id'
-          element={<EventDetails/>} />
+          element={<EventDetails events={events}/>} />
           
           <Route 
             path="/profile"
             element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
           />
 
-          <Route 
-            path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
-
+         
         </Routes>
       </div>
     </Router>
