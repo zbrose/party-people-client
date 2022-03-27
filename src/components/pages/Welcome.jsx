@@ -2,10 +2,17 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup'
 import {Link} from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 
-export default function Welcome({events}) {
+export default function Welcome({events, setEvents, currentUser}) {
+
+  const handleClick = (event) => {
+      axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
+      .then(response=>setEvents(response.data._id))
+  }
+
 
 
   const eventsList = events.map((event,idx)=>{
@@ -30,7 +37,7 @@ export default function Welcome({events}) {
             </ListGroup>
 
             <Link to={`/events/${event._id}`}><Button variant="primary">See Details</Button></Link>
-            <Button variant="primary">RSVP</Button>
+            <Button onClick={()=>handleClick(event._id)} variant="primary">Attend</Button>
 
           </Card.Body>
           
