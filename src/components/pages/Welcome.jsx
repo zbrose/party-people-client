@@ -11,13 +11,13 @@ import axios from 'axios'
 
 
 export default function Welcome({events, setEvents, currentUser, filter, setFilter}) {
-  // const [filter, setFilter] = useState('All Parties')
+ 
+  console.log(filter)
 
+  
   const filterEvents = (filter) => {
       const results = events.filter(event=>event.category === filter)
-      setEvents(results)
-      console.log(results)
-      console.log(filter)
+      setFilter(results)
   }
 
   const handleClick = (event) => {
@@ -27,11 +27,11 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
       // update event state to render attendance count
     }
 
-  const eventsList = events.map((event,idx)=>{
+  const eventsList = filter.map((event,idx)=>{
 
       return (
         <div key={`eventsList-${idx}`}>
-  
+
           <Card style={{ width: '18rem' }}>
   
             <Card.Img variant="top" src="http://placekitten.com/150/150" />
@@ -111,7 +111,7 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={()=>setFilter('All Parties')}>All Parties</Dropdown.Item>
+        <Dropdown.Item onClick={()=>setFilter(events)}>All Parties</Dropdown.Item>
         <Dropdown.Item onClick={()=>filterEvents('Party')}>Parties</Dropdown.Item>
         <Dropdown.Item onClick={()=>filterEvents('Gaming')}>Gaming</Dropdown.Item>
         <Dropdown.Item onClick={()=>filterEvents('Concert')}>Concerts</Dropdown.Item>
@@ -131,5 +131,3 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
     
   )
 }
-
-//set state to 
