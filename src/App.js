@@ -47,14 +47,15 @@ function App() {
   // axios.post(url, body, options) (same thing w put)
   const [events, setEvents]= useState([])
   useEffect(() => { 
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
-    .then(response=>setEvents(response.data))
-    .catch(error=>console.log(error))
-    console.log(events)
+    async function fetchData(){
+      const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
+      setEvents(eventData.data)
+    }
+    fetchData()
   }, [])
   
 
-  // console.log(events)
+  console.log(events)
 
   
 
