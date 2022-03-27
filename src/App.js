@@ -82,7 +82,7 @@ function App() {
           */}
            <Route 
           path='/events/:id'
-          element={<EventDetails/>} />
+          element={<EventDetails events={events}/>} />
           
           <Route 
             path="/profile"
