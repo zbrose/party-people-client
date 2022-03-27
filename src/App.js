@@ -46,17 +46,16 @@ function App() {
   // axios.get(url, options)
   // axios.post(url, body, options) (same thing w put)
   const [events, setEvents]= useState([])
+  const [filter, setFilter] = useState([])
   useEffect(() => { 
     async function fetchData(){
       const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
       setEvents(eventData.data)
+      setFilter(eventData.data)
+      console.log(events)
     }
     fetchData()
   }, [])
-  
-
-  console.log(events)
-
   
 
    return (
@@ -67,7 +66,7 @@ function App() {
         <Routes>
           <Route 
             path='/'
-            element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} />}
+            element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} filter={filter} setFilter={setFilter}/>}
           />
 
           <Route 
@@ -82,7 +81,7 @@ function App() {
           */}
            <Route 
           path='/events/:id'
-          element={<EventDetails events={events}/>} />
+          element={<EventDetails events={events} />} />
           
           <Route 
             path="/profile"
