@@ -78,3 +78,17 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.marker-button {
+ background: none;
+ border: none;
+ cursor: pointer;
+ width: 50px;
+ height: 50px;
+}
+
+.marker-button img{
+  height: 30px;
+  width: 30px;
+}
+
