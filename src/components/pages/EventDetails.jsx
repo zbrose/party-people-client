@@ -7,15 +7,30 @@ import Map from './Map';
 
 const dayjs = require('dayjs')
 
-
-
-export default function EventDetails({ event}) {
+export default function EventDetails({ currentUser }) {
     const { id } = useParams()
     const [details, setDetails]= useState([])
     const [date, setDate] = useState()
     const [attendees, setAttendees] = useState([])
+    const [attendeesId, setAttendeesId] = useState([])
     const [host,setHost]= useState()
     
+
+    const [attending, setAttending] = useState(currentUser && attendeesId.includes(currentUser.id))
+
+    const handleClick = async () => {
+        if(attending) {
+            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`)
+            setAttending(!attending)
+            setAttendees(attendees.filter(attendee => {
+                return attendee !== currentUser.name
+            }))
+        } else {
+            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/attend`)
+            setAttending(!attending)
+        }
+    }
+
 
     useEffect(() => { 
         async function fetchData(){
@@ -25,37 +40,45 @@ export default function EventDetails({ event}) {
             setHost(eventDetails.data.host.name) 
             eventDetails.data.attendees.forEach(attendee => {
                 setAttendees([...attendees, attendee.name])
+                setAttendeesId([...attendeesId, attendee._id])
             })
-            
-    //https://api.mapbox.com/geocoding/v5/mapbox.places/815%20n%2052nd%20.json?limit=1&proximity=ip&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ
-    }
-    fetchData()
-    }, [])
+            //https://api.mapbox.com/geocoding/v5/mapbox.places/815%20n%2052nd%20.json?limit=1&proximity=ip&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ
+        }
+        
+        fetchData()
+    }, [attending])
     
-
     return(
         <>
-            <img></img>
-            <div id="details">
-                <h1>{details.title}</h1>
-                <h2>Host: {host} </h2>
-                <h3>{details.category}</h3>
-                <p>{date}</p>
-                <p>{details.address}</p>
-                <p>{details.city}, {details.state} {details.zipcode}</p>
-            </div>
+            {currentUser ?
+                <>  
+                    <img src="http://placekitten.com/1300/400" alt={`${details.title}-image`}/>
 
-            <button>Attend</button>
+                    <div id="eventHeader">
+                        <h1>{details.title}</h1>
+                        <button onClick={handleClick}>{attending ? 'Unattend' : 'Attend'} </button>
+                    </div>
 
-            <Tabs defaultActiveKey="Description" id="tabs" className="right">
-                <Tab eventKey="description" title="Description">
-                    {details.description}
-                </Tab>
+                    <div id="details">
+                        <h2>Host: {host} </h2>
+                        <h3>{details.category}</h3>
+                        <p>{date}</p>
+                        <p>{details.address}</p>
+                        <p>{details.city}, {details.state} {details.zipcode}</p>
+                    </div>
 
-                <Tab eventKey="attendees" title={`Attendees`}>
-                    {attendees}
-                </Tab>
-            </Tabs>
+
+                    <Tabs defaultActiveKey="Description" id="tabs" className="right">
+                        <Tab eventKey="description" title="Description">
+                            {details.description}
+                        </Tab>
+
+                        <Tab eventKey="attendees" title={`Attendees`}>
+                            {attendees}
+                        </Tab>
+                    </Tabs>
+                </>
+            : null}
             <Map details={details}/>
         </>
     )
