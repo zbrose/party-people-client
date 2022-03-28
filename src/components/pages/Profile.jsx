@@ -73,7 +73,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
   }
 
   const handleImgSubmit = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     try {
       const fd = new FormData()
       fd.append("image", formImg)
@@ -92,7 +92,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
   return (
     <>
       <Card>
-        {displayImg && <img src={ displayImg } alt="" />}
+        { displayImg && <img src={ displayImg } alt="user upload" />}
         <h3> {currentUser.name}'s Profile</h3>
 
         <p>your email is {currentUser.email}</p>
