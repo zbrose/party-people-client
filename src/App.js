@@ -62,35 +62,55 @@ function App() {
   console.log('filter',filter)
 
    return (
-    <Router>
-      <NavbarComp handleLogout={handleLogout} currentUser={currentUser}/>
+     <Router>
+       <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
 
-      <div className="App">
-        <Routes>
-          <Route 
-            path='/'
-            element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} filter={filter} setFilter={setFilter}/>}/>
+       <div className="App">
+         <Routes>
+           <Route
+             path="/"
+             element={
+               <Welcome
+                 events={events}
+                 setEvents={setEvents}
+                 currentUser={currentUser}
+                 filter={filter}
+                 setFilter={setFilter}
+               />
+             }
+           />
 
-        <Route 
-            path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
+           <Route
+             path="/register"
+             element={
+               <Register
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
 
-          <Route 
-            path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
-          
-          <Route 
-            path='/'
-            element={<Welcome events={events} setEvents={setEvents}  />}
-          />
-         {/* 
+           <Route
+             path="/login"
+             element={
+               <Login
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
+
+           <Route
+             path="/"
+             element={<Welcome events={events} setEvents={setEvents} />}
+           />
+           {/* 
           <Route 
             path="/profile"
             element={<Profile />}
           /> 
           */}
+
            <Route 
           path='/events/:id'
           element={<EventDetails events={events} Map={Map}/>} />
@@ -100,11 +120,32 @@ function App() {
             element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
           />
 
-         
-        </Routes>
-      </div>
-    </Router>
-  );
+           <Route
+             path="/events/:id"
+             element={<EventDetails events={events} />}
+           />
+
+
+           <Route
+             path="/profile"
+             element={
+               currentUser ? (
+                 <Profile
+                   events={events}
+                   setEvents={setEvents}
+                   currentUser={currentUser}
+                   filter={filter}
+                   setFilter={setFilter}
+                 />
+               ) : (
+                 <Navigate to="/login" />
+               )
+             }
+           />
+         </Routes>
+       </div>
+     </Router>
+   )
 }
 
 export default App;
