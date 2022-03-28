@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import axios from "axios"
 import { Tab, Tabs } from 'react-bootstrap';
+import Button from '../Button';
 const dayjs = require('dayjs')
 
 export default function EventDetails({ currentUser }) {
@@ -11,6 +12,22 @@ export default function EventDetails({ currentUser }) {
     const [attendees, setAttendees] = useState([])
     const [attendeesId, setAttendeesId] = useState([])
     const [host,setHost]= useState()
+
+    const [attending, setAttending] = useState(currentUser && attendeesId.includes(currentUser.id))
+
+    const handleClick = async () => {
+        if(attending) {
+            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`)
+            setAttending(!attending)
+            setAttendees(attendees.filter(attendee => {
+                return attendee !== currentUser.name
+            }))
+        } else {
+            await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/attend`)
+            setAttending(!attending)
+        }
+    }
+
 
     useEffect(() => { 
         async function fetchData(){
@@ -24,7 +41,7 @@ export default function EventDetails({ currentUser }) {
             })
         }
         fetchData()
-    }, [])
+    }, [attending])
 
     return(
         <>
@@ -34,7 +51,7 @@ export default function EventDetails({ currentUser }) {
 
                     <div id="eventHeader">
                         <h1>{details.title}</h1>
-                        <button>{attendeesId.includes(currentUser.id) ? 'Unattend' : 'Attend' }</button>
+                        <button onClick={handleClick}>{attending ? 'Unattend' : 'Attend'} </button>
                     </div>
 
                     <div id="details">

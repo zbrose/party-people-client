@@ -56,7 +56,8 @@ function App() {
       setFilter(eventData.data)
     }
     fetchData()
-  }, [])
+  }, [currentUser])
+
 
    return (
     <Router>
