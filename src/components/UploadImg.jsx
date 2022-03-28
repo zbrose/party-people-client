@@ -1,38 +1,52 @@
 import axios from "axios"
 import { useState } from "react"
+import { Form, Row } from "react-bootstrap"
 
-export default function UploadImg({currentUser}) {
-  const [formImg, setFormImg] = useState("")
+export default function UploadImg({ currentUser, handleImgSubmit, setFormImg }) {
+  // const [formImg, setFormImg] = useState("")
+
   const [msg, setMsg] = useState("")
-  const [displayImg, setDisplayImg] = useState("")
+  // const [displayImg, setDisplayImg] = useState("")
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      //multipartform data object
-      const fd = new FormData()
-      //append the data
-      fd.append("image", formImg)
-      //fd.append('title', sometitle)
-      const response = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}/upload`,
-        fd
-      )
-      console.log("RESPONSE", response)
-      console.log("SPONSE DATA", response.data)
-      setDisplayImg(response.data.cloudImage)
-    } catch (err) {
-      console.log(err)
-      setMsg("go cchk the server console, tere was error")
-    }
-  }
+  // const handleImgSubmit = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     const fd = new FormData()
+  //     fd.append("image", formImg)
+  //     const response = await axios.put(
+  //       `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}/upload`,
+  //       fd
+  //     )
+
+  //     setDisplayImg(response.data.cloudImage)
+  //   } catch (err) {
+  //     console.log(err)
+  //     setMsg("go cchk the server console, tere was error")
+  //   }
+  // }
 
   return (
     <>
       <h4>upload a pic!</h4>
-      {displayImg && <img src={displayImg} alt="aliens guy" />}
 
-      <form onSubmit={handleSubmit} encType="multipart/form">
+      
+
+
+      <Form onSubmit={handleImgSubmit}>
+        <Form.Group encType="multipart/form" controlId="formFile" className="mb-3">
+          <Form.Label>
+            upload picture here
+          </Form.Label>
+          <Form.Control
+            type="file"
+            // id="image"
+            onChange={(e) => setFormImg(e.target.files[0])}
+          />
+          <input type="submit" />
+        </Form.Group>
+      </Form>
+
+      {/* <form onSubmit={handleSubmit} encType="multipart/form">
         <label htmlFor="image">upload an image</label>
         <input
           type="file"
@@ -40,7 +54,7 @@ export default function UploadImg({currentUser}) {
           onChange={(e) => setFormImg(e.target.files[0])}
         />
         <input type="submit" />
-      </form>
+      </form> */}
     </>
   )
 }
