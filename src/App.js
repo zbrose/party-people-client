@@ -20,6 +20,7 @@ import axios from 'axios';
 function App() {
   // state wi the user data when the user is logged in
   const [currentUser, setCurrentUser] = useState(null)
+
   // useEffect that handles localstorage if the user navigates away fro mthe page/refreshes
   useEffect(() => { 
     const token = localStorage.getItem('jwt')
@@ -53,11 +54,10 @@ function App() {
       const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
       setEvents(eventData.data)
       setFilter(eventData.data)
-      console.log(events)
     }
     fetchData()
   }, [])
-  
+
    return (
     <Router>
       <Navbar handleLogout={handleLogout} currentUser={currentUser}/>
@@ -80,7 +80,7 @@ function App() {
           
           <Route 
             path='/'
-            element={<Welcome events={events}  />}
+            element={<Welcome events={events} />}
           />
          {/* 
           <Route 
@@ -90,7 +90,7 @@ function App() {
           */}
            <Route 
           path='/events/:id'
-          element={<EventDetails events={events} />} />
+          element={<EventDetails events={events} currentUser={currentUser}/>} />
           
           <Route 
             path="/profile"

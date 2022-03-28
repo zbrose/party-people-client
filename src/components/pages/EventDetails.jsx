@@ -4,11 +4,12 @@ import axios from "axios"
 import { Tab, Tabs } from 'react-bootstrap';
 const dayjs = require('dayjs')
 
-export default function EventDetails({ event }) {
+export default function EventDetails({ currentUser }) {
     const { id } = useParams()
     const [details, setDetails]= useState([])
     const [date, setDate] = useState()
     const [attendees, setAttendees] = useState([])
+    const [attendeesId, setAttendeesId] = useState([])
     const [host,setHost]= useState()
 
     useEffect(() => { 
@@ -19,37 +20,43 @@ export default function EventDetails({ event }) {
             setHost(eventDetails.data.host.name) 
             eventDetails.data.attendees.forEach(attendee => {
                 setAttendees([...attendees, attendee.name])
+                setAttendeesId([...attendeesId, attendee._id])
             })
-    }
-    fetchData()
+        }
+        fetchData()
     }, [])
-
-
 
     return(
         <>
-            <img></img>
-            <div id="details">
-                <h1>{details.title}</h1>
-                <h2>Host: {host} </h2>
-                <h3>{details.category}</h3>
-                <p>{date}</p>
-                <p>{details.address}</p>
-                <p>{details.city}, {details.state} {details.zipcode}</p>
-            </div>
+            {currentUser ?
+                <>  
+                    <img src="http://placekitten.com/1300/400" alt={`${details.title}-image`}/>
 
-            <button>Attend</button>
+                    <div id="eventHeader">
+                        <h1>{details.title}</h1>
+                        <button>{attendeesId.includes(currentUser.id) ? 'Unattend' : 'Attend' }</button>
+                    </div>
 
-            <Tabs defaultActiveKey="Description" id="tabs" className="right">
-                <Tab eventKey="description" title="Description">
-                    {details.description}
-                </Tab>
+                    <div id="details">
+                        <h2>Host: {host} </h2>
+                        <h3>{details.category}</h3>
+                        <p>{date}</p>
+                        <p>{details.address}</p>
+                        <p>{details.city}, {details.state} {details.zipcode}</p>
+                    </div>
 
-                <Tab eventKey="attendees" title={`Attendees`}>
-                    {attendees}
-                </Tab>
-            </Tabs>
 
+                    <Tabs defaultActiveKey="Description" id="tabs" className="right">
+                        <Tab eventKey="description" title="Description">
+                            {details.description}
+                        </Tab>
+
+                        <Tab eventKey="attendees" title={`Attendees`}>
+                            {attendees}
+                        </Tab>
+                    </Tabs>
+                </>
+            : null}
         </>
     )
 
