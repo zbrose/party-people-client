@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import axios from "axios"
 import { Tab, Tabs } from 'react-bootstrap';
+import Map from './Map';
+
+
 const dayjs = require('dayjs')
 
 export default function EventDetails({ currentUser }) {
@@ -11,6 +14,7 @@ export default function EventDetails({ currentUser }) {
     const [attendees, setAttendees] = useState([])
     const [attendeesId, setAttendeesId] = useState([])
     const [host,setHost]= useState()
+    
 
     const [attending, setAttending] = useState(currentUser && attendeesId.includes(currentUser.id))
 
@@ -38,10 +42,12 @@ export default function EventDetails({ currentUser }) {
                 setAttendees([...attendees, attendee.name])
                 setAttendeesId([...attendeesId, attendee._id])
             })
+            //https://api.mapbox.com/geocoding/v5/mapbox.places/815%20n%2052nd%20.json?limit=1&proximity=ip&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ
         }
+        
         fetchData()
     }, [attending])
-
+    
     return(
         <>
             {currentUser ?
@@ -73,6 +79,7 @@ export default function EventDetails({ currentUser }) {
                     </Tabs>
                 </>
             : null}
+            <Map details={details}/>
         </>
     )
 

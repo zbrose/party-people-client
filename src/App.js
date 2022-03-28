@@ -12,10 +12,11 @@ import Login from './components/pages/Login'
 import Welcome from './components/pages/Welcome'
 import Register from './components/pages/Register'
 import Profile from './components/pages/Profile'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import jwt_decode from 'jwt-decode'
 import EventDetails from "./components/pages/EventDetails";
 import axios from 'axios';
+import Map from './components/pages/Map';
 
 function App() {
   // state wi the user data when the user is logged in
@@ -56,53 +57,96 @@ function App() {
       setFilter(eventData.data)
     }
     fetchData()
-  }, [currentUser])
-
+  }, [])
+  
+  console.log('events',events)
+  console.log('filter',filter)
 
    return (
-    <Router>
-      <NavbarComp handleLogout={handleLogout} currentUser={currentUser}/>
+     <Router>
+       <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
 
-      <div className="App">
-        <Routes>
-          <Route 
-            path='/'
-            element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} filter={filter} setFilter={setFilter}/>}/>
+       <div className="App">
+         <Routes>
+           <Route
+             path="/"
+             element={
+               <Welcome
+                 events={events}
+                 setEvents={setEvents}
+                 currentUser={currentUser}
+                 filter={filter}
+                 setFilter={setFilter}
+               />
+             }
+           />
 
-        <Route 
-            path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
+           <Route
+             path="/register"
+             element={
+               <Register
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
 
-          <Route 
-            path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
-          
-          <Route 
-            path='/'
-            element={<Welcome events={events} />}
-          />
-         {/* 
+           <Route
+             path="/login"
+             element={
+               <Login
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
+
+           <Route
+             path="/"
+             element={<Welcome events={events} setEvents={setEvents} />}
+           />
+           {/* 
           <Route 
             path="/profile"
             element={<Profile />}
           /> 
           */}
+
            <Route 
           path='/events/:id'
-          element={<EventDetails events={events} currentUser={currentUser}/>} />
+          element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
           
           <Route 
             path="/profile"
             element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
           />
 
-         
-        </Routes>
-      </div>
-    </Router>
-  );
+           <Route
+             path="/events/:id"
+             element={<EventDetails events={events} />}
+           />
+
+
+           <Route
+             path="/profile"
+             element={
+               currentUser ? (
+                 <Profile
+                   events={events}
+                   setEvents={setEvents}
+                   currentUser={currentUser}
+                   filter={filter}
+                   setFilter={setFilter}
+                 />
+               ) : (
+                 <Navigate to="/login" />
+               )
+             }
+           />
+         </Routes>
+       </div>
+     </Router>
+   )
 }
 
 export default App;
