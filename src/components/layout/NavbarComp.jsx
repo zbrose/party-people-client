@@ -19,12 +19,13 @@ export default function NavbarComp({ handleLogout, currentUser }) {
               <Nav.Link href="/profile">Profile</Nav.Link>
               <Nav.Link href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
             </Nav>
-
-            {/* <Navbar.Collapse className="justify-content-end">
+  
+            {currentUser ? 
+            <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
                 Welcome Back, <a href="/profile">{currentUser.name}</a>
               </Navbar.Text>
-            </Navbar.Collapse> */}
+            </Navbar.Collapse> : 'no user found'}
 
         </Container>
       </Navbar>   
