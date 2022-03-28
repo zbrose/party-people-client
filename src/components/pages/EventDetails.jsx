@@ -4,6 +4,7 @@ import axios from "axios"
 import { Tab, Tabs } from 'react-bootstrap';
 const dayjs = require('dayjs')
 
+
 export default function EventDetails({ event }) {
     const { id } = useParams()
     const [details, setDetails]= useState([])
@@ -23,7 +24,6 @@ export default function EventDetails({ event }) {
     }
     fetchData()
     }, [])
-
 
 
     return(
