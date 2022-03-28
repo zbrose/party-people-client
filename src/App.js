@@ -60,115 +60,73 @@ function App() {
     }
     fetchData()
   }, [])
+  
+  console.log('events',events)
+  console.log('filter',filter)
 
-  console.log("events", events)
-  console.log("filter", filter)
+   return (
+     <Router>
+       <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
 
-  return (
-    <Router>
-      <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
+       <div className="App">
+         <Routes>
+           <Route
+             path="/"
+             element={
+               <Welcome
+                 events={events}
+                 setEvents={setEvents}
+                 currentUser={currentUser}
+                 filter={filter}
+                 setFilter={setFilter}
+               />
+             }
+           />
 
-      <div className="App">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Welcome
-                events={events}
-                setEvents={setEvents}
-                currentUser={currentUser}
-                filter={filter}
-                setFilter={setFilter}
-              />
-            }
-          />
+           <Route
+             path="/register"
+             element={
+               <Register
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
 
-          <Route
-            path="/register"
-            element={
-              <Register
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
-
-          <Route
-            path="/login"
-            element={
-              <Login
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
-
-          <Route
-            path="/"
-            element={<Welcome events={events} setEvents={setEvents} />}
-          />
-          {/* 
-          <Route 
-            path="/profile"
-            element={<Profile />}
-          /> 
-          */}
-
-
-          
+           <Route
+             path="/login"
+             element={
+               <Login
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
 
            <Route 
           path='/events/:id'
           element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
           
-          <Route 
-            path="/profile"
-            element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
-
-          />
-
-          <Route
-            path="/profile"
-            element={
-              currentUser ? (
-                <Profile
-                  events={events}
-                  setEvents={setEvents}
-                  currentUser={currentUser}
-                  filter={filter}
-                  setFilter={setFilter}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
+           <Route
+             path="/profile"
+             element={
+               currentUser ? (
+                 <Profile
+                   events={events}
+                   setEvents={setEvents}
+                   currentUser={currentUser}
+                   filter={filter}
+                   setFilter={setFilter}
+            />
+            ) : (
+              <Navigate to="/login" />
+            )
             }
-          />
-
-          <Route
-            path="/events/:id"
-            element={<EventDetails events={events} />}
-          />
-
-          <Route
-            path="/profile"
-            element={
-              currentUser ? (
-                <Profile
-                  events={events}
-                  setEvents={setEvents}
-                  currentUser={currentUser}
-                  filter={filter}
-                  setFilter={setFilter}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
-        </Routes>
-      </div>
-    </Router>
-  )
+           />
+         </Routes>
+       </div>
+     </Router>
+   )
 }
 
 export default App
