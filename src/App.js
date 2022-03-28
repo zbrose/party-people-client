@@ -57,8 +57,8 @@ function App() {
     fetchData()
   }, [])
   
-  console.log('events',events)
-  console.log('filter',filter)
+  console.log('events', events)
+  console.log('filter', filter)
 
    return (
     <Router>

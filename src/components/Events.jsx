@@ -13,7 +13,7 @@ function Events({events, filter, setFilter, currentUser}) {
         const results = events.filter(event=>event.category === e.target.innerText)
         setFilter(results)
     }
-    console.log(filter)
+    console.log('filter in Events.jsx',filter)
   
     // const handleClick = (event) => {
     //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
@@ -58,9 +58,13 @@ function Events({events, filter, setFilter, currentUser}) {
 
     return (
         <>
+        {filter !==[] ? 
+            <>
+
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Filter Events By:  {filter===events ? 'All Events' : 'hello' }
+                    Filter By:
+                 {/* {filter===events ? 'All Parties' : filter[0].category} */}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -76,6 +80,8 @@ function Events({events, filter, setFilter, currentUser}) {
             <div className='flex-box'>
                 {eventsList}
             </div>
+            </>
+        : null }
         </>
               
     )
