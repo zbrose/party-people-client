@@ -64,11 +64,11 @@ function Events({events, filter, setFilter, currentUser}) {
         <>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Filter Events By:  {filter===events ? 'All Events' : 'hello' }
+                Filter Events By:  {filter===events ? 'All Events' : (filter[0] ? filter[0].category : 'No Events Found')}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item onClick={()=>setFilter(events)}>All Parties</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setFilter(events)}>All Events</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Party</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Gaming</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Concert</Dropdown.Item>
