@@ -16,6 +16,7 @@ import { useState, useEffect,useRef } from 'react';
 import jwt_decode from 'jwt-decode'
 import EventDetails from "./components/pages/EventDetails";
 import axios from 'axios';
+import Map from './components/pages/Map';
 
 function App() {
   // state wi the user data when the user is logged in
@@ -92,7 +93,7 @@ function App() {
           */}
            <Route 
           path='/events/:id'
-          element={<EventDetails events={events} />} />
+          element={<EventDetails events={events} Map={Map}/>} />
           
           <Route 
             path="/profile"
