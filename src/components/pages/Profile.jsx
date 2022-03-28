@@ -50,6 +50,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
       setUserInfo(userData.data)
     }
     
+    setDisplayImg(userInfo.image)
     getUserData().catch(console.error)
   }, [])
 
@@ -91,7 +92,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
   return (
     <>
       <Card>
-        {/* {displayImg && <img src={ displayImg } alt="" />} */}
+        {displayImg && <img src={ displayImg } alt="" />}
         <h3> {currentUser.name}'s Profile</h3>
 
         <p>your email is {currentUser.email}</p>
