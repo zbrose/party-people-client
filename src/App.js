@@ -101,32 +101,10 @@ function App() {
              }
            />
 
-           <Route
-             path="/"
-             element={<Welcome events={events} setEvents={setEvents} />}
-           />
-           {/* 
-          <Route 
-            path="/profile"
-            element={<Profile />}
-          /> 
-          */}
-
            <Route 
           path='/events/:id'
           element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
           
-          <Route 
-            path="/profile"
-            element={currentUser ? <Profile  events={events} setEvents={setEvents} filter={filter} setFilter={setFilter} currentUser={currentUser} /> : <Navigate to="/login" />}
-          />
-
-           <Route
-             path="/events/:id"
-             element={<EventDetails events={events} />}
-           />
-
-
            <Route
              path="/profile"
              element={
@@ -137,11 +115,11 @@ function App() {
                    currentUser={currentUser}
                    filter={filter}
                    setFilter={setFilter}
-                 />
-               ) : (
-                 <Navigate to="/login" />
-               )
-             }
+            />
+            ) : (
+              <Navigate to="/login" />
+            )
+            }
            />
          </Routes>
        </div>
