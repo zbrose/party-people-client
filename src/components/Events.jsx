@@ -25,33 +25,37 @@ function Events({events, filter, setFilter, currentUser}) {
     const eventsList = filter.map((event,idx)=>{
 
         return (
-        <div key={`eventsList-${idx}`}>
+        // <div key={`eventsList-${idx}`}>
 
-            <Card style={{ width: '18rem' }}>
+            <Card key={`eventList-${idx}`}  style={{ width: '18rem' }}>
+                <div className="shadow">
+                    <div className="shadow">
 
-            <Card.Img variant="top" src="http://placekitten.com/150/150" />
-            <Card.Body>
+                    <Card.Img variant="top" src="http://placekitten.com/150/150" />
+                    <Card.Body>
 
-                <Card.Title>{event.title}</Card.Title>
-                <Card.Text>{event.category} </Card.Text>
-                <Card.Text>{event.description} </Card.Text>
+                        <Card.Title>{event.title}</Card.Title>
+                        <Card.Text>{event.category} </Card.Text>
+                        <Card.Text>{event.description} </Card.Text>
 
-                <ListGroup variant="flush">
+                        <ListGroup variant="flush">
 
-                <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
-                <ListGroup.Item>{event.date}</ListGroup.Item>
-                <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
+                        <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
+                        <ListGroup.Item>{event.date}</ListGroup.Item>
+                        <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
 
-                </ListGroup>
+                        </ListGroup>
 
-                <Link to={`/events/${event._id}`}><Button variant="primary">See Details</Button></Link>
-                {/* <Button onClick={()=>handleClick(event._id)} variant="primary">Attend</Button> */}
+                        <Button href={`/events/${event._id}`} className='btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm' variant="primary">See Details</Button>
+                        {/* <Button onClick={()=>handleClick(event._id)} variant="primary">Attend</Button> */}
 
-            </Card.Body>
-            
+                    </Card.Body>
+                        
+                    </div>
+                </div>
             </Card>
 
-        </div>
+        // </div>
         )
     })
 
@@ -60,11 +64,11 @@ function Events({events, filter, setFilter, currentUser}) {
         <>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Filter Events By:  {filter===events ? 'All Events' : 'hello' }
+                Filter Events By:  {filter===events ? 'All Events' : (filter[0] ? filter[0].category : 'No Events Found')}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item onClick={()=>setFilter(events)}>All Parties</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>setFilter(events)}>All Events</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Party</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Gaming</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Concert</Dropdown.Item>
