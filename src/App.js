@@ -21,6 +21,7 @@ import Map from "./components/pages/Map"
 function App() {
   // state wi the user data when the user is logged in
   const [currentUser, setCurrentUser] = useState(null)
+
   // useEffect that handles localstorage if the user navigates away fro mthe page/refreshes
   useEffect(() => {
     const token = localStorage.getItem("jwt")
@@ -113,9 +114,17 @@ function App() {
           /> 
           */}
 
-          <Route
-            path="/events/:id"
-            element={<EventDetails events={events} Map={Map} />}
+
+          
+
+           <Route 
+          path='/events/:id'
+          element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
+          
+          <Route 
+            path="/profile"
+            element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
+
           />
 
           <Route
