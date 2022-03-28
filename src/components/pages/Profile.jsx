@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import CreateEvent from "../CreateEvent"
 import { Card, ListGroup, Col } from "react-bootstrap"
+import UploadImg from "../UploadImg"
 
 export default function Profile({ currentUser, events, setEvents }) {
   const [msg, setMsg] = useState("")
@@ -90,6 +91,8 @@ export default function Profile({ currentUser, events, setEvents }) {
       <h3>{currentUser.name}'s Profile</h3>
 
       <p>your email is {currentUser.email}</p>
+
+      <UploadImg currentUser={currentUser}/>
 
       <h4>The message from the auth locked route is:</h4>
 
