@@ -118,7 +118,7 @@ function App() {
           
           <Route 
             path="/profile"
-            element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
+            element={currentUser ? <Profile  events={events} setEvents={setEvents} filter={filter} setFilter={setFilter} currentUser={currentUser} /> : <Navigate to="/login" />}
           />
 
            <Route
