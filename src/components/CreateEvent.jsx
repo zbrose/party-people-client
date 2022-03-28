@@ -7,22 +7,12 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formGridTitle">
         <Form.Label>title:</Form.Label>
-        {/* <input
-          type="text"
-          value={eventForm.title}
-          onChange={(e) =>
-            setEventForm({ ...eventForm, title: e.target.value })
-          }
-          id="title"
-          required
-        /> */}
         <Form.Control
           type="text"
           value={eventForm.title}
           onChange={(e) =>
             setEventForm({ ...eventForm, title: e.target.value })
           }
-          // id="title"
           required
           placeholder="lan party"
         />
@@ -30,23 +20,12 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
 
       <Form.Group className="mb-3" controlId="formGridAddress2">
         <Form.Label>address:</Form.Label>
-        {/* <label htmlFor="address">address:</label> */}
-        {/* <input
-          type="text"
-          value={eventForm.address}
-          onChange={(e) =>
-            setEventForm({ ...eventForm, address: e.target.value })
-          }
-          id="address"
-          required
-        /> */}
         <Form.Control
           type="text"
           value={eventForm.address}
           onChange={(e) =>
             setEventForm({ ...eventForm, address: e.target.value })
           }
-          // id="address"
           required
           placeholder="Apartment, studio, or floor"
         />
@@ -55,20 +34,13 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>city:</Form.Label>
-          {/* <input
-            type="text"
-            value={eventForm.city}
-            onChange={(e) =>
-              setEventForm({ ...eventForm, city: e.target.value })
-            }
-            id="city"
-          /> */}
           <Form.Control
             type="text"
             value={eventForm.city}
             onChange={(e) =>
               setEventForm({ ...eventForm, city: e.target.value })
             }
+            required
           />
         </Form.Group>
         <Form.Group as={Col} controlId="formGridState">
@@ -79,7 +51,7 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
             onChange={(e) =>
               setEventForm({ ...eventForm, state: e.target.value })
             }
-            // id="state"
+            required
           >
             <option>Choose...</option>
             <option value="">N/A</option>
@@ -135,27 +107,10 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
             <option value="WI">Wisconsin</option>
             <option value="WV">West Virginia</option>
             <option value="WY">Wyoming</option>
-            {/* <input
-              type="text"
-              value={eventForm.state}
-              onChange={(e) =>
-                setEventForm({ ...eventForm, state: e.target.value })
-              }
-              id="state"
-            /> */}
           </Form.Select>
         </Form.Group>
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Zip</Form.Label>
-          {/* <label htmlFor="zipcode">zipcode:</label> */}
-          {/* <input
-            type="number"
-            value={eventForm.zipcode}
-            onChange={(e) =>
-              setEventForm({ ...eventForm, zipcode: e.target.value })
-            }
-            id="zipcode"
-          /> */}
           <Form.Control
             type="number"
             value={eventForm.zipcode}
@@ -165,16 +120,6 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
           />
         </Form.Group>
       </Row>
-
-      {/* <label htmlFor="date">date of event:</label>
-      <input
-        type="text"
-        value={eventForm.date}
-        onChange={(e) =>
-          setEventForm({ ...eventForm, "date of event": e.target.value })
-        }
-        id="date"
-      /> */}
 
       <FloatingLabel
         controlId="floatingTextarea"
@@ -190,43 +135,27 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
           }
         />
       </FloatingLabel>
-      {/* <label htmlFor="description">description:</label>
-      <input
-        type="textarea"
-        value={eventForm.description}
-        onChange={(e) =>
-          setEventForm({ ...eventForm, description: e.target.value })
-        }
-        id="description"
-      /> */}
+
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label >category:</Form.Label>
+          <Form.Label>category:</Form.Label>
           <Form.Select
             value={eventForm.category}
             onChange={(e) =>
               setEventForm({ ...eventForm, category: e.target.value })
             }
-            // id="category"
           >
-            <option value="party">party</option>
-            <option value="concert">concert</option>
-            <option value="boardgames">board games</option>
-            <option value="comedy">comedy</option>
-            <option value="study">study</option>
-            <option value="other">other</option>
+            <option value="party">Party</option>
+            <option value="concert">Concerts</option>
+            <option value="gaming">Gaming</option>
+            <option value="comedy">Comedy</option>
+            <option value="study">Study</option>
+            <option value="other">Other</option>
           </Form.Select>
         </Form.Group>
+
         <Form.Group as={Col} controlId="date">
           <Form.Label>Select Date</Form.Label>
-          {/* <input
-          type="text"
-          value={eventForm.date}
-          onChange={(e) =>
-            setEventForm({ ...eventForm, "date of event": e.target.value })
-          }
-          id="date"
-        /> */}
           <Form.Control
             type="date"
             name="date"
@@ -238,16 +167,10 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
           />
         </Form.Group>
       </Row>
-      {/* <Form.Group className="mb-3" id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group> */}
 
       <Button variant="primary" type="submit">
         submit
       </Button>
-      {/* <button className="myButton" type="submit">
-        submit */}
-      {/* </button> */}
     </Form>
   )
 }
