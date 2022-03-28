@@ -114,7 +114,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         // /> */}
       </Card>
 
-<Events events={events} filter={filter} currentUser={currentUser} setFilter={setFilter}/>
+{/* <Events events={events} filter={filter} currentUser={currentUser} setFilter={setFilter}/> */}
 
       <Card
         style={{ width: "25rem" }}

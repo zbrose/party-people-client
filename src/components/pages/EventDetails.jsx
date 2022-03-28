@@ -15,7 +15,12 @@ export default function EventDetails({ event}) {
     const [date, setDate] = useState()
     const [attendees, setAttendees] = useState([])
     const [host,setHost]= useState()
+    const [showMap,setShowMap]=useState(false)
     
+    
+    function showTheMap(){
+        setShowMap(!showMap)
+    }
 
     useEffect(() => { 
         async function fetchData(){
@@ -56,7 +61,11 @@ export default function EventDetails({ event}) {
                     {attendees}
                 </Tab>
             </Tabs>
-            <Map details={details}/>
+            <button onClick={showTheMap}>
+                Show me the Map
+            </button>
+            {showMap ? <Map details={details}/>: ''} 
+            
         </>
     )
 
