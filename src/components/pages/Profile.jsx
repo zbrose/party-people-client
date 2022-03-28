@@ -3,8 +3,9 @@ import axios from "axios"
 import CreateEvent from "../CreateEvent"
 import { Card, ListGroup } from "react-bootstrap"
 import UploadImg from "../UploadImg"
+import Events from "../Events"
 
-export default function Profile({ currentUser, events, setEvents }) {
+export default function Profile({ currentUser, filter, setFilter, events, setEvents }) {
   const [msg, setMsg] = useState("")
   const [formData, setFormData] = useState({})
   const [displayImg, setDisplayImg] = useState("")
@@ -50,41 +51,9 @@ export default function Profile({ currentUser, events, setEvents }) {
     }
     
     getUserData().catch(console.error)
-  }, [currentUser.id])
+  }, [])
 
   console.log("userINFOOOO", userInfo)
-  //zach'scard/events code
-  const eventsList = events.map((event, idx) => {
-    return (
-      <div key={`eventsList-${idx}`}>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="http://placekitten.com/150/150" />
-          <Card.Body>
-            <Card.Title>{event.title}</Card.Title>
-            <Card.Text>{event.category} </Card.Text>
-            <Card.Text>{event.description} </Card.Text>
-
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                {event.city}, {event.state} {event.zipcode}
-              </ListGroup.Item>
-              <ListGroup.Item>{event.date}</ListGroup.Item>
-              <ListGroup.Item>
-                Attendees Count: {event.attendees.length}{" "}
-              </ListGroup.Item>
-            </ListGroup>
-
-            {/* <Link to={`/events/${event._id}`}> */}
-            {/* <Button variant="primary">See Details</Button> */}
-            {/* </Link> */}
-            {/* <Button onClick={() => handleClick(event._id)} variant="primary"> */}
-            {/* Attend */}
-            {/* </Button> */}
-          </Card.Body>
-        </Card>
-      </div>
-    )
-  })
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -144,18 +113,12 @@ export default function Profile({ currentUser, events, setEvents }) {
         //   setFormImg={setFormImg}
         // /> */}
       </Card>
-      {/* <div>
-      </div> */}
-      {/* <h6>{msg}</h6>
-      { showForm ? (
 
-      )
-      } */}
-      <div className="flex-box">{eventsList}</div>
-      {/* <Col className="container-fluid mt-4"> */}
+<Events events={events} filter={filter} currentUser={currentUser} setFilter={setFilter}/>
+
       <Card
         style={{ width: "25rem" }}
-        // className="box"
+        // className="box" */}
       >
         <CreateEvent
           handleSubmit={handleSubmit}
