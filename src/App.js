@@ -58,7 +58,6 @@ function App() {
     fetchData()
   }, [])
   
-
    return (
     <Router>
       <Navbar handleLogout={handleLogout} currentUser={currentUser}/>
