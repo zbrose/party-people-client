@@ -15,8 +15,8 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
   console.log(filter)
 
   
-  const filterEvents = (filter) => {
-      const results = events.filter(event=>event.category === filter)
+  const filterEvents = (e) => {
+      const results = events.filter(event=>event.category === e.target.innerText)
       setFilter(results)
   }
 
@@ -112,12 +112,12 @@ export default function Welcome({events, setEvents, currentUser, filter, setFilt
 
       <Dropdown.Menu>
         <Dropdown.Item onClick={()=>setFilter(events)}>All Parties</Dropdown.Item>
-        <Dropdown.Item onClick={()=>filterEvents('Party')}>Parties</Dropdown.Item>
-        <Dropdown.Item onClick={()=>filterEvents('Gaming')}>Gaming</Dropdown.Item>
-        <Dropdown.Item onClick={()=>filterEvents('Concert')}>Concerts</Dropdown.Item>
-        <Dropdown.Item onClick={()=>filterEvents('Study')}>Study Sessions</Dropdown.Item>
-        <Dropdown.Item onClick={()=>filterEvents('comedy')}>Comedy</Dropdown.Item>
-        <Dropdown.Item onClick={()=>filterEvents('Other')}>Other</Dropdown.Item>
+        <Dropdown.Item onClick={filterEvents}>Party</Dropdown.Item>
+        <Dropdown.Item onClick={filterEvents}>Gaming</Dropdown.Item>
+        <Dropdown.Item onClick={filterEvents}>Concert</Dropdown.Item>
+        <Dropdown.Item onClick={filterEvents}>Study</Dropdown.Item>
+        <Dropdown.Item onClick={filterEvents}>Other</Dropdown.Item>
+        <Dropdown.Item onClick={filterEvents}>Comedy</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
 
