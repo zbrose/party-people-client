@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Navbar from './components/layout/Navbar'
+import NavbarComp from './components/layout/NavbarComp'
 import Login from './components/pages/Login'
 import Welcome from './components/pages/Welcome'
 import Register from './components/pages/Register'
@@ -60,14 +60,14 @@ function App() {
   
    return (
     <Router>
-      <Navbar handleLogout={handleLogout} currentUser={currentUser}/>
+      <NavbarComp handleLogout={handleLogout} currentUser={currentUser}/>
 
       <div className="App">
         <Routes>
           <Route 
             path='/'
             element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} filter={filter} setFilter={setFilter}/>}/>
-            
+
         <Route 
             path="/register"
             element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}

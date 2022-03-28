@@ -9,20 +9,18 @@ import axios from 'axios';
 
 function Events({events, filter, setFilter, currentUser}) {
 
-    console.log(filter[0].category)
-
-  
     const filterEvents = (e) => {
         const results = events.filter(event=>event.category === e.target.innerText)
         setFilter(results)
     }
+    console.log(filter)
   
-    const handleClick = (event) => {
-        axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
-        .then(response=>console.log(response.data))
-        // change button state or something so you cant click twice
-        // update event state to render attendance count
-      }
+    // const handleClick = (event) => {
+    //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
+    //     .then(response=>console.log(response.data))
+    //     // change button state or something so you cant click twice
+    //     // update event state to render attendance count
+    //   }
 
     const eventsList = filter.map((event,idx)=>{
 
@@ -47,7 +45,7 @@ function Events({events, filter, setFilter, currentUser}) {
                 </ListGroup>
 
                 <Link to={`/events/${event._id}`}><Button variant="primary">See Details</Button></Link>
-                <Button onClick={()=>handleClick(event._id)} variant="primary">Attend</Button>
+                {/* <Button onClick={()=>handleClick(event._id)} variant="primary">Attend</Button> */}
 
             </Card.Body>
             
@@ -62,7 +60,7 @@ function Events({events, filter, setFilter, currentUser}) {
         <>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Filter Events By:  {filter===events ? 'All Events' : filter[0].category}
+                Filter Events By:  {filter===events ? 'All Events' : 'hello' }
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
