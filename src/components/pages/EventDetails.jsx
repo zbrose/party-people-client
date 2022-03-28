@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import axios from "axios"
 import { Tab, Tabs } from 'react-bootstrap';
-import Button from '../Button';
 const dayjs = require('dayjs')
 
 export default function EventDetails({ currentUser }) {
