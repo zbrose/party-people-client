@@ -33,7 +33,7 @@ export default function Map({ details }) {
         setViewPort({
           latitude: latitude,
           longitude: longitude,
-          zoom: 10,
+          zoom: 15,
         });
       }
       addressfy(details.address);
