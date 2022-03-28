@@ -12,7 +12,7 @@ import Login from './components/pages/Login'
 import Welcome from './components/pages/Welcome'
 import Register from './components/pages/Register'
 import Profile from './components/pages/Profile'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import jwt_decode from 'jwt-decode'
 import EventDetails from "./components/pages/EventDetails";
 import axios from 'axios';
