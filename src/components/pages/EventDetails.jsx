@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Tab, Tabs } from "react-bootstrap";
 import Map from "./Map";
+import EditEvent from "../EditEvent";
 
 const dayjs = require("dayjs");
 
@@ -14,7 +15,17 @@ export default function EventDetails({ currentUser }) {
   const [attendeesId, setAttendeesId] = useState([]);
   const [host, setHost] = useState();
   const [showMap, setShowMap] = useState(false);
+  const [showForm, setShowForm] = useState(false)
+  const [eventForm, setEventForm] = useState()
 
+  const handleSubmit = async e => {
+      e.preventDefault()
+      await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, eventForm)
+      setShowForm(!showForm)
+      refreshEvent()
+    }
+    
+    console.log(eventForm)
   function showTheMap() {
     setShowMap(!showMap);
   }
@@ -49,6 +60,7 @@ export default function EventDetails({ currentUser }) {
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
       );
       setDetails(eventDetails.data);
+      setEventForm(eventDetails.data)
       setDate(dayjs(eventDetails.data.date).format("dddd MMMM D YYYY"));
       setHost(eventDetails.data.host.name);
       eventDetails.data.attendees.forEach((attendee) => {
@@ -61,49 +73,48 @@ export default function EventDetails({ currentUser }) {
 
   return (
     <>
-      {currentUser && details.host ? (
-        <>
-          <img
-            src="http://placekitten.com/1300/400"
-            alt={`${details.title}-image`}
-          />
+      {currentUser && details.host ? 
+        (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : 
+            (
+            <>
+                <img
+                    src="http://placekitten.com/1300/400"
+                    alt={`${details.title}-image`}
+                />
 
-          <div id="eventHeader">
-            <h1>{details.title}</h1>
-            <button onClick={handleClick}>
-              {attendeesId.includes(currentUser.id) ? "Unattend" : "Attend"}
-            </button>
-          </div>
+                <div id="eventHeader">
+                    <h1>{details.title}</h1>
+                    <button onClick={handleClick}>
+                    {attendeesId.includes(currentUser.id) ? "Unattend" : "Attend"}
+                    </button>
+                </div>
 
-          <div id="details">
-            <h2>Host: {host} </h2>
-            <h3>{details.category}</h3>
-            <p>{date}</p>
-            <p>{details.address}</p>
-            <p>
-              {details.city}, {details.state} {details.zipcode}
-            </p>
-          </div>
-        
-          <Tabs defaultActiveKey="description" id="tabs" className="right">
-            <Tab eventKey="description" title="Description">
-              {details.description}
-            </Tab>
+                <div id="details">
+                    <h2>Host: {host} </h2>
+                    <h3>{details.category}</h3>
+                    <p>{date}</p>
+                    <p>{details.address}</p>
+                    <p>
+                    {details.city}, {details.state} {details.zipcode}
+                    </p>
+                </div>
+                
+                <Tabs defaultActiveKey="description" id="tabs" className="right">
+                    <Tab eventKey="description" title="Description">
+                    {details.description}
+                    </Tab>
 
-            <Tab eventKey="attendees" title={`Attendees`}>
-              {attendees}
-            </Tab>
-          </Tabs>
+                    <Tab eventKey="attendees" title={`Attendees`}>
+                    {attendees}
+                    </Tab>
+                </Tabs>
 
-          <button onClick={showTheMap}>Show me the Map</button>
-            {showMap ? <Map details={details} /> : ""}
+                <button onClick={showTheMap}>Show me the Map</button>
+                    {showMap ? <Map details={details} showForm={showForm} /> : ""}
 
-           {currentUser.id === details.host._id ? <button>Edit Event</button> : null} 
-        
-        </>
-      ) : null}
-      
-     
+                {currentUser.id === details.host._id ? <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> : null}
+            </>
+        )) : null}
     </>
   );
 }

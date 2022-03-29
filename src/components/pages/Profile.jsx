@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import CreateEvent from "../CreateEvent"
-import { Card, ListGroup } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 import UploadImg from "../UploadImg"
 import Events from "../Events"
 
 export default function Profile({ currentUser, filter, setFilter, events, setEvents }) {
-  const [msg, setMsg] = useState("")
   const [formData, setFormData] = useState({})
   const [displayImg, setDisplayImg] = useState("")
   const [formImg, setFormImg] = useState("")
@@ -33,8 +32,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
           `${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`,
           options
         )
-        // set the data from the server in state
-        setMsg(response.data.msg)
+        console.log(response)
       } catch (err) {
         console.log(err)
       }
@@ -85,7 +83,6 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
       getUserData()
     } catch (err) {
       console.log(err)
-      setMsg("go cchk the server console, tere was error")
     }
   }
 
