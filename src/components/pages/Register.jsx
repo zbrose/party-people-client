@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { Link,Navigate } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
 export default function Register({ currentUser, setCurrentUser }) {
@@ -100,12 +100,12 @@ export default function Register({ currentUser, setCurrentUser }) {
                 <div className="container">
                   <div className="row">
                     <div className="col-lg-10 col-xl-7 mx-auto">
-                      <h3 className="display-4">Sign Up!</h3>
-                      <p className="text-muted mb-4">
+                      <h3 className="display-4 BebasNeue">Sign Up!</h3>
+                      <p className="text-muted mb-4 LilitaOne">
                        I heard you like to PARTY!🥳
                       </p>
                       <form onSubmit={handleSubmit}>
-                      <div className="mb-3">
+                      <div className="mb-3 BebasNeue">
                         <label htmlFor="name">Name:</label>
                           <input
                             required=""
@@ -117,8 +117,8 @@ export default function Register({ currentUser, setCurrentUser }) {
                             placeholder='enter your name...'
                           />
                         </div>
-                        <div className="mb-3">
-                        <label htmlFor="email">Email:</label>
+                        <div className="mb-3 BebasNeue">
+                        <label htmlFor="email ">Email:</label>
                           <input
                             id="inputEmail"
                             type="email"
@@ -130,8 +130,8 @@ export default function Register({ currentUser, setCurrentUser }) {
                             className="form-control rounded-pill border-0 shadow-sm px-4"
                           />
                         </div>
-                        <div className="mb-3">
-                        <label htmlFor="password">Password:</label>
+                        <div className="mb-3 BebasNeue">
+                        <label htmlFor="password ">Password:</label>
                           <input
                             id="inputPassword"
                             type="password"
@@ -143,7 +143,7 @@ export default function Register({ currentUser, setCurrentUser }) {
                           />
                         </div>
                        
-                        <div className="mb-3">
+                        <div className="mb-3 BebasNeue">
                         <label htmlFor="passwordConfirmation">Confirm Password:</label>
                           <input
                             required=""
@@ -158,13 +158,14 @@ export default function Register({ currentUser, setCurrentUser }) {
                         <div className="d-grid gap-2 mt-2">
                           <button
                             type="submit"
-                            className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                            className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm BebasNeue"
                           >
                             Sign Up
                           </button>
                         </div>
 
                         <div className="text-center d-flex justify-content-between mt-4">
+                        <p className="LoR">Already have an account?<button className="LoRButton"><Link to="/login">login</Link></button> </p> 
                         <p>{msg ? `the server has a message for you: ${msg}` : ""}</p>    
                         </div>
                       </form>

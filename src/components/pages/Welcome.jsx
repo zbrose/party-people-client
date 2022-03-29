@@ -8,41 +8,38 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
   return (
     <>
 
-      <Carousel className='shadow'>
+      <Carousel className='shadow BebasNeue' style={{maxWidth: "2000px",margin: "0 auto"}}>
 
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="http://placekitten.com/400/150"
+            src="images/concert.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
             <h3>Welcome to The Party People App</h3>
-            <p>Party</p>
           </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="http://placekitten.com/400/150"
+            src="images/gaming.jpg"
             alt="Second slide"
           />
           <Carousel.Caption>
             <h3>Where People Who Party...</h3>
-            <p>Party Hard</p>
           </Carousel.Caption>
         </Carousel.Item>
 
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="http://placekitten.com/400/150"
+            src="images/playingCards.jpg"
             alt="Third slide"
           />
           <Carousel.Caption>
             <h3>...Find Parties To Party At.</h3>
-            <p>No, Harder</p>
           </Carousel.Caption>
         </Carousel.Item>
         

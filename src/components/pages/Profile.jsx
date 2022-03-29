@@ -4,6 +4,7 @@ import CreateEvent from "../CreateEvent"
 import { Card } from "react-bootstrap"
 import UploadImg from "../UploadImg"
 import Events from "../Events"
+import ProfileEvents from "../ProfileEvents"
 
 export default function Profile({ currentUser, filter, setFilter, events, setEvents }) {
   const [formData, setFormData] = useState({})
@@ -88,8 +89,17 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
 
   return (
     <>
-      <Card>
-        {displayImg && <img src={ displayImg } alt="uploaded user profile" />}
+    <div className="flex-box">
+
+      <Card className="" style={{ width: "25rem", margin: "0 auto"}} >
+        <Card.Img
+          className="img-fluid"
+          variant="top"
+          src={displayImg}
+          alt="uploaded user profile"
+        />
+
+        {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
         <h3> {currentUser.name}'s Profile</h3>
 
         <p>your email is {currentUser.email}</p>
@@ -103,7 +113,6 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         ) : (
           <Card.Img variant="top" src="http://placekitten.com/150/150" />
         )}
-
         {/* // <UploadImg
         //   currentUser= { currentUser }
         //   handleImgSubmit={ handleImgSubmit }
@@ -111,8 +120,16 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         //   setFormImg={setFormImg}
         // /> */}
       </Card>
+    </div>
 
-<Events events={events} filter={filter} currentUser={currentUser} setFilter={setFilter}/>
+    <ProfileEvents events={events} userInfo={userInfo}/>
+
+      {/* <Events
+        events={events}
+        filter={filter}
+        currentUser={currentUser}
+        setFilter={setFilter}
+      /> */}
 
       <Card
         style={{ width: "25rem" }}
