@@ -103,9 +103,8 @@ console.log("payload", currentUser)
           />
 
           {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
-          <h3> {currentUser.name}'s Profile</h3>
+          <h3 class="card-title"> {currentUser.name}'s Profile</h3>
 
-          <p>your email is {currentUser.email}</p>
           {!currentUser.image ? (
             <UploadImg
               currentUser={currentUser}
