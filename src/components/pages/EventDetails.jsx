@@ -19,32 +19,33 @@ export default function EventDetails({ currentUser }) {
     setShowMap(!showMap);
   }
 
-  const [attending, setAttending] = useState(
-    currentUser && attendeesId.includes(currentUser.id)
-  );
 
   const handleClick = async () => {
-    if (attending) {
+    if (attendeesId.includes(currentUser.id)) {
       await axios.put(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`
       );
-      setAttending(!attending);
       setAttendees(
         attendees.filter((attendee) => {
           return attendee !== currentUser.name;
         })
-      );
+        );
+        setAttendeesId(
+            attendeesId.filter(attendee => {
+                return attendee !== currentUser.id
+            })
+        )
+      refreshEvent()
     } else {
       await axios.put(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/attend`
       );
-      setAttending(!attending);
+      refreshEvent()
     }
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      const eventDetails = await axios.get(
+  const refreshEvent = async () => {
+    const eventDetails = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
       );
       setDetails(eventDetails.data);
@@ -54,11 +55,10 @@ export default function EventDetails({ currentUser }) {
         setAttendees([...attendees, attendee.name]);
         setAttendeesId([...attendeesId, attendee._id]);
       });
-      //https://api.mapbox.com/geocoding/v5/mapbox.places/815%20n%2052nd%20.json?limit=1&proximity=ip&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ
-    }
+  }
 
-    fetchData();
-  }, [attending]);
+  useEffect(refreshEvent, []);
+//https://api.mapbox.com/geocoding/v5/mapbox.places/815%20n%2052nd%20.json?limit=1&proximity=ip&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ
 
   return (
     <>
@@ -72,7 +72,7 @@ export default function EventDetails({ currentUser }) {
           <div id="eventHeader">
             <h1>{details.title}</h1>
             <button onClick={handleClick}>
-              {attending ? "Unattend" : "Attend"}{" "}
+              {attendeesId.includes(currentUser.id) ? "Unattend" : "Attend"}
             </button>
           </div>
 
