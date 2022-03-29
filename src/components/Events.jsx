@@ -74,7 +74,7 @@ function Events({events, filter, setFilter, currentUser}) {
                 <Tab eventKey="Party" title="Party" ><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Concert" title="Concert" ><div className='flex-box'>{eventsList}</div></Tab>
-                <Tab eventKey="Study" title="Study" ><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab backgroundLogin'>{eventsList}</div></Tab>
                 <Tab eventKey="Other" title="Other" ><div className='flex-box'>{eventsList}</div></Tab>
 
             </Tabs>
