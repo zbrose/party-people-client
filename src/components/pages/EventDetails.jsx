@@ -85,11 +85,7 @@ export default function EventDetails({ currentUser }) {
               {details.city}, {details.state} {details.zipcode}
             </p>
           </div>
-          <Tabs>
-            <Tab eventKey="attendees" title={`Attendees`}>
-              {attendees}
-            </Tab>
-          </Tabs>
+        
           <Tabs defaultActiveKey="Description" id="tabs" className="right">
             <Tab eventKey="description" title="Description">
               {details.description}
