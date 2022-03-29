@@ -41,17 +41,17 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
     })()
   }, [])
 
-  //get user info
-  const refreshPage = async () => {
-    const userData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`)
+  const getUserData = async () => {
+    const userData = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`
+    )
     setUserInfo(userData.data)
-        // setDisplayImg(userInfo)
-        setDisplayImg(userData.data.image)
-        refreshPage().catch(console.error)
-      }     
-  
+    // setDisplayImg(userInfo)
+    setDisplayImg(userData.data.image)
+  }
 
-  useEffect(refreshPage(), [])
+  //get user info
+  useEffect( getUserData, [])
   
   console.log("userINFOOOO", userInfo)
 
@@ -82,6 +82,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
       )
       console.log("IMAGE DATA", response.data)  
       setDisplayImg(response.data.cloudImage)
+      getUserData()
     } catch (err) {
       console.log(err)
       setMsg("go cchk the server console, tere was error")
