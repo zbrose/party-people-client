@@ -33,7 +33,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
 
   const loggedOut = (
     <>
-      <Navbar bg="light" variant="light">
+      <Navbar className='BebasNeue' bg="light" variant="light">
         <Container>
           <Navbar.Brand href="/">Party People</Navbar.Brand>
           <Nav className="me-auto">
