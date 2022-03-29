@@ -1,7 +1,6 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import {useState} from 'react'
@@ -22,19 +21,13 @@ function Events({events, filter, setFilter, currentUser}) {
         }
     }
   
-    // const handleClick = (event) => {
-    //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
-    //     .then(response=>console.log(response.data))
-    //     // change button state or something so you cant click twice
-    //     // update event state to render attendance count
-    //   }
 
     const eventsList = filter.map((event,idx)=>{
 
         return (
-        // <div key={`eventsList-${idx}`}>
+        <div key={`eventsList-${idx}`} className='cardContainer'>
 
-            <Card key={`eventList-${idx}`}  style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem' }}>
                 <div className="shadow">
                     <div className="shadow">
 
@@ -61,13 +54,14 @@ function Events({events, filter, setFilter, currentUser}) {
                     </div>
                 </div>
             </Card>
+        </div>
         )
     })
  
 
     return (
         <>
-            <Tabs id="uncontrolled-tab-example" className="mb-3" activeKey={key} onSelect={(f)=>filterEvents(f)}>
+            <Tabs id="uncontrolled-tab-example" className="mb-3 flex-tab" activeKey={key} onSelect={(f)=>filterEvents(f)}>
 
                 <Tab eventKey="All" title="All"><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Party" title="Party" ><div className='flex-box'>{eventsList}</div></Tab>

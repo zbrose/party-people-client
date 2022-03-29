@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
@@ -9,7 +8,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
 
   const loggedIn = (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="light" variant="light">
         <Container>
 
           <Navbar.Brand href="/">Party People</Navbar.Brand>
@@ -23,7 +22,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
             {currentUser ? 
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                Welcome Back, <a href="/profile">{currentUser.name}</a>
+                Welcome Back, <a href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
             </Navbar.Collapse> : 'no user found'}
 
