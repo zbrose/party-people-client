@@ -98,6 +98,7 @@
 
 .cardContainer{
   margin: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.285);
 }
 
 .cardContainer:hover{
