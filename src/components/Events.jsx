@@ -4,10 +4,11 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import {useState} from 'react'
+import dayjs from 'dayjs';
 
 
 
-function Events({events, filter, setFilter, currentUser}) {
+function Events({events, filter, setFilter}) {
     
     const [key, setKey] = useState('All')
     const filterEvents = (f) => {
@@ -34,20 +35,19 @@ function Events({events, filter, setFilter, currentUser}) {
                     <Card.Img variant="top" src="http://placekitten.com/150/150" />
                     <Card.Body>
 
-                        <Card.Title>{event.title}</Card.Title>
+                        <Card.Title style={{fontSize:'25px'}}>{event.title}</Card.Title>
                         <Card.Text>{event.category} </Card.Text>
                         <Card.Text>{event.description} </Card.Text>
 
                         <ListGroup variant="flush">
 
                         <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
-                        <ListGroup.Item>{event.date}</ListGroup.Item>
+                        <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
                         <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
 
                         </ListGroup>
 
-                        <Button href={`/events/${event._id}`} className='btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm' variant="primary">See Details</Button>
-                        {/* <Button onClick={()=>handleClick(event._id)} variant="primary">Attend</Button> */}
+                        <Button href={`/events/${event._id}`} className='btn-block text-uppercase mb-2 rounded-pill shadow-sm' variant="outline-dark">See Details</Button>
 
                     </Card.Body>
                         
@@ -61,14 +61,15 @@ function Events({events, filter, setFilter, currentUser}) {
 
     return (
         <>
+            <h3 className='flex-box'>Filter Parties By: </h3>
             <Tabs id="uncontrolled-tab-example" className="mb-3 flex-tab" activeKey={key} onSelect={(f)=>filterEvents(f)}>
 
-                <Tab eventKey="All" title="All"><div className='flex-box'>{eventsList}</div></Tab>
-                <Tab eventKey="Party" title="Party" ><div className='flex-box'>{eventsList}</div></Tab>
-                <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box'>{eventsList}</div></Tab>
-                <Tab eventKey="Concert" title="Concert" ><div className='flex-box'>{eventsList}</div></Tab>
-                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab backgroundLogin'>{eventsList}</div></Tab>
-                <Tab eventKey="Other" title="Other" ><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="All" title="All"><div className='flex-box tab-style'>{eventsList}</div></Tab>
+                <Tab eventKey="Party" title="Party" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
+                <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
+                <Tab eventKey="Concert" title="Concert" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
+                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab tab-style'>{eventsList}</div></Tab>
+                <Tab eventKey="Other" title="Other" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
 
             </Tabs>
         </>
