@@ -77,6 +77,4 @@ function Events({events, filter, setFilter}) {
     )
 }
 
-
-
 export default Events;
