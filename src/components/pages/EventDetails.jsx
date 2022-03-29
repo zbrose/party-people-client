@@ -58,11 +58,10 @@ export default function EventDetails({ currentUser }) {
   }
 
   useEffect(refreshEvent, []);
-//https://api.mapbox.com/geocoding/v5/mapbox.places/815%20n%2052nd%20.json?limit=1&proximity=ip&types=place%2Cpostcode%2Caddress&access_token=pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ
 
   return (
     <>
-      {currentUser ? (
+      {currentUser && details.host ? (
         <>
           <img
             src="http://placekitten.com/1300/400"
@@ -95,8 +94,11 @@ export default function EventDetails({ currentUser }) {
               {attendees}
             </Tab>
           </Tabs>
+
           <button onClick={showTheMap}>Show me the Map</button>
             {showMap ? <Map details={details} /> : ""}
+
+           {currentUser.id === details.host._id ? <button>Edit Event</button> : null} 
         
         </>
       ) : null}
