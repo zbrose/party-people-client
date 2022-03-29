@@ -4,6 +4,7 @@ import CreateEvent from "../CreateEvent"
 import { Card, ListGroup } from "react-bootstrap"
 import UploadImg from "../UploadImg"
 import Events from "../Events"
+import ProfileEvents from "../ProfileEvents"
 
 export default function Profile({ currentUser, filter, setFilter, events, setEvents }) {
   const [msg, setMsg] = useState("")
@@ -124,12 +125,14 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
       </Card>
     </div>
 
-      <Events
+    <ProfileEvents events={events} userInfo={userInfo}/>
+
+      {/* <Events
         events={events}
         filter={filter}
         currentUser={currentUser}
         setFilter={setFilter}
-      />
+      /> */}
 
       <Card
         style={{ width: "25rem" }}
