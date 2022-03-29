@@ -1,15 +1,11 @@
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import ListGroup from 'react-bootstrap/ListGroup'
+
 import Carousel from 'react-bootstrap/Carousel'
-import Dropdown from 'react-bootstrap/Dropdown'
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+
 import Events from '../Events'
 
 
 
-export default function Welcome({events, currentUser, filter, setFilter}) {
+export default function Welcome({events, currentUser, filter, setFilter, setEvents}) {
  
   return (
     <>
@@ -56,7 +52,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
       
       <br />
 
-      <Events events={events} filter={filter} setFilter={setFilter} currentUser={currentUser}  />
+      <Events events={events} filter={filter} setFilter={setFilter} currentUser={currentUser} setEvents={setEvents} />
 
     </>
     

@@ -21,6 +21,7 @@ function Events({events, filter, setFilter, currentUser}) {
         }
     }
   
+  
     // const handleClick = (event) => {
     //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
     //     .then(response=>console.log(response.data))
@@ -72,7 +73,7 @@ function Events({events, filter, setFilter, currentUser}) {
                 <Tab eventKey="Party" title="Party" ><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Concert" title="Concert" ><div className='flex-box'>{eventsList}</div></Tab>
-                <Tab eventKey="Study" title="Study" ><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab backgroundLogin'>{eventsList}</div></Tab>
                 <Tab eventKey="Other" title="Other" ><div className='flex-box'>{eventsList}</div></Tab>
 
             </Tabs>
