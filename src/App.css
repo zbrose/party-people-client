@@ -107,3 +107,22 @@
   align-items: center;
   width: 25%;
 }
+.LoR{
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+
+}
+
+.LoRButton{
+  border: none;
+  background: none;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.BebasNeue{
+  font-family: 'Bebas Neue', cursive;
+}
+
+.LilitaOne{
+  font-family: 'Lilita One', cursive;
+}
