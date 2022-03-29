@@ -41,24 +41,22 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
     })()
   }, [])
 
+  const getUserData = async () => {
+    const userData = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`
+    )
+    setUserInfo(userData.data)
+    // setDisplayImg(userInfo)
+    setDisplayImg(userData.data.image)
+  }
+
   //get user info
-  useEffect(() => {
-    const getUserData = async () => {
-      const userData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`
-      )
-      setUserInfo(userData.data)
-      // setDisplayImg(userInfo)
-      setDisplayImg(userData.data.image)
-    }
-    
-    getUserData().catch(console.error)
-  }, [])
+  useEffect( getUserData, [])
   
   console.log("userINFOOOO", userInfo)
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
 
     axios
       .post(
@@ -82,8 +80,9 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}/upload`,
         fd
       )
-
+      console.log("IMAGE DATA", response.data)  
       setDisplayImg(response.data.cloudImage)
+      getUserData()
     } catch (err) {
       console.log(err)
       setMsg("go cchk the server console, tere was error")

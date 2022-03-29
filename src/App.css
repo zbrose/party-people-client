@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lilita+One&display=swap');
+
 .App {
   text-align: center;
 }
@@ -92,3 +94,35 @@
   width: 30px;
 }
 
+.backgroundMap{
+  text-align: center;
+  background-image: url('https://cdn.edu.buncee.com/assets/c5ac54ab92fef995bb5db1368060519b/animation-birthday-102320-2.gif?timestamp=1603468819');
+  padding: 50px;
+  min-height: 100vh;
+}
+
+.map-card{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+.LoR{
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+
+}
+
+.LoRButton{
+  border: none;
+  background: none;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.BebasNeue{
+  font-family: 'Bebas Neue', cursive;
+}
+
+.LilitaOne{
+  font-family: 'Lilita One', cursive;
+}

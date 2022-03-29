@@ -9,8 +9,10 @@ import {useState} from 'react'
 
 
 function Events({events, filter, setFilter, currentUser}) {
-
+    
+    const [key, setKey] = useState('All')
     const filterEvents = (f) => {
+        setKey(f)
         if (f==='All'){
             setFilter(events)
         } else {
@@ -59,57 +61,22 @@ function Events({events, filter, setFilter, currentUser}) {
                     </div>
                 </div>
             </Card>
-
-        // </div>
         )
     })
-    console.log('filtered events', eventsList)
-
-    // const categories = ['Party','Gaming','Concerts','Study','Other']
-    // const filteredEvents = categories.forEach(category => {
-    //     return( 
-    //         <Tab eventKey={category} title={category}>
-    //             {/* {eventsList.filter(event => {
-    //                 return(
-    //                     event.category === category
-    //                     ) 
-    //                 })} */}
-    //         </Tab>
-
-    //     )
-    // })
-    
-    const [key, setKey] = useState('All')
+ 
 
     return (
         <>
-            {/* <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Filter Events By:  {filter===events ? 'All Events' : (filter[0] ? filter[0].category : 'No Events Found')}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={()=>setFilter(events)}>All Events</Dropdown.Item>
-                    <Dropdown.Item onClick={filterEvents}>Party</Dropdown.Item>
-                    <Dropdown.Item onClick={filterEvents}>Gaming</Dropdown.Item>
-                    <Dropdown.Item onClick={filterEvents}>Concert</Dropdown.Item>
-                    <Dropdown.Item onClick={filterEvents}>Study</Dropdown.Item>
-                    <Dropdown.Item onClick={filterEvents}>Other</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown> */}
-
             <Tabs id="uncontrolled-tab-example" className="mb-3" activeKey={key} onSelect={(f)=>filterEvents(f)}>
-                <Tab eventKey="All" title="All">{eventsList}</Tab>
-                <Tab eventKey="Party" title="Party" >{eventsList}</Tab>
-                <Tab eventKey="Gaming" title="Gaming" >{eventsList}</Tab>
-                <Tab eventKey="Concert" title="Concert" >{eventsList}</Tab>
-                <Tab eventKey="Study" title="Study" >{eventsList}</Tab>
-                <Tab eventKey="Other" title="Other" >{eventsList}</Tab>
-            </Tabs>
 
-            {/* <div className='flex-box'>
-                {eventsList}
-            </div> */}
+                <Tab eventKey="All" title="All"><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="Party" title="Party" ><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="Concert" title="Concert" ><div className='flex-box'>{eventsList}</div></Tab>
+                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab backgroundLogin'>{eventsList}</div></Tab>
+                <Tab eventKey="Other" title="Other" ><div className='flex-box'>{eventsList}</div></Tab>
+
+            </Tabs>
         </>
               
     )
