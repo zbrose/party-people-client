@@ -4,25 +4,27 @@ import {
   Routes,
   Navigate,
   NavLink,
-} from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import NavbarComp from './components/layout/NavbarComp'
-import Login from './components/pages/Login'
-import Welcome from './components/pages/Welcome'
-import Register from './components/pages/Register'
-import Profile from './components/pages/Profile'
-import { useState, useEffect } from 'react';
-import jwt_decode from 'jwt-decode'
-import EventDetails from "./components/pages/EventDetails";
-import axios from 'axios';
+} from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+import NavbarComp from "./components/layout/NavbarComp"
+import Login from "./components/pages/Login"
+import Welcome from "./components/pages/Welcome"
+import Register from "./components/pages/Register"
+import Profile from "./components/pages/Profile"
+import { useState, useEffect, useRef } from "react"
+import jwt_decode from "jwt-decode"
+import EventDetails from "./components/pages/EventDetails"
+import axios from "axios"
+import Map from "./components/pages/Map"
 
 function App() {
   // state wi the user data when the user is logged in
   const [currentUser, setCurrentUser] = useState(null)
+
   // useEffect that handles localstorage if the user navigates away fro mthe page/refreshes
-  useEffect(() => { 
-    const token = localStorage.getItem('jwt')
+  useEffect(() => {
+    const token = localStorage.getItem("jwt")
     // if a toekn is found, log the user in, otherwise make sure they are logged out
     if (token) {
       setCurrentUser(jwt_decode(token))
@@ -33,7 +35,7 @@ function App() {
   // logout handleer function that deletes a token from localstorage
   const handleLogout = () => {
     // remove the token from local storage
-    if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
+    if (localStorage.getItem("jwt")) localStorage.removeItem("jwt")
     // set the user state to be null
     setCurrentUser(null)
   }
@@ -46,64 +48,88 @@ function App() {
   // hit the auth locked endpoint
   // axios.get(url, options)
   // axios.post(url, body, options) (same thing w put)
-  const [events, setEvents]= useState([])
+  const [events, setEvents] = useState([])
   const [filter, setFilter] = useState([])
-  useEffect(() => { 
-    async function fetchData(){
-      const eventData = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/events`)
+  useEffect(() => {
+    async function fetchData() {
+      const eventData = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/events`
+      )
       setEvents(eventData.data)
       setFilter(eventData.data)
     }
     fetchData()
   }, [])
+<<<<<<< HEAD
   
   console.log('events', events)
   console.log('filter', filter)
+=======
+>>>>>>> main
 
    return (
-    <Router>
-      <NavbarComp handleLogout={handleLogout} currentUser={currentUser}/>
+     <Router>
+       <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
 
-      <div className="App">
-        <Routes>
-          <Route 
-            path='/'
-            element={<Welcome events={events} setEvents={setEvents} currentUser={currentUser} filter={filter} setFilter={setFilter}/>}/>
+       <div className="App">
+         <Routes>
+           <Route
+             path="/"
+             element={
+               <Welcome
+                 events={events}
+                 setEvents={setEvents}
+                 currentUser={currentUser}
+                 filter={filter}
+                 setFilter={setFilter}
+               />
+             }
+           />
 
-        <Route 
-            path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
+           <Route
+             path="/register"
+             element={
+               <Register
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
 
-          <Route 
-            path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-          />
-          
-          <Route 
-            path='/'
-            element={<Welcome events={events}  />}
-          />
-         {/* 
-          <Route 
-            path="/profile"
-            element={<Profile />}
-          /> 
-          */}
+           <Route
+             path="/login"
+             element={
+               <Login
+                 currentUser={currentUser}
+                 setCurrentUser={setCurrentUser}
+               />
+             }
+           />
+
            <Route 
           path='/events/:id'
-          element={<EventDetails events={events} />} />
+          element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
           
-          <Route 
-            path="/profile"
-            element={currentUser ? <Profile  events={events} setEvents={setEvents} currentUser={currentUser} /> : <Navigate to="/login" />}
-          />
-
-         
-        </Routes>
-      </div>
-    </Router>
-  );
+           <Route
+             path="/profile"
+             element={
+               currentUser ? (
+                 <Profile
+                   events={events}
+                   setEvents={setEvents}
+                   currentUser={currentUser}
+                   filter={filter}
+                   setFilter={setFilter}
+            />
+            ) : (
+              <Navigate to="/login" />
+            )
+            }
+           />
+         </Routes>
+       </div>
+     </Router>
+   )
 }
 
-export default App;
+export default App

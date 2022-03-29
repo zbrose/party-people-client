@@ -58,8 +58,8 @@
 }
 
 .backgroundLogin{
-  text-align: contain;
-  background-color: white;
+  text-align: cover;
+  background-image: url('https://cdn.edu.buncee.com/assets/c5ac54ab92fef995bb5db1368060519b/animation-birthday-102320-2.gif?timestamp=1603468819');
   padding: 50px;
   min-height: 100vh;
 }
@@ -72,8 +72,36 @@
 }
 
 .flex-box{
-  margin: 0 4em;
+  max-width: 1250px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.marker-button {
+ background: none;
+ border: none;
+ cursor: pointer;
+ width: 50px;
+ height: 50px;
+}
+
+.marker-button img{
+  height: 30px;
+  width: 30px;
+}
+
+.backgroundMap{
+  text-align: center;
+  background-image: url('https://cdn.edu.buncee.com/assets/c5ac54ab92fef995bb5db1368060519b/animation-birthday-102320-2.gif?timestamp=1603468819');
+  padding: 50px;
+  min-height: 100vh;
+}
+
+.map-card{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
 }

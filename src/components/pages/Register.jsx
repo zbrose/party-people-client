@@ -89,7 +89,7 @@ export default function Register({ currentUser, setCurrentUser }) {
         <input type="submit" /> */}
       {/* </form> */}
       <div className="backgroundLogin">
-    <Card className="login-card mx-auto  row d-flex justify-content-center align-items-center h-100 ">
+    <Card className="row d-flex justify-content-center align-items-center h-100 ">
       
         <div className="container-fluid shadow">
           <div className="row no-gutter shadow">

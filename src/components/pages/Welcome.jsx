@@ -10,7 +10,7 @@ export default function Welcome({events, currentUser, filter, setFilter, setEven
   return (
     <>
 
-      <Carousel>
+      <Carousel className='shadow'>
 
         <Carousel.Item interval={5000}>
           <img
