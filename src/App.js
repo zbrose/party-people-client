@@ -60,12 +60,6 @@ function App() {
     }
     fetchData()
   }, [])
-<<<<<<< HEAD
-  
-  console.log('events', events)
-  console.log('filter', filter)
-=======
->>>>>>> main
 
    return (
      <Router>

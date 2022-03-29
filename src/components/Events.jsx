@@ -21,10 +21,7 @@ function Events({events, filter, setFilter, currentUser}) {
             setFilter(results)
         }
     }
-<<<<<<< HEAD
-    console.log('filter in Events.jsx',filter)
-=======
->>>>>>> main
+  
   
     // const handleClick = (event) => {
     //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
@@ -71,18 +68,7 @@ function Events({events, filter, setFilter, currentUser}) {
 
     return (
         <>
-<<<<<<< HEAD
-        {filter !==[] ? 
-            <>
-
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Filter By:
-                 {/* {filter===events ? 'All Parties' : filter[0].category} */}
-                </Dropdown.Toggle>
-=======
             <Tabs id="uncontrolled-tab-example" className="mb-3" activeKey={key} onSelect={(f)=>filterEvents(f)}>
->>>>>>> main
 
                 <Tab eventKey="All" title="All"><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Party" title="Party" ><div className='flex-box'>{eventsList}</div></Tab>
@@ -91,15 +77,7 @@ function Events({events, filter, setFilter, currentUser}) {
                 <Tab eventKey="Study" title="Study" ><div className='flex-box'>{eventsList}</div></Tab>
                 <Tab eventKey="Other" title="Other" ><div className='flex-box'>{eventsList}</div></Tab>
 
-<<<<<<< HEAD
-            <div className='flex-box'>
-                {eventsList}
-            </div>
-            </>
-        : null }
-=======
             </Tabs>
->>>>>>> main
         </>
               
     )

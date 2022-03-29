@@ -8,7 +8,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
 
   const loggedIn = (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="light" variant="light">
         <Container>
 
           <Navbar.Brand href="/">Party People</Navbar.Brand>
@@ -18,13 +18,8 @@ export default function NavbarComp({ handleLogout, currentUser }) {
               <Nav.Link href="/profile">Profile</Nav.Link>
               <Nav.Link href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
             </Nav>
-<<<<<<< HEAD
-
-{/* 
-=======
   
             {currentUser ? 
->>>>>>> main
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
                 Welcome Back, <a href="/profile">{currentUser.name}!</a>
