@@ -9,8 +9,10 @@ import {useState} from 'react'
 
 
 function Events({events, filter, setFilter, currentUser}) {
-
+    
+    const [key, setKey] = useState('All')
     const filterEvents = (f) => {
+        setKey(f)
         if (f==='All'){
             setFilter(events)
         } else {
@@ -79,7 +81,6 @@ function Events({events, filter, setFilter, currentUser}) {
     //     )
     // })
     
-    const [key, setKey] = useState('All')
 
     return (
         <>
