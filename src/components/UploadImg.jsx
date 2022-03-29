@@ -5,24 +5,6 @@ export default function UploadImg({ currentUser, handleImgSubmit, setFormImg }) 
   // const [formImg, setFormImg] = useState("")
 
   const [msg, setMsg] = useState("")
-  // const [displayImg, setDisplayImg] = useState("")
-
-  // const handleImgSubmit = async (e) => {
-  //   e.preventDefault()
-  //   try {
-  //     const fd = new FormData()
-  //     fd.append("image", formImg)
-  //     const response = await axios.put(
-  //       `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}/upload`,
-  //       fd
-  //     )
-
-  //     setDisplayImg(response.data.cloudImage)
-  //   } catch (err) {
-  //     console.log(err)
-  //     setMsg("go cchk the server console, tere was error")
-  //   }
-  // }
 
   return (
     <>
