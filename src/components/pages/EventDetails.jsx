@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Tab, Tabs } from "react-bootstrap";
 import Map from "./Map";
+import HypeMeter from "./HypeMeter";
 
 const dayjs = require("dayjs");
 
@@ -100,7 +101,7 @@ export default function EventDetails({ currentUser }) {
         
         </>
       ) : null}
-      
+      <HypeMeter details={details}/>
      
     </>
   );
