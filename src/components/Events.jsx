@@ -2,10 +2,6 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-
 
 function Events({events, filter, setFilter, currentUser}) {
 
@@ -85,6 +81,4 @@ function Events({events, filter, setFilter, currentUser}) {
     )
 }
     
-
-
 export default Events;

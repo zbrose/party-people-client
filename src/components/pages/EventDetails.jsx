@@ -22,10 +22,10 @@ export default function EventDetails({ currentUser }) {
 
   const handleClick = async () => {
     if (attendeesId.includes(currentUser.id)) {
-      await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`
-      );
-      setAttendees(
+        await axios.put(
+            `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`
+        );
+        setAttendees(
         attendees.filter((attendee) => {
           return attendee !== currentUser.name;
         })
@@ -86,7 +86,7 @@ export default function EventDetails({ currentUser }) {
             </p>
           </div>
         
-          <Tabs defaultActiveKey="Description" id="tabs" className="right">
+          <Tabs defaultActiveKey="description" id="tabs" className="right">
             <Tab eventKey="description" title="Description">
               {details.description}
             </Tab>
