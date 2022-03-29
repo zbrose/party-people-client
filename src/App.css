@@ -73,8 +73,14 @@
   
 }
 
+
 .flex-tab{
+  max-width: 1500px;
+  margin:  auto;
   display: flex;
+  justify-content: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px;
 }
 
 .flex-box{
@@ -83,6 +89,8 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  font-family: 'Bebas Neue', cursive;
+  font-size: larger;
 }
 
 .cardContainer{
