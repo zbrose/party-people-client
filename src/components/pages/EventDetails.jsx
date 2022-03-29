@@ -113,10 +113,11 @@ export default function EventDetails({ currentUser }) {
                 <button onClick={showTheMap}>Show me the Map</button>
                     {showMap ? <Map details={details} showForm={showForm} /> : ""}
 
-                <HypeMeter details={details}/>
                 {currentUser.id === details.host._id ? <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> : null}
+                <HypeMeter details={details}/>
             </>
         )) : null}
     </>
   );
 }
+

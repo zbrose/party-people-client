@@ -4,9 +4,9 @@ import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap"
 
 export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className="BebasNeue" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formGridTitle">
-        <Form.Label>title:</Form.Label>
+        <Form.Label >title:</Form.Label>
         <Form.Control
           type="text"
           value={eventForm.title}
@@ -163,6 +163,19 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
             value={eventForm.date}
             onChange={(e) =>
               setEventForm({ ...eventForm, date: e.target.value })
+            }
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="time">
+          <Form.Label>Select Date</Form.Label>
+          <Form.Control
+            type="time"
+            name="time"
+            placeholder="time of event"
+            value={eventForm.time}
+            onChange={(e) =>
+              setEventForm({ ...eventForm, time: e.target.value })
             }
           />
         </Form.Group>

@@ -12,7 +12,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
   const [formImg, setFormImg] = useState("")
   const [userInfo, setUserInfo] = useState("")
   // const [showForm, setShowForm] = (false)
-
+console.log("payload", currentUser)
   // use useEffect to get data from the back
   useEffect(() => {
     ;(async () => {
@@ -53,6 +53,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
   useEffect( getUserData, [])
   
   console.log("userINFOOOO", userInfo)
+  console.log("events", events)
 
   const handleSubmit = (e) => {
     // e.preventDefault()
@@ -89,38 +90,40 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
 
   return (
     <>
-    <div className="flex-box">
-
-      <Card className="" style={{ width: "25rem", margin: "0 auto"}} >
-        <Card.Img
-          className="img-fluid"
-          variant="top"
-          src={displayImg}
-          alt="uploaded user profile"
-        />
-
-        {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
-        <h3> {currentUser.name}'s Profile</h3>
-
-        <p>your email is {currentUser.email}</p>
-        {!currentUser.image ? (
-          <UploadImg
-            currentUser={currentUser}
-            handleImgSubmit={handleImgSubmit}
-            formImg={formImg}
-            setFormImg={setFormImg}
+      <div className="flex-box">
+        <Card
+          className="box"
+          style={{ width: "25rem", margin: "0 auto", border: "none" }}
+        >
+          <Card.Img
+            className="img-fluid"
+            variant="top"
+            src={displayImg}
+            alt="uploaded user profile"
           />
-        ) : (
-          <Card.Img variant="top" src="http://placekitten.com/150/150" />
-        )}
-        {/* // <UploadImg
+
+          {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
+          <h3> {currentUser.name}'s Profile</h3>
+
+          <p>your email is {currentUser.email}</p>
+          {!currentUser.image ? (
+            <UploadImg
+              currentUser={currentUser}
+              handleImgSubmit={handleImgSubmit}
+              formImg={formImg}
+              setFormImg={setFormImg}
+            />
+          ) : (
+            <Card.Img variant="top" src="http://placekitten.com/150/150" />
+          )}
+          {/* // <UploadImg
         //   currentUser= { currentUser }
         //   handleImgSubmit={ handleImgSubmit }
         //   formImg = {formImg}
         //   setFormImg={setFormImg}
         // /> */}
-      </Card>
-    </div>
+        </Card>
+      </div>
 
     <ProfileEvents events={events} userInfo={userInfo}/>
 
@@ -131,10 +134,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         setFilter={setFilter}
       /> */}
 
-      <Card
-        style={{ width: "25rem" }}
-        // className="box" */}
-      >
+      <Card className="box" style={{ width: "50rem", margin: "0 auto" }}>
         <CreateEvent
           handleSubmit={handleSubmit}
           eventForm={formData}
