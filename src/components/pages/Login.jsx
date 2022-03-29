@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
 export default function Login({ currentUser, setCurrentUser }) {
@@ -67,18 +67,17 @@ export default function Login({ currentUser, setCurrentUser }) {
         <div className="container-fluid shadow">
           <div className="row no-gutter shadow">
             <div className="col-md-6 d-none d-md-flex bg-image shadow"></div>
-
             <div className="col-md-6 bg-light">
               <div className="login d-flex align-items-center py-5">
                 <div className="container">
                   <div className="row">
                     <div className="col-lg-10 col-xl-7 mx-auto">
-                      <h3 className="display-4">Welcome Back!</h3>
-                      <p className="text-muted mb-4">
+                      <h3 className="display-4 BebasNeue ">Welcome Back!</h3>
+                      <p className="text-muted mb-4 LilitaOne">
                        Login to Party!🥳
                       </p>
                       <form onSubmit={handleFormSubmit}>
-                        <div className="mb-3">
+                        <div className="mb-3 BebasNeue">
                         <label htmlFor="email">Email:</label>
                           <input
                             id="inputEmail"
@@ -91,7 +90,7 @@ export default function Login({ currentUser, setCurrentUser }) {
                             className="form-control rounded-pill border-0 shadow-sm px-4"
                           />
                         </div>
-                        <div className="mb-3">
+                        <div className="mb-3 BebasNeue">
                         <label htmlFor="password">Password:</label>
                           <input
                             id="inputPassword"
@@ -106,13 +105,15 @@ export default function Login({ currentUser, setCurrentUser }) {
                         <div className="d-grid gap-2 mt-2">
                           <button
                             type="submit"
-                            className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                            className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm BebasNeue"
                           >
                             Sign in
                           </button>
                         </div>
 
                         <div className="text-center d-flex justify-content-between mt-4">
+                        <p className="LoR">Don't have an account?<button className="LoRButton"><Link to="/register">Create One</Link></button> </p> 
+                        
                         <p>{msg ? `the server has a message for you: ${msg}` : ""}</p>    
                         </div>
                       </form>
