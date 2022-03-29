@@ -48,12 +48,13 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`
       )
       setUserInfo(userData.data)
+      // setDisplayImg(userInfo)
+      setDisplayImg(userData.data.image)
     }
     
-    setDisplayImg(userInfo.image)
     getUserData().catch(console.error)
   }, [])
-
+  
   console.log("userINFOOOO", userInfo)
 
   const handleSubmit = (e) => {
@@ -92,7 +93,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
   return (
     <>
       <Card>
-        {displayImg && <img src={ displayImg } alt="" />}
+        {displayImg && <img src={ displayImg } alt="uploaded user profile" />}
         <h3> {currentUser.name}'s Profile</h3>
 
         <p>your email is {currentUser.email}</p>
@@ -115,7 +116,7 @@ export default function Profile({ currentUser, filter, setFilter, events, setEve
         // /> */}
       </Card>
 
-      <Events events={events} filter={filter} currentUser={currentUser} setFilter={setFilter}/>
+<Events events={events} filter={filter} currentUser={currentUser} setFilter={setFilter}/>
 
       <Card
         style={{ width: "25rem" }}

@@ -2,14 +2,23 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import {useState} from 'react'
+
+
 
 function Events({events, filter, setFilter, currentUser}) {
 
-    const filterEvents = (e) => {
-        const results = events.filter(event=>event.category === e.target.innerText)
-        setFilter(results)
+    const filterEvents = (f) => {
+        if (f==='All'){
+            setFilter(events)
+        } else {
+            const results = events.filter(event=>event.category === f)
+            console.log('results', results)
+            setFilter(results)
+        }
     }
-    console.log(filter)
   
     // const handleClick = (event) => {
     //     axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${event}/${currentUser.id}/attend`)
@@ -54,11 +63,27 @@ function Events({events, filter, setFilter, currentUser}) {
         // </div>
         )
     })
+    console.log('filtered events', eventsList)
 
+    // const categories = ['Party','Gaming','Concerts','Study','Other']
+    // const filteredEvents = categories.forEach(category => {
+    //     return( 
+    //         <Tab eventKey={category} title={category}>
+    //             {/* {eventsList.filter(event => {
+    //                 return(
+    //                     event.category === category
+    //                     ) 
+    //                 })} */}
+    //         </Tab>
+
+    //     )
+    // })
+    
+    const [key, setKey] = useState('All')
 
     return (
         <>
-            <Dropdown>
+            {/* <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Filter Events By:  {filter===events ? 'All Events' : (filter[0] ? filter[0].category : 'No Events Found')}
                 </Dropdown.Toggle>
@@ -71,14 +96,23 @@ function Events({events, filter, setFilter, currentUser}) {
                     <Dropdown.Item onClick={filterEvents}>Study</Dropdown.Item>
                     <Dropdown.Item onClick={filterEvents}>Other</Dropdown.Item>
                 </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> */}
 
-            <div className='flex-box'>
+            <Tabs id="uncontrolled-tab-example" className="mb-3" activeKey={key} onSelect={(f)=>filterEvents(f)}>
+                <Tab eventKey="All" title="All">{eventsList}</Tab>
+                <Tab eventKey="Party" title="Party" >{eventsList}</Tab>
+                <Tab eventKey="Gaming" title="Gaming" >{eventsList}</Tab>
+                <Tab eventKey="Concert" title="Concert" >{eventsList}</Tab>
+                <Tab eventKey="Study" title="Study" >{eventsList}</Tab>
+                <Tab eventKey="Other" title="Other" >{eventsList}</Tab>
+            </Tabs>
+
+            {/* <div className='flex-box'>
                 {eventsList}
-            </div>
+            </div> */}
         </>
               
     )
 }
-    
+
 export default Events;
