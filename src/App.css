@@ -73,12 +73,33 @@
   
 }
 
+
+.flex-tab{
+  max-width: 1500px;
+  margin:  auto;
+  display: flex;
+  justify-content: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px;
+}
+
 .flex-box{
-  max-width: 1250px;
+  max-width: 1500px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
+  font-family: 'Bebas Neue', cursive;
+  font-size: larger;
+}
+
+.cardContainer{
+  margin: 20px;
+}
+
+.cardContainer:hover{
+  transition: 0.3s;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.285);
 }
 
 .marker-button {
