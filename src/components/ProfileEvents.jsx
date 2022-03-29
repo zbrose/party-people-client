@@ -3,19 +3,10 @@ import Button from 'react-bootstrap/Button'
 import ListGroup from 'react-bootstrap/ListGroup';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
-import {useState} from 'react'
 import dayjs from 'dayjs';
-
-
-
-
 
 function ProfileEvents({userInfo}) {
 
-  
-
-
-    
     let attendingList = null
     
     userInfo ?  attendingList = userInfo.eventsAttending.map((event,idx)=>{
@@ -38,7 +29,7 @@ function ProfileEvents({userInfo}) {
 
                         <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
                         <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
-                        <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
+                        <ListGroup.Item>Attendees Count: {event.attendees ? event.attendees.length : 'no attendees'} </ListGroup.Item>
 
                         </ListGroup>
 
@@ -76,7 +67,7 @@ function ProfileEvents({userInfo}) {
 
                         <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
                         <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
-                        <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
+                        <ListGroup.Item>Attendees Count: {event.attendees ? event.attendees.length : 'no attendees'}</ListGroup.Item>
 
                         </ListGroup>
 

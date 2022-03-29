@@ -8,10 +8,11 @@ export default function NavbarComp({ handleLogout, currentUser }) {
 
   const loggedIn = (
     <>
-      <Navbar className='BebasNeue' bg="light" variant="light">
+
+      <Navbar className='BebasNeue navbar' bg="light" variant="light">
         <Container>
 
-          <Navbar.Brand href="/">Party People</Navbar.Brand>
+          <Navbar.Brand style={{fontSize:'4rem'}} href="/">Party People</Navbar.Brand>
 
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
@@ -33,7 +34,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
 
   const loggedOut = (
     <>
-      <Navbar className='BebasNeue' bg="light" variant="light">
+      <Navbar className='BebasNeue navbar' bg="light" variant="light">
         <Container>
           <Navbar.Brand href="/">Party People</Navbar.Brand>
           <Nav className="me-auto">
@@ -47,9 +48,10 @@ export default function NavbarComp({ handleLogout, currentUser }) {
   )
 
   return (
-
-    <>  
+      <>
       {currentUser ? loggedIn : loggedOut}
-    </>
+      </>
+
+
   )
 }
