@@ -19,7 +19,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="http://placekitten.com/400/150"
+            src="images/concert.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
