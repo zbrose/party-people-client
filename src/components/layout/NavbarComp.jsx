@@ -1,8 +1,11 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 
 
+
+ 
 export default function NavbarComp({ handleLogout, currentUser }) {
   // if the user is logged in
 
@@ -22,6 +25,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
   
             {currentUser ? 
             <Navbar.Collapse className="justify-content-end">
+              <Button href="/events/new" className='create-event-button' variant="outline-dark">Create Event</Button>
               <Navbar.Text>
                 Welcome Back, <a href="/profile">{currentUser.name}!</a>
               </Navbar.Text>

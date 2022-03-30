@@ -82,6 +82,25 @@ export default function CreateEvent() {
           />
         </Form.Group>
 
+
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="formGridCity">
+          <Form.Label>category:</Form.Label>
+          <Form.Select
+            value={eventForm.category}
+            onChange={(e) =>
+              setEventForm({ ...eventForm, category: e.target.value })
+            }
+          >
+            <option value="Party">Party</option>
+            <option value="Concert">Concerts</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Study">Study</option>
+            <option value="Other">Other</option>
+          </Form.Select>
+        </Form.Group>
+
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>city:</Form.Label>
@@ -172,6 +191,7 @@ export default function CreateEvent() {
           </Form.Group>
         </Row>
 
+
         <FloatingLabel
           controlId="floatingTextarea"
           label="description"
@@ -187,23 +207,23 @@ export default function CreateEvent() {
           />
         </FloatingLabel>
 
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>category:</Form.Label>
-            <Form.Select
-              value={eventForm.category}
-              onChange={(e) =>
-                setEventForm({ ...eventForm, category: e.target.value })
-              }
-            >
-              <option value="party">Party</option>
-              <option value="concert">Concerts</option>
-              <option value="gaming">Gaming</option>
-              <option value="comedy">Comedy</option>
-              <option value="study">Study</option>
-              <option value="other">Other</option>
-            </Form.Select>
-          </Form.Group>
+//         <Row className="mb-3">
+//           <Form.Group as={Col} controlId="formGridCity">
+//             <Form.Label>category:</Form.Label>
+//             <Form.Select
+//               value={eventForm.category}
+//               onChange={(e) =>
+//                 setEventForm({ ...eventForm, category: e.target.value })
+//               }
+//             >
+//               <option value="party">Party</option>
+//               <option value="concert">Concerts</option>
+//               <option value="gaming">Gaming</option>
+//               <option value="comedy">Comedy</option>
+//               <option value="study">Study</option>
+//               <option value="other">Other</option>
+//             </Form.Select>
+//           </Form.Group>
 
           <Form.Group as={Col} controlId="date">
             <Form.Label>Select Date</Form.Label>
