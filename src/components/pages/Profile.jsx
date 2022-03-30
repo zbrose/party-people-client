@@ -124,7 +124,13 @@ console.log("payload", currentUser)
         </Card>
       </div>
 
-    <ProfileEvents events={events} userInfo={userInfo}/>
+      <ProfileEvents
+        events={events}
+        userInfo={userInfo}
+        handleSubmit={handleSubmit}
+        eventForm={formData}
+        setEventForm={setFormData}
+      />
 
       {/* <Events
         events={events}
@@ -133,13 +139,13 @@ console.log("payload", currentUser)
         setFilter={setFilter}
       /> */}
 
-      <Card className="box" style={{ width: "50rem", margin: "0 auto" }}>
+      {/* <Card className="box" style={{ width: "50rem", margin: "0 auto" }}>
         <CreateEvent
           handleSubmit={handleSubmit}
           eventForm={formData}
           setEventForm={setFormData}
         />
-      </Card>
+      </Card> */}
       {/* </Col> */}
     </>
   )
