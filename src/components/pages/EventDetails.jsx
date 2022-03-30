@@ -95,7 +95,8 @@ export default function EventDetails({ currentUser }) {
   return (
     <>
       {currentUser && details.host ? 
-        (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : showImgForm ? <EditImage handleSubmit={editEventImg} setFormImg={setFormImg} event={details} setShowImgForm={setShowImgForm} showImgForm={showImgForm}/> :
+        (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : 
+        showImgForm ? <EditImage handleSubmit={editEventImg} setFormImg={setFormImg} event={details} setShowImgForm={setShowImgForm} showImgForm={showImgForm}/> :
             (
             <>
                 <img
@@ -139,7 +140,7 @@ export default function EventDetails({ currentUser }) {
                 <HypeMeter details={details}/>
             </>
         )
-        ) : null}
+        ) : null }
     </>
   );
 }
