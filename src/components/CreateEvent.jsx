@@ -9,18 +9,7 @@ import { useNavigate } from "react-router-dom"
 export default function CreateEvent() {
   const navigate = useNavigate()
   // return( <h1> create event</h1>)
-  const [eventForm, setEventForm] = useState({
-    title: "apple",
-    address: "123 st",
-    city: "mcallen",
-    state: "texas",
-    zipcode: 32322,
-    description: "herro",
-    category: "Party",
-    date: '2020-12-10',
-    time: '01:23'
-
-  })
+  const [eventForm, setEventForm] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
