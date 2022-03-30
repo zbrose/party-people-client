@@ -5,6 +5,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import Map from "./Map";
 import EditEvent from "../EditEvent";
 import HypeMeter from "./HypeMeter";
+import EditImage from "../EditImage";
 
 const dayjs = require("dayjs");
 
@@ -18,6 +19,8 @@ export default function EventDetails({ currentUser }) {
   const [showMap, setShowMap] = useState(false);
   const [showForm, setShowForm] = useState(false)
   const [eventForm, setEventForm] = useState()
+  const [showImgForm, setShowImgForm] = useState(false)
+  const [formImg, setFormImg] = useState()
 
   const handleSubmit = async e => {
       e.preventDefault()
@@ -25,8 +28,7 @@ export default function EventDetails({ currentUser }) {
       setShowForm(!showForm)
       refreshEvent()
     }
-    
-    console.log(eventForm)
+
   function showTheMap() {
     setShowMap(!showMap);
   }
@@ -56,6 +58,22 @@ export default function EventDetails({ currentUser }) {
     }
   };
 
+  const editEventImg = async(e) => {
+    e.preventDefault()
+    try {
+        const fd = new FormData()
+        fd.append("image", formImg)
+        const response = await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/upload`,
+        fd
+        )
+        refreshEvent()
+    } catch (err) {
+        console.log(err)
+    }
+  }
+
+
   const refreshEvent = async () => {
     const eventDetails = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
@@ -75,13 +93,14 @@ export default function EventDetails({ currentUser }) {
   return (
     <>
       {currentUser && details.host ? 
-        (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : 
+        (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : showImgForm ? <EditImage handleSubmit={editEventImg} setFormImg={setFormImg} event={details} setShowImgForm={setShowImgForm} showImgForm={showImgForm}/> :
             (
             <>
                 <img
-                    src="http://placekitten.com/1300/400"
-                    alt={`${details.title}-image`}
+                    src={details.image ? details.image : "http://via.placeholder.com/1300x400"}
+                    alt={`${details.title}`}
                 />
+                <button onClick={() => {setShowImgForm(!showImgForm)}}>Edit Image</button>
 
                 <div id="eventHeader">
                     <h1>{details.title}</h1>
@@ -94,6 +113,7 @@ export default function EventDetails({ currentUser }) {
                     <h2>Host: {host} </h2>
                     <h3>{details.category}</h3>
                     <p>{date}</p>
+                    <p>{details.time} </p>
                     <p>{details.address}</p>
                     <p>
                     {details.city}, {details.state} {details.zipcode}
@@ -116,7 +136,8 @@ export default function EventDetails({ currentUser }) {
                 {currentUser.id === details.host._id ? <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> : null}
                 <HypeMeter details={details}/>
             </>
-        )) : null}
+        )
+        ) : null}
     </>
   );
 }
