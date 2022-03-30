@@ -1,7 +1,12 @@
 import { useState } from "react"
 import { Form, Row } from "react-bootstrap"
 
-export default function UploadImg({ currentUser, handleImgSubmit, setFormImg }) {
+export default function UploadImg({
+  currentUser,
+  handleImgSubmit,
+  setFormImg, imgForm,
+  setImgForm,
+}) {
   // const [formImg, setFormImg] = useState("")
 
   const [msg, setMsg] = useState("")
@@ -10,14 +15,13 @@ export default function UploadImg({ currentUser, handleImgSubmit, setFormImg }) 
     <>
       <h4>upload a pic!</h4>
 
-      
-
-
       <Form onSubmit={handleImgSubmit}>
-        <Form.Group encType="multipart/form" controlId="formFile" className="mb-3">
-          <Form.Label>
-            upload picture here
-          </Form.Label>
+        <Form.Group
+          encType="multipart/form"
+          controlId="formFile"
+          className="mb-3"
+        >
+          <Form.Label>upload picture here</Form.Label>
           <Form.Control
             type="file"
             // id="image"

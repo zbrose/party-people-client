@@ -17,6 +17,7 @@ import jwt_decode from "jwt-decode"
 import EventDetails from "./components/pages/EventDetails"
 import axios from "axios"
 import Map from "./components/pages/Map"
+import CreateEvent from "./components/CreateEvent"
 
 function App() {
   // state wi the user data when the user is logged in
@@ -103,6 +104,10 @@ function App() {
            <Route 
           path='/events/:id'
           element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
+
+           <Route 
+          path='/events/new'
+          element={<CreateEvent />} />
           
            <Route
              path="/profile"
