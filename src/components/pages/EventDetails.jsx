@@ -75,6 +75,7 @@ export default function EventDetails({ currentUser }) {
   }
 
 
+
   const refreshEvent = async () => {
     const eventDetails = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
