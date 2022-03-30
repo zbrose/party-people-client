@@ -189,7 +189,7 @@ function ProfileEvents({
         <Tab eventKey="Attending" title="Attending">
           <div className="flex-box tab-style">{attendingList}</div>
         </Tab>
-        <Tab eventKey="createEvent" title="Create Event">
+        {/* <Tab eventKey="createEvent" title="Create Event">
           <div className="flex-box tab-style">
             {imgForm ? (
               <UploadImg />
@@ -202,7 +202,7 @@ function ProfileEvents({
               />
             )}
           </div>
-        </Tab>
+        </Tab> */}
       </Tabs>
     </>
   )
