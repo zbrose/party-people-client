@@ -6,12 +6,17 @@ import UploadImg from "../UploadImg"
 import Events from "../Events"
 import ProfileEvents from "../ProfileEvents"
 
-export default function Profile({ currentUser, filter, setFilter, events, setEvents }) {
-  const [formData, setFormData] = useState({})
+export default function Profile({ currentUser, filter, setFilter, events, setEvents, handleUploadImg }) {
+  // const [formData, setFormData] = useState({})
   const [displayImg, setDisplayImg] = useState("")
   const [formImg, setFormImg] = useState("")
   const [userInfo, setUserInfo] = useState("")
-  // const [showForm, setShowForm] = (false)
+  const [imgForm, setImgForm] = useState(false)
+  // const [formData, setFormData] ={
+
+  // }
+
+
 console.log("payload", currentUser)
   // use useEffect to get data from the back
   useEffect(() => {
@@ -40,6 +45,8 @@ console.log("payload", currentUser)
     })()
   }, [])
 
+  
+
   const getUserData = async () => {
     const userData = await axios.get(
       `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`
@@ -52,24 +59,33 @@ console.log("payload", currentUser)
   //get user info
   useEffect( getUserData, [])
   
-  console.log("userINFOOOO", userInfo)
-  console.log("events", events)
+  // console.log("userINFOOOO", userInfo)
+  // console.log("events", events)
 
-  const handleSubmit = (e) => {
-    // e.preventDefault()
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   console.log("HANDLESBMIT", handleSubmit)
 
-    axios
-      .post(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/create/${currentUser.id}`,
-        formData
-      )
-      .then((response) => {
-        setFormData({})
-        return axios.get(process.env.REACT_APP_SERVER_URL + "/api-v1/events")
-      })
-      .then((response) => setEvents(response.data))
-      .catch(console.log)
-  }
+  //   axios
+  //     .post(
+  //       `${process.env.REACT_APP_SERVER_URL}/api-v1/events/create/${currentUser.id}`,
+  //       formData
+  //     )
+  //     .then((response) => {
+  //       setFormData({})
+  //       console.log("HANDLESUBMITRESPONSE",response)
+  //       const eventId=response.data[1]._id
+  //       console.log("EVENTID", eventId)
+  //       //this updates events
+  //       return axios.get(process.env.REACT_APP_SERVER_URL + "/api-v1/events")
+  //       //redirect to editeventform
+  //       // setImgForm(true)
+  //     })
+  //     .then((response) => setEvents(response.data))
+  //     .catch(console.log)
+  // }
+
+
 
   const handleImgSubmit = async (e) => {
     e.preventDefault()
@@ -127,9 +143,12 @@ console.log("payload", currentUser)
       <ProfileEvents
         events={events}
         userInfo={userInfo}
-        handleSubmit={handleSubmit}
-        eventForm={formData}
-        setEventForm={setFormData}
+        // handleSubmit={handleSubmit}
+        // eventForm={formData}
+        // setEventForm={setFormData}
+        imgForm={imgForm}
+        setImgForm={setImgForm}
+        // handleUploadImg={handleUploadImg}
       />
 
       {/* <Events
