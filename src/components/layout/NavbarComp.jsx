@@ -1,8 +1,11 @@
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 
 
+
+ 
 export default function NavbarComp({ handleLogout, currentUser }) {
   // if the user is logged in
 
@@ -22,6 +25,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
   
             {currentUser ? 
             <Navbar.Collapse className="justify-content-end">
+              <Button className='create-event-button' variant="outline-dark">Create Event</Button>
               <Navbar.Text>
                 Welcome Back, <a href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
@@ -36,7 +40,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
     <>
       <Navbar className='BebasNeue navbar' bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="/">Party People</Navbar.Brand>
+          <Navbar.Brand style={{fontSize:'4rem'}} href="/">Party People</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/register">Sign-Up</Nav.Link>
@@ -51,7 +55,5 @@ export default function NavbarComp({ handleLogout, currentUser }) {
       <>
       {currentUser ? loggedIn : loggedOut}
       </>
-
-
   )
 }
