@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import lowHype from "../low.png"
+import semiHype from "../semihype.png"
+import ultraHype from "../ultrahype.png"
+import middleHype from "../middleHype.png"
+import highHype from "../highHype.png"
+
+
 
 export default function HypeMeter({ details }) {
   const eventId = details._id;
@@ -37,18 +44,41 @@ export default function HypeMeter({ details }) {
 
 };
 
+let meter 
+
+const displayHype = () =>{
+    if(numCount<25){
+        meter = <img src={lowHype} alt="" style={{width:250, height: 250}}/>
+    }else if(numCount <50){
+        meter = <h1> <img src={semiHype} alt="" style={{width:250, height: 250}}/></h1>
+    }else if(numCount < 75){
+        meter =  <h1> <img src={middleHype} alt="" style={{width:250, height: 250}}/></h1>
+    }else if(numCount<100){
+        meter =  <h1> <img src={highHype} alt="" style={{width:250, height: 250}}/></h1>
+    }else if(numCount > 99){
+        meter =  <h1> <img src={ultraHype} alt="" style={{width:250, height: 250}}/></h1>
+    }
+}
+displayHype()
+console.log(numCount)
+console.log(meter)
   return (
     <>
       
       {/* <h1>{details.hype}</h1> */}
       <br></br>
       <button onClick={hypeThis}>HYPE THIS EVENT</button>
-
+   
       {/* <div className="app">
       <button onClick={incrementCount}>Click Here</button>
       {count}
     </div> */}
     <h1>{numCount}</h1>
+
+    {meter}
+
+    
+   
     </>
   );
 }
