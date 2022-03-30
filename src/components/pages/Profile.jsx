@@ -6,18 +6,22 @@ import UploadImg from "../UploadImg"
 import Events from "../Events"
 import ProfileEvents from "../ProfileEvents"
 
-export default function Profile({ currentUser, filter, setFilter, events, setEvents, handleUploadImg }) {
+export default function Profile({
+  currentUser,
+  filter,
+  setFilter,
+  events,
+  setEvents,
+  handleUploadImg,
+}) {
   // const [formData, setFormData] = useState({})
   const [displayImg, setDisplayImg] = useState("")
   const [formImg, setFormImg] = useState("")
   const [userInfo, setUserInfo] = useState("")
   const [imgForm, setImgForm] = useState(false)
-  // const [formData, setFormData] ={
+  // const [showForm, setShowForm] = useState
 
-  // }
-
-
-console.log("payload", currentUser)
+  console.log("payload", currentUser)
   // use useEffect to get data from the back
   useEffect(() => {
     ;(async () => {
@@ -54,37 +58,14 @@ console.log("payload", currentUser)
     setUserInfo(userData.data)
     // setDisplayImg(userInfo)
     setDisplayImg(userData.data.image)
+    if (!userData.data.image){
+
+      setImgForm(true)
+    }
   }
 
   //get user info
-  useEffect( getUserData, [])
-  
-  // console.log("userINFOOOO", userInfo)
-  // console.log("events", events)
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log("HANDLESBMIT", handleSubmit)
-
-  //   axios
-  //     .post(
-  //       `${process.env.REACT_APP_SERVER_URL}/api-v1/events/create/${currentUser.id}`,
-  //       formData
-  //     )
-  //     .then((response) => {
-  //       setFormData({})
-  //       console.log("HANDLESUBMITRESPONSE",response)
-  //       const eventId=response.data[1]._id
-  //       console.log("EVENTID", eventId)
-  //       //this updates events
-  //       return axios.get(process.env.REACT_APP_SERVER_URL + "/api-v1/events")
-  //       //redirect to editeventform
-  //       // setImgForm(true)
-  //     })
-  //     .then((response) => setEvents(response.data))
-  //     .catch(console.log)
-  // }
-
+  useEffect(getUserData, [])
 
 
   const handleImgSubmit = async (e) => {
@@ -96,13 +77,23 @@ console.log("payload", currentUser)
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}/upload`,
         fd
       )
-      console.log("IMAGE DATA", response.data)  
+      console.log("IMAGE DATA", response.data)
       setDisplayImg(response.data.cloudImage)
       getUserData()
+      setImgForm(false)
     } catch (err) {
       console.log(err)
+      
     }
   }
+
+const handleImgError= ()=> {
+  console.log("herro")
+// e.target.src = "https://cdn.pixabay.com/photo/2021/01/14/14/09/cat-5916926_1280.jpg"
+setImgForm(true)
+  }
+  // console.log(!displayImg)
+  console.log("currentimgformmmm",imgForm)
 
   return (
     <>
@@ -111,17 +102,42 @@ console.log("payload", currentUser)
           className="box"
           style={{ width: "25rem", margin: "0 auto", border: "none" }}
         >
+          {!displayImg ? (
+
           <Card.Img
             className="img-fluid"
             variant="top"
-            src={displayImg}
+            src={
+              "https://cdn.pixabay.com/photo/2021/01/14/14/09/cat-5916926_1280.jpg"
+            }
+            // src={displayImg}
+            
+            onError={handleImgError}
             alt="uploaded user profile"
           />
 
-          {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
-          <h3 class="card-title"> {currentUser.name}'s Profile</h3>
 
-          {!currentUser.image ? (
+          ) : (
+
+
+          <Card.Img
+            className="img-fluid"
+            variant="top"
+            // src={
+            //   displayImg ||
+            //   "https://cdn.pixabay.com/photo/2021/01/14/14/09/cat-5916926_1280.jpg"
+            // }
+            src={displayImg}
+            // onError={ e=> handleImgError}
+            alt="uploaded user profile"
+          />
+          )}
+
+          {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
+          <h3 className="card-title"> {currentUser.name}'s Profile</h3>
+
+
+          {imgForm ? (
             <UploadImg
               currentUser={currentUser}
               handleImgSubmit={handleImgSubmit}
@@ -129,43 +145,22 @@ console.log("payload", currentUser)
               setFormImg={setFormImg}
             />
           ) : (
-            <Card.Img variant="top" src="http://placekitten.com/150/150" />
+            <button onClick={() => setImgForm(true)}>
+              {imgForm ? "add pic" : "edit"}
+            </button>
           )}
-          {/* // <UploadImg
-        //   currentUser= { currentUser }
-        //   handleImgSubmit={ handleImgSubmit }
-        //   formImg = {formImg}
-        //   setFormImg={setFormImg}
-        // /> */}
+
         </Card>
       </div>
 
       <ProfileEvents
         events={events}
         userInfo={userInfo}
-        // handleSubmit={handleSubmit}
-        // eventForm={formData}
-        // setEventForm={setFormData}
+
         imgForm={imgForm}
         setImgForm={setImgForm}
-        // handleUploadImg={handleUploadImg}
       />
 
-      {/* <Events
-        events={events}
-        filter={filter}
-        currentUser={currentUser}
-        setFilter={setFilter}
-      /> */}
-
-      {/* <Card className="box" style={{ width: "50rem", margin: "0 auto" }}>
-        <CreateEvent
-          handleSubmit={handleSubmit}
-          eventForm={formData}
-          setEventForm={setFormData}
-        />
-      </Card> */}
-      {/* </Col> */}
     </>
   )
 }
