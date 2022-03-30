@@ -14,8 +14,7 @@ function ProfileEvents({userInfo}) {
         <div key={`eventsList-${idx}`} className='cardContainer'>
 
             <Card style={{ width: '18rem' }}>
-                <div className="shadow">
-                    <div className="shadow">
+            
 
                     <Card.Img variant="top" src="http://placekitten.com/150/150" />
                     <Card.Body>
@@ -36,8 +35,6 @@ function ProfileEvents({userInfo}) {
 
                     </Card.Body>
                         
-                    </div>
-                </div>
             </Card>
         </div>
         )
