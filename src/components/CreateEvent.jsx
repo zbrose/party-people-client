@@ -145,12 +145,12 @@ export default function CreateEvent({ handleSubmit, setEventForm, eventForm }) {
               setEventForm({ ...eventForm, category: e.target.value })
             }
           >
-            <option value="party">Party</option>
-            <option value="concert">Concerts</option>
-            <option value="gaming">Gaming</option>
-            <option value="comedy">Comedy</option>
-            <option value="study">Study</option>
-            <option value="other">Other</option>
+            <option value="Party">Party</option>
+            <option value="Concert">Concerts</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Study">Study</option>
+            <option value="Other">Other</option>
           </Form.Select>
         </Form.Group>
 

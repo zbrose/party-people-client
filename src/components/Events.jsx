@@ -13,6 +13,7 @@ function Events({events, filter, setFilter}) {
     const [key, setKey] = useState('All')
     const filterEvents = (f) => {
         setKey(f)
+        console.log(f)
         if (f==='All'){
             setFilter(events)
         } else {
