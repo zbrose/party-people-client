@@ -36,7 +36,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
     <>
       <Navbar className='BebasNeue navbar' bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="/">Party People</Navbar.Brand>
+          <Navbar.Brand style={{fontSize:'4rem'}} href="/">Party People</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/register">Sign-Up</Nav.Link>
