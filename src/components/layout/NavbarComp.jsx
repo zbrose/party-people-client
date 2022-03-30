@@ -51,7 +51,5 @@ export default function NavbarComp({ handleLogout, currentUser }) {
       <>
       {currentUser ? loggedIn : loggedOut}
       </>
-
-
   )
 }
