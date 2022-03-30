@@ -156,7 +156,7 @@ function ProfileEvents({ userInfo, handleSubmit, setEventForm, eventForm }) {
               handleSubmit={handleSubmit}
               setEventForm={setEventForm}
               eventForm={eventForm}
-            />{" "}
+            />
           </div>
         </Tab>
       </Tabs>
