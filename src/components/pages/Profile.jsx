@@ -103,9 +103,8 @@ console.log("payload", currentUser)
           />
 
           {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
-          <h3> {currentUser.name}'s Profile</h3>
+          <h3 class="card-title"> {currentUser.name}'s Profile</h3>
 
-          <p>your email is {currentUser.email}</p>
           {!currentUser.image ? (
             <UploadImg
               currentUser={currentUser}
@@ -125,7 +124,13 @@ console.log("payload", currentUser)
         </Card>
       </div>
 
-    <ProfileEvents events={events} userInfo={userInfo}/>
+      <ProfileEvents
+        events={events}
+        userInfo={userInfo}
+        handleSubmit={handleSubmit}
+        eventForm={formData}
+        setEventForm={setFormData}
+      />
 
       {/* <Events
         events={events}
@@ -134,13 +139,13 @@ console.log("payload", currentUser)
         setFilter={setFilter}
       /> */}
 
-      <Card className="box" style={{ width: "50rem", margin: "0 auto" }}>
+      {/* <Card className="box" style={{ width: "50rem", margin: "0 auto" }}>
         <CreateEvent
           handleSubmit={handleSubmit}
           eventForm={formData}
           setEventForm={setFormData}
         />
-      </Card>
+      </Card> */}
       {/* </Col> */}
     </>
   )
