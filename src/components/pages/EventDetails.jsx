@@ -3,11 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Tab, Tabs } from "react-bootstrap";
 import Map from "./Map";
-
 import EditEvent from "../EditEvent";
-
 import HypeMeter from "./HypeMeter";
-
 
 const dayjs = require("dayjs");
 
@@ -116,16 +113,10 @@ export default function EventDetails({ currentUser }) {
                 <button onClick={showTheMap}>Show me the Map</button>
                     {showMap ? <Map details={details} showForm={showForm} /> : ""}
 
-
                 {currentUser.id === details.host._id ? <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> : null}
                 <HypeMeter details={details}/>
             </>
         )) : null}
-
-        
-      
-     
-
     </>
   );
 }
