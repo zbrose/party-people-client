@@ -206,7 +206,7 @@ export default function CreateEvent() {
             }
           />
         </FloatingLabel>
-
+{/* 
 //         <Row className="mb-3">
 //           <Form.Group as={Col} controlId="formGridCity">
 //             <Form.Label>category:</Form.Label>
@@ -223,7 +223,7 @@ export default function CreateEvent() {
 //               <option value="study">Study</option>
 //               <option value="other">Other</option>
 //             </Form.Select>
-//           </Form.Group>
+//           </Form.Group> */}
 
           <Form.Group as={Col} controlId="date">
             <Form.Label>Select Date</Form.Label>
