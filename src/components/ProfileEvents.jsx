@@ -191,13 +191,6 @@ function ProfileEvents({
         </Tab>
         <Tab eventKey="createEvent" title="Create Event">
           <div className="flex-box tab-style">
-<<<<<<< HEAD
-            <CreateEvent
-              handleSubmit={handleSubmit}
-              setEventForm={setEventForm}
-              eventForm={eventForm}
-            />
-=======
             {imgForm ? (
               <UploadImg />
             ) : (
@@ -208,7 +201,6 @@ function ProfileEvents({
                 setImgForm={setImgForm}
               />
             )}
->>>>>>> 2e8a19779564898976d1b890df3d952f4a93caa4
           </div>
         </Tab>
       </Tabs>
