@@ -2,6 +2,8 @@
 
 .App {
   text-align: center;
+  background-color: whitesmoke;
+  height: 100vh;
 }
 
 .App-logo {
@@ -104,12 +106,14 @@
 
 .cardContainer{
   margin: 20px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.285);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.285);
+  background-color: white;
 }
 
 .cardContainer:hover{
   transition: 0.3s;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.285);
+  box-shadow: 10px 10px 20px rgba(44, 205, 0, 0.285);
+  
 }
 
 .marker-button {
@@ -137,6 +141,7 @@
   justify-content: center;
   align-items: center;
   width: 25%;
+  height: 250px;
 }
 .LoR{
   text-align: center;
