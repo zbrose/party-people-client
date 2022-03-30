@@ -32,7 +32,7 @@ function Events({events, filter, setFilter}) {
             <Card style={{ width: '18rem' }}>
                
 
-                    <Card.Img variant="top" src="http://placekitten.com/150/150" />
+                    <Card.Img variant="top" src={event.image} />
                     <Card.Body>
 
                         <Card.Title style={{fontSize:'25px'}}>{event.title}</Card.Title>
