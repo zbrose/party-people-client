@@ -5,8 +5,47 @@ import Tabs from "react-bootstrap/Tabs"
 import Tab from "react-bootstrap/Tab"
 import dayjs from "dayjs"
 import CreateEvent from "./CreateEvent"
+import { useState } from "react"
+import UploadImg from "./UploadImg"
+import axios from "axios"
 
-function ProfileEvents({ userInfo, handleSubmit, setEventForm, eventForm }) {
+function ProfileEvents({
+  userInfo,
+  handleSubmit,
+  setEventForm,
+  eventForm,
+  imgForm,
+  setImgForm,
+  currentUser
+}) {
+  //get the event id
+  let foundEvent= null 
+// console.log(userInfo)
+//   const foundEvent = userInfo.hostedEvents[userInfo.hostedEvents.length]
+
+// userInfo ? foundEvent = userInfo.hostedEvents[userInfo.hostedEvents.length-1] : null
+// foo.data[0].id
+// console.log("userInfo", userInfo)
+//   console.log(
+//     "userInfohostedeventsarray",
+//    userInfo["hostedEvents"]
+//   )
+
+  
+  console.log(foundEvent)
+  const eventImgSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const fd = new FormData()
+      fd.append("image")
+      const response = await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${foundEvent}/upload`,
+        fd
+      )
+    } catch (err) {
+      console.log(err)
+    }
+  }
   let attendingList = null
 
   userInfo
@@ -152,11 +191,16 @@ function ProfileEvents({ userInfo, handleSubmit, setEventForm, eventForm }) {
         </Tab>
         <Tab eventKey="createEvent" title="Create Event">
           <div className="flex-box tab-style">
-            <CreateEvent
-              handleSubmit={handleSubmit}
-              setEventForm={setEventForm}
-              eventForm={eventForm}
-            />{" "}
+            {imgForm ? (
+              <UploadImg />
+            ) : (
+              <CreateEvent
+                handleSubmit={handleSubmit}
+                setEventForm={setEventForm}
+                eventForm={eventForm}
+                setImgForm={setImgForm}
+              />
+            )}
           </div>
         </Tab>
       </Tabs>
