@@ -6,6 +6,7 @@ import Map from "./Map";
 import EditEvent from "../EditEvent";
 import HypeMeter from "./HypeMeter";
 import EditImage from "../EditImage";
+import { Navigate } from 'react-router-dom'
 
 const dayjs = require("dayjs");
 
@@ -137,7 +138,7 @@ export default function EventDetails({ currentUser }) {
                 <HypeMeter details={details}/>
             </>
         )
-        ) : null}
+        ) : <Navigate to='/login' />}
     </>
   );
 }
