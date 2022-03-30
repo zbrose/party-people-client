@@ -25,7 +25,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
   
             {currentUser ? 
             <Navbar.Collapse className="justify-content-end">
-              <Button className='create-event-button' variant="outline-dark">Create Event</Button>
+              <Button href="/events/new" className='create-event-button' variant="outline-dark">Create Event</Button>
               <Navbar.Text>
                 Welcome Back, <a href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
