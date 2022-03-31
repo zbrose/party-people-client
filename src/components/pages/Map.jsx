@@ -48,26 +48,17 @@ export default function Map({ details }) {
   console.log(latitude, longitude);
   return (
     
-      <Card className="map-card mx-auto  justify-content-center align-items-center h-100  shadow ">
         <div className="row no-gutter shadow">
           {latitude ? (
-            <div style={{ margin: "0 auto" }}>
-              <h1
-                style={{
-                  textAlign: "center",
-                  fontSize: "25px",
-                  fontWeight: "bolder",
-                }}
-              >
-                GeoLocator: Click the Geolocator to Find Your Location
-              </h1>
+            <div>
+
               <ReactMapGl
                 {...viewport}
                 mapboxAccessToken={
                   "pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ"
                 }
                 onMove={(evt) => setViewPort(evt.viewState)}
-                style={{ width: 850, height: 400 }}
+                style={{ width: 500, height: 400 }}
                 mapStyle="mapbox://styles/mapbox/streets-v9"
               >
                 <GeolocateControl
@@ -91,7 +82,6 @@ export default function Map({ details }) {
             "Address not found"
           )}
         </div>
-      </Card>
     
   );
 }

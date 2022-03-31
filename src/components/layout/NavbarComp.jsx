@@ -12,7 +12,7 @@ console.log(currentUser)
   const loggedIn = (
     <>
 
-      <Navbar className='BebasNeue navbar' bg="light" variant="light">
+      <Navbar className='BebasNeue navbar' bg="light" variant="light" id="nav">
         <Container>
 
           <Navbar.Brand style={{fontSize:'4rem'}} href="/">Party People</Navbar.Brand>

@@ -1,0 +1,67 @@
+#eventDetails {
+    display: flex;
+    flex-direction: column;
+    margin: 0 70px 0 70px;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+}
+
+#image {
+    size: cover;
+    max-width: 500px;
+    max-height: 500px;
+    padding-bottom: 20px;
+}
+
+#tabs {
+    width: 500px;
+    text-align: center;
+}
+
+#left {
+    flex-basis: 50%;
+}
+
+#right {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#eventImage {
+    display: flex;
+    justify-content: center;
+}
+
+#editImgBtn {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    color: blue;
+}
+
+#editImgBtn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#detailsHype {
+    display: flex;
+}
+
+#map {
+    width: 500px;
+    height: 500px;
+}
+
+#detailsHype {
+    padding-bottom: 30px;
+}
+
+#hype {
+    display: flex;
+    flex-direction: column;
+}
