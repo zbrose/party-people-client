@@ -25,15 +25,15 @@ export default function NavbarComp({ handleLogout, currentUser }) {
       </Navbar.Brand>
           {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
 
-            <Nav className="me-auto">
-              <Nav.Link style={{color: 'white'}} href="/">Home</Nav.Link>
-              <Nav.Link style={{color: 'white'}} href="/profile">Profile</Nav.Link>
-              <Nav.Link style={{color: 'white'}} href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
-            </Nav>
+       
+              <Nav.Link className='pink-font' href="/">Home</Nav.Link>
+              <Nav.Link className='pink-font' href="/profile">Profile</Nav.Link>
+              <Nav.Link className='pink-font' href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
+        
   
             {currentUser ? 
-            <Navbar.Collapse className="justify-content-end">
-              <Button href="/events/new" className='create-event-button' variant="outline-light">Create Event</Button>
+            <Navbar.Collapse className="justify-content-end pink-font">
+              <Button href="/events/new" className='create-event-button pink-font' >Create Event</Button>
               <Navbar.Text style={{color: 'white'}}  >
                 Welcome Back, <a style={{color: 'white'}} href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
