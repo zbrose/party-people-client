@@ -50,7 +50,7 @@ export default function CreateEvent() {
           className="BebasNeue createFormCard container-fluid"
           onSubmit={handleSubmit}
         >
-          <h1>Create Event</h1>
+          <h1 className="createCardTitle">Create Event</h1>
           <Form.Group className="mb-3" controlId="formGridTitle">
             <Form.Label>title:</Form.Label>
             <Form.Control
