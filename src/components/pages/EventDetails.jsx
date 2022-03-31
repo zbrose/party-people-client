@@ -14,7 +14,6 @@ export default function EventDetails({ currentUser }) {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
   const [date, setDate] = useState();
-  const [attendees, setAttendees] = useState([]);
   const [attendeesId, setAttendeesId] = useState([]);
   const [host, setHost] = useState();
   const [showMap, setShowMap] = useState(false);
@@ -36,21 +35,11 @@ export default function EventDetails({ currentUser }) {
 
 
   const handleClick = async () => {
-    if (attendeesId.includes(currentUser.id)) {
+    if (attendeesListId.includes(currentUser.id)) {
         await axios.put(
             `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`
         );
-        setAttendees(
-        attendees.filter((attendee) => {
-          return attendee !== currentUser.name;
-        })
-        );
-        setAttendeesId(
-            attendeesId.filter(attendee => {
-                return attendee !== currentUser.id
-            })
-        )
-      refreshEvent()
+        refreshEvent()
     } else {
       await axios.put(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/attend`
@@ -74,27 +63,37 @@ export default function EventDetails({ currentUser }) {
     }
   }
 
-
-
   const refreshEvent = async () => {
     const eventDetails = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
-      );
-      setDetails(eventDetails.data);
-      setEventForm(eventDetails.data)
-      setDate(dayjs(eventDetails.data.date).format("dddd MMMM D YYYY"));
-      setHost(eventDetails.data.host.name);
-      eventDetails.data.attendees.forEach((attendee) => {
-        setAttendees([...attendees, attendee.name]);
-        setAttendeesId([...attendeesId, attendee._id]);
-      });
-  }
+        );
+        setDetails(eventDetails.data);
+        setEventForm(eventDetails.data)
+        setDate(dayjs(eventDetails.data.date).format("dddd MMMM D YYYY"));
+        setHost(eventDetails.data.host.name);
+    }
+   
+    let attendeesList = null
+    let attendeesListId = []
+
+    {details.attendees ? (attendeesList = details.attendees.map((attendee, i) => {
+        return(
+            <p>{attendee.name}</p>
+        )
+    })) : <h3>There are no attendees</h3>}
+
+    {details.attendees ? (details.attendees.map((attendee, i) => {
+        return(
+            attendeesListId.push(attendee._id)
+        )
+    })) : <h3>There are no attendees</h3>}
+
 
   useEffect(refreshEvent, []);
 
   return (
     <>
-      {currentUser && details.host ? 
+      {currentUser && details.host? 
         (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : showImgForm ? <EditImage handleSubmit={editEventImg} setFormImg={setFormImg} event={details} setShowImgForm={setShowImgForm} showImgForm={showImgForm}/> :
             (
             <>
@@ -106,8 +105,8 @@ export default function EventDetails({ currentUser }) {
 
                 <div id="eventHeader">
                     <h1>{details.title}</h1>
-                    <button onClick={handleClick}>
-                    {attendeesId.includes(currentUser.id) ? "Unattend" : "Attend"}
+                    <button onClick={currentUser ? handleClick : <Navigate to='/login'/>}>
+                    {attendeesListId.includes(currentUser.id) ? "Unattend" : "Attend"}
                     </button>
                 </div>
 
@@ -128,7 +127,7 @@ export default function EventDetails({ currentUser }) {
                     </Tab>
 
                     <Tab eventKey="attendees" title={`Attendees`}>
-                    {attendees}
+                        {attendeesList}
                     </Tab>
                 </Tabs>
 

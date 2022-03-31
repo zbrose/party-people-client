@@ -25,8 +25,6 @@ export default function HypeMeter({ details }) {
 
         setNumCount(numCount+1)
         // numCount++
-        console.log(numCount)
-        
 
     // setNewHype(newDetails.hype)
   }
@@ -60,8 +58,7 @@ const displayHype = () =>{
     }
 }
 displayHype()
-console.log(numCount)
-console.log(meter)
+
   return (
     <>
       
