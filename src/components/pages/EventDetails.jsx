@@ -7,7 +7,7 @@ import EditEvent from "../EditEvent";
 import HypeMeter from "./HypeMeter";
 import EditImage from "../EditImage";
 import { Navigate, useNavigate } from 'react-router-dom'
-import "../../EventDetails.css"
+import "../../App.css"
 
 const dayjs = require("dayjs");
 const utc = require('dayjs/plugin/utc')
@@ -80,14 +80,16 @@ export default function EventDetails({ currentUser, fetchData }) {
     
         let attendeesList = null
         let attendeesListId = []
+        
 
         {details.attendees ? (attendeesList = details.attendees.map((attendee, i) => {
             return(
-                <p>{attendee.name}</p>
+                console.log(attendee.image),
+                <p className="white-font" id={`attendee-${i}`}><img id={`profileImg-${i}`} className="attendeePic" src={attendee.image} />{attendee.name}</p>
             )
         })) : <h3>There are no attendees</h3>}
 
-        {details.attendees ? (details.attendees.map((attendee, i) => {
+        {details.attendees ? (details.attendees.map((attendee) => {
             return(
                 attendeesListId.push(attendee._id)
             )
@@ -121,14 +123,14 @@ export default function EventDetails({ currentUser, fetchData }) {
                             </div>
 
                             <div id="tabs">
-                                <Tabs defaultActiveKey="description" id="tabs" className="right">
-                                    <Tab eventKey="description" title="Description">
-                                        <p>Hosted By: {host} </p>
-                                        <p>Type: {details.category}</p>
-                                        <p>Description: {details.description}</p>
+                                <Tabs defaultActiveKey="description" id="tabs" className="mb-3 flex-tab">
+                                    <Tab eventKey="description" title="Description" className="flex-box tab-style">
+                                        <p className="white-font">Hosted By: {host} </p>
+                                        <p className="white-font">Type: {details.category}</p>
+                                        <p className="white-font">Description: {details.description}</p>
                                     </Tab>
 
-                                    <Tab eventKey="attendees" title={`Attendees`}>
+                                    <Tab eventKey="attendees" title={`Attendees`} className="flex-box tab-style">
                                         {attendeesList}
                                     </Tab>
                                 </Tabs>
@@ -138,16 +140,20 @@ export default function EventDetails({ currentUser, fetchData }) {
                         <div id="right">
                             <div id="detailsHype">
                                 <div id="details">
-                                    <h1>{details.title}</h1>
-                                    <p>{date}</p>
-                                    <p>{details.time} </p>
-                                    <button onClick={currentUser ? handleClick : <Navigate to='/login'/>}>
+                                    <h1 className="white-font BebasNeue">{details.title}</h1>
+                                    <h4 className="white-font BebasNeue">
+                                    <h3 className="white-font BebasNeue">{date}</h3>
+                                    Starts At: {details.time} 
+                                    </h4>
+                                    <h3 className="white-font BebasNeue">{details.address}</h3>
+                                    <h3 className="white-font BebasNeue">
+                                    {details.city}, {details.state} {details.zipcode}
+                                    </h3>
+                                    <h2>
+                                    <button id={attendeesListId.includes(currentUser.id) ? "unAttendBtn" : "attendBtn"} className="BebasNeue" onClick={currentUser ? handleClick : <Navigate to='/login'/>}>
                                     {attendeesListId.includes(currentUser.id) ? "Unattend" : "Attend"}
                                     </button>
-                                    <p>{details.address}</p>
-                                    <p>
-                                    {details.city}, {details.state} {details.zipcode}
-                                    </p>
+                                    </h2>
                                 </div>
 
                                 <div id="hypeMeter">
@@ -156,15 +162,13 @@ export default function EventDetails({ currentUser, fetchData }) {
                             </div>
 
                             <div id="map">
-                                <button onClick={showTheMap}>Show me the Map</button>
-                                    {showMap ? <Map details={details} showForm={showForm} 
-                                /> : <Map details={details} showForm={showForm} />}
+                               <Map details={details} showForm={showForm} />
                             </div>
 
                             <div id="editEvent">
                                 {currentUser.id === details.host._id ?
                                 <> 
-                                    <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button onClick={deleteEvent}>Delete Event</button>
+                                    <button className="BebasNeue" onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button className="BebasNeue" onClick={deleteEvent}>Delete Event</button>
                                 </> : null}
                             </div>
                         </div>
