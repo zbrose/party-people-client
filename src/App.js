@@ -53,16 +53,16 @@ function App() {
   // axios.post(url, body, options) (same thing w put)
   const [events, setEvents] = useState([])
   const [filter, setFilter] = useState([])
-  useEffect(() => {
-    async function fetchData() {
-      const eventData = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/events`
-      )
-      setEvents(eventData.data)
-      setFilter(eventData.data)
-    }
-    fetchData()
-  }, [])
+
+  const fetchData = async() => {
+    const eventData = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/events`
+    )
+    setEvents(eventData.data)
+    setFilter(eventData.data)
+  }
+
+  useEffect(fetchData, [])
 
    return (
      <Router>
@@ -104,7 +104,7 @@ function App() {
 
            <Route 
           path='/events/:id'
-          element={<EventDetails events={events} Map={Map} currentUser={currentUser}/>} />
+          element={<EventDetails events={events} Map={Map} currentUser={currentUser} fetchData={fetchData} />} />
 
            <Route 
           path='/events/new'
