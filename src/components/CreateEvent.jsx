@@ -47,7 +47,7 @@ export default function CreateEvent() {
     return (
       <>
         <Form
-          className="BebasNeue createFormCard container-fluid"
+          className="BebasNeue createFormCard container-fluid mb-5"
           onSubmit={handleSubmit}
           style={{ color: "rgb(255,64,132)" }}
         >
@@ -98,7 +98,7 @@ export default function CreateEvent() {
               </Form.Select>
             </Form.Group>
 
-            <Row className="mb-3">
+            <Row className="mb-3 mt-3">
               <Form.Group as={Col} controlId="formGridCity">
                 <Form.Label>city:</Form.Label>
                 <Form.Control
@@ -191,7 +191,7 @@ export default function CreateEvent() {
             <FloatingLabel
               controlId="floatingTextarea"
               label="description"
-              className="mb-3"
+              className="mb-3 mt-3"
             >
               <Form.Control
                 as="textarea"
@@ -204,7 +204,7 @@ export default function CreateEvent() {
             </FloatingLabel>
 
             <Form.Group as={Col} controlId="date">
-              <Form.Label>Select Date</Form.Label>
+              <Form.Label>Select Date:</Form.Label>
               <Form.Control
                 type="date"
                 name="date"
@@ -217,7 +217,7 @@ export default function CreateEvent() {
             </Form.Group>
 
             <Form.Group as={Col} controlId="time">
-              <Form.Label>Select Date</Form.Label>
+              <Form.Label>Select Time:</Form.Label>
               <Form.Control
                 type="time"
                 name="time"
@@ -231,10 +231,11 @@ export default function CreateEvent() {
           </Row>
 
           <Button
-            variant="outline-dark"
+            variant="outline-light"
             style={{ color: "rgb(255,64,132)" }}
             size="lg"
             type="submit"
+            className="mb-3"
           >
             next
           </Button>
