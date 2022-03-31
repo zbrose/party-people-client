@@ -19,8 +19,9 @@ function Footer() {
             
             <Nav defaultActiveKey="/home" className="flex-column">
                 <h3>Triston J. Palacios</h3>
-                <Nav.Link eventKey="https://www.linkedin.com/in/tristonpalacios/">LinkedIn</Nav.Link>
-                <Nav.Link eventKey="https://github.com/tristonpalacios">Github</Nav.Link>
+                <Nav.Link href="https://www.linkedin.com/in/tristonpalacios/" eventKey="LinkedIn">LinkedIn</Nav.Link>
+                <Nav.Link href="https://github.com/tristonpalacios"
+                eventKey="github">Github</Nav.Link>
             </Nav>
             <Nav defaultActiveKey="/home" className="flex-column">
                  <h3>Bryan Nguyen</h3>
