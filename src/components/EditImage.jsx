@@ -1,5 +1,4 @@
 import { Form } from 'react-bootstrap'
-import "../EventDetails.css"
 
 function EditImage({ handleSubmit, setFormImg, event, setShowImgForm, showImgForm}) {
     return (  
