@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import CreateEvent from "./CreateEvent"
 import { Card, Button } from "react-bootstrap"
 import UploadImg from "../UploadImg"
 import Events from "../Events"
