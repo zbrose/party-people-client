@@ -8,11 +8,11 @@ import ProfileEvents from "../ProfileEvents"
 
 export default function Profile({
   currentUser,
-  filter,
-  setFilter,
+  // filter,
+  // setFilter,
   events,
-  setEvents,
-  handleUploadImg,
+  // setEvents,
+  // handleUploadImg,
 }) {
   // const [formData, setFormData] = useState({})
   const [displayImg, setDisplayImg] = useState("")
@@ -100,7 +100,7 @@ setImgForm(true)
       <div className="flex-box mb-5">
         <Card
           className="box noBack"
-          style={{ width: "25rem", margin: "0 auto", border: "none" }}
+          style={{ width: "25rem", margin: "0 auto", border: "none", color:"white" }}
         >
           {!displayImg ? (
             <Card.Img
@@ -139,7 +139,12 @@ setImgForm(true)
               setFormImg={setFormImg}
             />
           ) : (
-            <Button variant="outline-primary" size="sm" onClick={() => setImgForm(true)}>
+            <Button
+              variant="outline-light"
+              style={{ color: "rgb(255,64,132)" }}
+              size="sm"
+              onClick={() => setImgForm(true)}
+            >
               {imgForm ? "add pic" : "change pic"}
             </Button>
           )}
@@ -155,3 +160,5 @@ setImgForm(true)
     </>
   )
 }
+
+

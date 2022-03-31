@@ -17,7 +17,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>Welcome to The Party People App</h3>
+            <h3 style={{fontSize: '5em'}}>The Party People App</h3>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -28,7 +28,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Where People Who Party...</h3>
+            <h3 style={{fontSize: '5em'}}>Where People Who Party...</h3>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -39,7 +39,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>...Find Parties To Party At.</h3>
+            <h3 style={{fontSize: '5em'}}>...Find Parties To Party At</h3>
           </Carousel.Caption>
         </Carousel.Item>
         
