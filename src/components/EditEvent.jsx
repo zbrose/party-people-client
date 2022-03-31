@@ -7,7 +7,10 @@ function EditEvent({
   setEventForm,
   handleSubmit, imgForm,
   setImgForm,
-}) {
+})
+
+{
+
   return (
     <div className="">
     <Form className='createFormCard BebasNeue col-md-6 mx-auto row no-gutter d-flex  ' onSubmit={handleSubmit}>
