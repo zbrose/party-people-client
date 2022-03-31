@@ -16,94 +16,118 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 export default function EventDetails({ currentUser, fetchData }) {
-    let navigate = useNavigate()
-    const { id } = useParams();
-    const [details, setDetails] = useState([]);
-    const [date, setDate] = useState();
-    const [host, setHost] = useState();
-    const [showMap, setShowMap] = useState(false);
-    const [showForm, setShowForm] = useState(false)
-    const [eventForm, setEventForm] = useState()
-    const [showImgForm, setShowImgForm] = useState(false)
-    const [formImg, setFormImg] = useState()
+  let navigate = useNavigate()
+  const { id } = useParams()
+  const [details, setDetails] = useState([])
+  const [date, setDate] = useState()
+  const [host, setHost] = useState()
+  const [showMap, setShowMap] = useState(false)
+  const [showForm, setShowForm] = useState(false)
+  const [eventForm, setEventForm] = useState()
+  const [showImgForm, setShowImgForm] = useState(false)
+  const [formImg, setFormImg] = useState()
 
-    const handleSubmit = async e => {
-        e.preventDefault()
-        await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`, eventForm)
-        setShowForm(!showForm)
-        refreshEvent()
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await axios.put(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`,
+      eventForm
+    )
+    setShowForm(!showForm)
+    refreshEvent()
+  }
 
-    function showTheMap() {
-        setShowMap(!showMap);
+  function showTheMap() {
+    setShowMap(!showMap)
+  }
+
+  const handleClick = async () => {
+    if (attendeesListId.includes(currentUser.id)) {
+      await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`
+      )
+      refreshEvent()
+    } else {
+      await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/attend`
+      )
+      refreshEvent()
+    }
+  }
+
+  const editEventImg = async (e) => {
+    e.preventDefault()
+    try {
+      const fd = new FormData()
+      fd.append("image", formImg)
+      const response = await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/upload`,
+        fd
+      )
+      refreshEvent()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const refreshEvent = async () => {
+    const eventDetails = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
+    )
+    setDetails(eventDetails.data)
+    setEventForm(eventDetails.data)
+    setDate(
+      dayjs
+        .tz(eventDetails.data.date, "America/New_York")
+        .format("dddd MMMM D YYYY")
+    )
+    setHost(eventDetails.data.host.name)
+  }
+
+  let attendeesList = null
+  let attendeesListId = []
+
+  {
+    details.attendees ? (
+      (attendeesList = details.attendees.map((attendee, i) => {
+        return <p>{attendee.name}</p>
+      }))
+    ) : (
+      <h3>There are no attendees</h3>
+    )
+  }
+
+  {
+    details.attendees ? (
+      details.attendees.map((attendee, i) => {
+        return attendeesListId.push(attendee._id)
+      })
+    ) : (
+      <h3>There are no attendees</h3>
+    )
+  }
+
+    // console.log(details.time)
+    // console.log(parseInt(details.time.split(":")[0]))
+
+    function timeDisplay(e) {
+      let hours = parseInt(e.split(":")[0])
+      let minutes = parseInt(e.split(":")[1])
+      let amPm = hours >= 12 ? "pm" : "am"
+      hours = hours % 12 || 12
+      return `${hours}: ${minutes} ${amPm}`
     }
 
+  const deleteEvent = async () => {
+    await axios.delete(
+      `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
+    )
+    fetchData()
+    navigate("/")
+  }
 
-    const handleClick = async () => {
-        if (attendeesListId.includes(currentUser.id)) {
-            await axios.put(
-                `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/unattend`
-            );
-            refreshEvent()
-        } else {
-        await axios.put(
-            `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/${currentUser.id}/attend`
-        );
-        refreshEvent()
-        }
-    };
 
-    const editEventImg = async(e) => {
-        e.preventDefault()
-        try {
-            const fd = new FormData()
-            fd.append("image", formImg)
-            const response = await axios.put(
-            `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}/upload`,
-            fd
-            )
-            refreshEvent()
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    const refreshEvent = async () => {
-        const eventDetails = await axios.get(
-            `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
-            );
-            setDetails(eventDetails.data);
-            setEventForm(eventDetails.data)
-            setDate(dayjs.tz(eventDetails.data.date, "America/New_York").format("dddd MMMM D YYYY"));
-            setHost(eventDetails.data.host.name);
-        }
-    
-        let attendeesList = null
-        let attendeesListId = []
-        
-
-        {details.attendees ? (attendeesList = details.attendees.map((attendee, i) => {
-            return(
-                console.log(attendee.image),
-                <p className="white" id={`attendee-${i}`}><img id={`profileImg-${i}`} className="attendeePic" src={attendee.image} />{attendee.name}</p>
-            )
-        })) : <h3>There are no attendees</h3>}
-
-        {details.attendees ? (details.attendees.map((attendee) => {
-            return(
-                attendeesListId.push(attendee._id)
-            )
-        })) : <h3>There are no attendees</h3>}
-
-        const deleteEvent = async () => {
-            await axios.delete(
-                `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
-            )
-            fetchData()
-            navigate('/')
-        }
-
-    useEffect(refreshEvent, []);
+  useEffect(refreshEvent, [])
 
     return (
         <>
@@ -174,9 +198,9 @@ export default function EventDetails({ currentUser, fetchData }) {
                         </div>
                     </div>
                 </div>
-            )
-            ) : null }
-        </>
-    );
+        )
+      ) : null}
+    </>
+  )
 }
 

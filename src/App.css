@@ -124,7 +124,7 @@
   background-color: black;
   color: whitesmoke;
   padding: 2em;
-  border-top: 1px solid var(--lihtblue-theme);
+  border-top: 0.1px solid var(--blue-theme);
   
 }
 
