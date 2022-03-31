@@ -100,7 +100,7 @@ setImgForm(true)
       <div className="flex-box mb-5">
         <Card
           className="box noBack"
-          style={{ width: "25rem", margin: "0 auto", border: "none" }}
+          style={{ width: "25rem", margin: "0 auto", border: "none", color:"white" }}
         >
           {!displayImg ? (
             <Card.Img
@@ -140,7 +140,7 @@ setImgForm(true)
             />
           ) : (
             <Button
-              variant="outline-dark"
+              variant="outline-light"
               style={{ color: "rgb(255,64,132)" }}
               size="sm"
               onClick={() => setImgForm(true)}
@@ -160,3 +160,5 @@ setImgForm(true)
     </>
   )
 }
+
+

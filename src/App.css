@@ -2,7 +2,7 @@
 
 
 :root{
-  background-color: whitesmoke;
+  background-color: black;
   --pink-theme: rgb(255,64,132);
   --lihtblue-theme: rgb(13,102,250);
   --blue-theme: rgb(8,60,148);
@@ -12,7 +12,7 @@
   color: var(--pink-theme);
 }
 #root{
-  background-color: whitesmoke;
+  background-color: black;
 }
 
 #uncontrolled-lab-example-tabpane-Hosting{
@@ -21,9 +21,11 @@
 
 .App {
   text-align: center;
-  background-color: whitesmoke;
+  background-color: black;
   min-height: 100vh;
-  background-image: url(./Background.png);
+  background-image: url(./BloomBackground.png);
+  background-image: url(./Neon.png);
+  /* background-image: url(./Background.png); */
   background-size: cover;
 
 }
@@ -114,6 +116,7 @@
   background-color: black;
   color: whitesmoke;
   padding: 2em;
+  border-top: 1px solid var(--lihtblue-theme);
 
 }
 
@@ -135,6 +138,28 @@
   justify-content: center;
   font-family: 'Bebas Neue', cursive;
   font-size: 30px;
+  ;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: black;
+  background-color: var(--pink-theme);
+
+  /* border-color: #dee2e6 #dee2e6 #fff; */
+}
+.nav-tabs .nav-link {
+  margin-bottom: -1px;
+  background: 0 0;
+  border:0;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--pink-theme);
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
 .flex-box{
@@ -233,5 +258,5 @@ align-items: center;
 }
 
 .noBack{
-  background-color: whitesmoke;
+  background:none;
 }
