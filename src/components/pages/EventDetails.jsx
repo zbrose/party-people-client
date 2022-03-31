@@ -107,6 +107,17 @@ export default function EventDetails({ currentUser, fetchData }) {
     )
   }
 
+    // console.log(details.time)
+    // console.log(parseInt(details.time.split(":")[0]))
+
+    function timeDisplay(e) {
+      let hours = parseInt(e.split(":")[0])
+      let minutes = parseInt(e.split(":")[1])
+      let amPm = hours >= 12 ? "pm" : "am"
+      hours = hours % 12 || 12
+      return `${hours}: ${minutes} ${amPm}`
+    }
+
   const deleteEvent = async () => {
     await axios.delete(
       `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
@@ -114,16 +125,7 @@ export default function EventDetails({ currentUser, fetchData }) {
     fetchData()
     navigate("/")
   }
-  console.log(details.time)
-  console.log(parseInt(details.time.split(":")[0]))
 
-    function timeDisplay(e) {
-        let hours = parseInt(e.split(":")[0])
-        let minutes = parseInt(e.split(":")[1])
-        let amPm = hours >= 12 ? "pm" : "am"
-        hours = hours % 12 || 12
-      return `${hours}: ${minutes} ${amPm}`
-    }
 
   useEffect(refreshEvent, [])
 
