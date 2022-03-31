@@ -4,23 +4,13 @@ import UploadImg from "./UploadImg"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Card } from "react-bootstrap"
 
 
 export default function CreateEvent() {
   const navigate = useNavigate()
   // return( <h1> create event</h1>)
-  const [eventForm, setEventForm] = useState({
-    title: "apple",
-    address: "123 st",
-    city: "mcallen",
-    state: "texas",
-    zipcode: 32322,
-    description: "herro",
-    category: "Party",
-    date: '2020-12-10',
-    time: '01:23'
-
-  })
+  const [eventForm, setEventForm] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -55,7 +45,10 @@ export default function CreateEvent() {
     }
 
     return (
-      <Form className="BebasNeue" onSubmit={handleSubmit}>
+      <>
+      
+      <Form className="BebasNeue createFormCard container-fluid" onSubmit={handleSubmit}>
+      <h1>Create Event</h1>
         <Form.Group className="mb-3" controlId="formGridTitle">
           <Form.Label>title:</Form.Label>
           <Form.Control
@@ -80,6 +73,25 @@ export default function CreateEvent() {
             required
             placeholder="Apartment, studio, or floor"
           />
+        </Form.Group>
+
+
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="formGridCity">
+          <Form.Label>category:</Form.Label>
+          <Form.Select
+            value={eventForm.category}
+            onChange={(e) =>
+              setEventForm({ ...eventForm, category: e.target.value })
+            }
+          >
+            <option value="Party">Party</option>
+            <option value="Concert">Concerts</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Study">Study</option>
+            <option value="Other">Other</option>
+          </Form.Select>
         </Form.Group>
 
         <Row className="mb-3">
@@ -172,6 +184,7 @@ export default function CreateEvent() {
           </Form.Group>
         </Row>
 
+
         <FloatingLabel
           controlId="floatingTextarea"
           label="description"
@@ -186,24 +199,24 @@ export default function CreateEvent() {
             }
           />
         </FloatingLabel>
-
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>category:</Form.Label>
-            <Form.Select
-              value={eventForm.category}
-              onChange={(e) =>
-                setEventForm({ ...eventForm, category: e.target.value })
-              }
-            >
-              <option value="party">Party</option>
-              <option value="concert">Concerts</option>
-              <option value="gaming">Gaming</option>
-              <option value="comedy">Comedy</option>
-              <option value="study">Study</option>
-              <option value="other">Other</option>
-            </Form.Select>
-          </Form.Group>
+{/* 
+//         <Row className="mb-3">
+//           <Form.Group as={Col} controlId="formGridCity">
+//             <Form.Label>category:</Form.Label>
+//             <Form.Select
+//               value={eventForm.category}
+//               onChange={(e) =>
+//                 setEventForm({ ...eventForm, category: e.target.value })
+//               }
+//             >
+//               <option value="party">Party</option>
+//               <option value="concert">Concerts</option>
+//               <option value="gaming">Gaming</option>
+//               <option value="comedy">Comedy</option>
+//               <option value="study">Study</option>
+//               <option value="other">Other</option>
+//             </Form.Select>
+//           </Form.Group> */}
 
           <Form.Group as={Col} controlId="date">
             <Form.Label>Select Date</Form.Label>
@@ -236,5 +249,6 @@ export default function CreateEvent() {
           next
         </Button>
       </Form>
+      </>
     )
   }
