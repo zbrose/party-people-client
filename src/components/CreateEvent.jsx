@@ -230,7 +230,7 @@ export default function CreateEvent() {
             </Form.Group>
           </Row>
 
-          <Button variant="dark" type="submit">
+          <Button variant="dark lg" type="submit">
             next
           </Button>
         </Form>
