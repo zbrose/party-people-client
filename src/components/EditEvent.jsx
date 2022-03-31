@@ -157,7 +157,7 @@ function EditEvent({
               setEventForm({ ...eventForm, category: e.target.value })
             }
           >
-            <option value="party">Party</option>
+            <option value="party">Party</option> selected
             <option value="concert">Concerts</option>
             <option value="gaming">Gaming</option>
             <option value="comedy">Comedy</option>
