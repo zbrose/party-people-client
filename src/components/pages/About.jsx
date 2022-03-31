@@ -18,17 +18,17 @@ function About() {
                     <h3>Triston J. Palacios</h3>
                     <img style={{borderRadius:'100%'}} src="images/triston.jpg" width='300px' alt="Grace Sung" />
                     <br />
-                    <a style={{fontSize: '30px' }} href="https://www.linkedin.com/in/chanhee-grace-sung/">LinkedIn</a>
+                    <a style={{fontSize: '30px' }} href="https://www.linkedin.com/in/tristonpalacios/">LinkedIn</a>
                     <br />
-                    <a style={{fontSize: '30px' }} href="https://github.com/kokopuffz">Github</a>
+                    <a style={{fontSize: '30px' }} href="https://github.com/tristonpalacios">Github</a>
                 </div>
                 <div>
                     <h3>Bryan Nguyen</h3>
                     <img style={{borderRadius:'100%'}} src="images/bryan.jpeg" height='300px' alt="Bryan Nguyen" />
                     <br />
-                    <a style={{fontSize: '30px' }} href="">LinkedIn</a>
+                    <a style={{fontSize: '30px' }} href="https://www.linkedin.com/in/brnguy/">LinkedIn</a>
                     <br />
-                    <a style={{fontSize: '30px' }} href="">Github</a>
+                    <a style={{fontSize: '30px' }} href="https://github.com/brnguy">Github</a>
                 </div>
                 <div>
                     <h3>Grace Sung</h3>
@@ -42,9 +42,9 @@ function About() {
                     <h3>Zach Brose</h3>
                     <img style={{borderRadius:'100%'}} src="images/zach.jpeg" width='300px' alt="Grace Sung" />
                     <br />
-                    <a style={{fontSize: '30px' }} href="https://www.linkedin.com/in/chanhee-grace-sung/">LinkedIn</a>
+                    <a style={{fontSize: '30px' }} href="https://www.linkedin.com/in/zach-brose-668a9891/">LinkedIn</a>
                     <br />
-                    <a style={{fontSize: '30px' }} href="https://github.com/kokopuffz">Github</a> 
+                    <a style={{fontSize: '30px' }} href="https://github.com/zbrose">Github</a> 
                 </div>
             </div>
             <div className="BebasNeue">
