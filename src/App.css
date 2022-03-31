@@ -23,7 +23,9 @@
   text-align: center;
   background-color: black;
   min-height: 100vh;
-  background-image: url(./Background.png);
+  background-image: url(./BloomBackground.png);
+  background-image: url(./Neon.png);
+  /* background-image: url(./Background.png); */
   background-size: cover;
 
 }
