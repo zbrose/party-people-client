@@ -85,9 +85,9 @@ displayHype()
       <button onClick={incrementCount}>Click Here</button>
       {count}
     </div> */}
-      {numCount}
+      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "ITS OUTTA CONTROL" : numCount}</h3>
       {meter}
-    <button onClick={hypeThis}>HYPE THIS EVENT</button>
+    <button className="BebasNeue" onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
   );
 }

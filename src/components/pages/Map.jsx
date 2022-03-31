@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactMapGl, { Marker, GeolocateControl } from "react-map-gl";
 import axios from "axios";
-import { Card } from "react-bootstrap";
+
 let accessToken =
   "pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ";
 
@@ -14,7 +14,6 @@ const geolocateStyle = {
 // REACT_APP_MAPBOX_TOKEN
 
 export default function Map({ details }) {
-  const [address, setAddress] = useState({});
   const [latitude, setLatitude] = useState();
   const [longitude, setLongitude] = useState();
   const [viewport, setViewPort] = useState({
