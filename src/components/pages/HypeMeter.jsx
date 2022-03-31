@@ -87,7 +87,7 @@ displayHype()
     </div> */}
       <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "ITS OUTTA CONTROL" : numCount}</h3>
       {meter}
-    <button className="BebasNeue" onClick={hypeThis}>HYPE THIS EVENT</button>
+    <button id="hypeThisEvent" className="BebasNeue" onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
   );
 }
