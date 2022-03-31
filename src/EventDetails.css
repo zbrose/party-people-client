@@ -1,3 +1,10 @@
+:root{
+    background-color: black;
+    --pink-theme: rgb(255,64,132);
+    --lihtblue-theme: rgb(13,102,250);
+    --blue-theme: rgb(8,60,148);
+  }
+
 #eventDetails {
     display: flex;
     flex-direction: column;

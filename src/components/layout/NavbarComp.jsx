@@ -17,7 +17,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
         <Navbar.Brand href="/">
         <img
           alt="party people artwork gif"
-          src="images/Untitled_Artwork 14.gif"
+          src="https://cdn.discordapp.com/attachments/829614700815319060/959198724301680690/Untitled_Artwork_14.gif"
           width="250"
           height="200"
           className="d-inline-block align-top"
@@ -34,7 +34,6 @@ export default function NavbarComp({ handleLogout, currentUser }) {
                 Welcome Back, <a style={{color: 'rgb(13,102,250)'}} href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
             </Navbar.Collapse> : 'no user found'}
-
         </Container>
       </Navbar>   
     </>
@@ -61,7 +60,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
             <Nav.Link className='pink-font' href="/login"><span onClick={handleLogout}>Log In</span></Nav.Link>
             </div>
           </div>
-          
+  
         </Container>
       </Navbar>   
     </>

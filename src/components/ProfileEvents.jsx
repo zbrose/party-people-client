@@ -9,6 +9,7 @@ import { useState } from "react"
 import UploadImg from "./UploadImg"
 import axios from "axios"
 
+
 function ProfileEvents({userInfo}) {
 
   let attendingList = null
