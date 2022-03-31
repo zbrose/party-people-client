@@ -18,6 +18,8 @@ import EventDetails from "./components/pages/EventDetails"
 import axios from "axios"
 import Map from "./components/pages/Map"
 import CreateEvent from "./components/CreateEvent"
+import Footer from "./components/layout/Footer"
+
 
 function App() {
   // state wi the user data when the user is logged in
@@ -65,7 +67,6 @@ function App() {
    return (
      <Router>
        <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
-
        <div className="App">
          <Routes>
            <Route
@@ -127,6 +128,7 @@ function App() {
            />
          </Routes>
        </div>
+       <Footer />
      </Router>
    )
 }
