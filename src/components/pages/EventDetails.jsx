@@ -85,7 +85,7 @@ export default function EventDetails({ currentUser, fetchData }) {
         {details.attendees ? (attendeesList = details.attendees.map((attendee, i) => {
             return(
                 console.log(attendee.image),
-                <p className="white-font" id={`attendee-${i}`}><img id={`profileImg-${i}`} className="attendeePic" src={attendee.image} />{attendee.name}</p>
+                <p className="white" id={`attendee-${i}`}><img id={`profileImg-${i}`} className="attendeePic" src={attendee.image} />{attendee.name}</p>
             )
         })) : <h3>There are no attendees</h3>}
 
@@ -124,13 +124,13 @@ export default function EventDetails({ currentUser, fetchData }) {
 
                             <div id="tabs">
                                 <Tabs defaultActiveKey="description" id="tabs" className="mb-3 flex-tab">
-                                    <Tab eventKey="description" title="Description" className="flex-box tab-style">
-                                        <p className="white-font">Hosted By: {host} </p>
-                                        <p className="white-font">Type: {details.category}</p>
-                                        <p className="white-font">Description: {details.description}</p>
+                                    <Tab eventKey="description" title="Description" className="flex-box tab-style detailsTab">
+                                        <p className="white">Hosted By: {host} </p>
+                                        <p className="white">Type: {details.category}</p>
+                                        <p className="white">Description: {details.description}</p>
                                     </Tab>
 
-                                    <Tab eventKey="attendees" title={`Attendees`} className="flex-box tab-style">
+                                    <Tab eventKey="attendees" title={`Attendees`} className="flex-box tab-style detailsTab">
                                         {attendeesList}
                                     </Tab>
                                 </Tabs>
@@ -140,13 +140,13 @@ export default function EventDetails({ currentUser, fetchData }) {
                         <div id="right">
                             <div id="detailsHype">
                                 <div id="details">
-                                    <h1 className="white-font BebasNeue">{details.title}</h1>
-                                    <h4 className="white-font BebasNeue">
-                                    <h3 className="white-font BebasNeue">{date}</h3>
+                                    <h1 className="white BebasNeue">{details.title}</h1>
+                                    <h4 className="white BebasNeue">
+                                    <h3 className="white BebasNeue">{date}</h3>
                                     Starts At: {details.time} 
                                     </h4>
-                                    <h3 className="white-font BebasNeue">{details.address}</h3>
-                                    <h3 className="white-font BebasNeue">
+                                    <h3 className="white BebasNeue">{details.address}</h3>
+                                    <h3 className="white BebasNeue">
                                     {details.city}, {details.state} {details.zipcode}
                                     </h3>
                                     <h2>
@@ -168,7 +168,7 @@ export default function EventDetails({ currentUser, fetchData }) {
                             <div id="editEvent">
                                 {currentUser.id === details.host._id ?
                                 <> 
-                                    <button className="BebasNeue" onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button className="BebasNeue" onClick={deleteEvent}>Delete Event</button>
+                                    <button className="BebasNeue" id="editBtn" onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button className="BebasNeue" onClick={deleteEvent}>Delete Event</button>
                                 </> : null}
                             </div>
                         </div>

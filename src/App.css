@@ -293,7 +293,8 @@ align-items: center;
 
 #tabs {
   width: 500px;
-  text-align: center;
+  min-height: 270px;
+  margin: 0 auto;
 }
 
 #left {
@@ -329,7 +330,7 @@ align-items: center;
 
 #map {
   width: 500px;
-  height: 500px;
+  height: 400px;
 }
 
 #hype {
@@ -346,7 +347,7 @@ align-items: center;
 }
 
 #unAttendBtn:hover {
-  background-color: var(--blue-theme);
+  background-color: var(--pink-theme);
 }
 
 #numCounter{
@@ -359,4 +360,13 @@ align-items: center;
 
 #hypeMeter{
   background: var(--blue-theme)
+}
+
+#editEvent{
+  max-width: 500px;
+  margin: 20px 0px;
+}
+
+#editBtn{
+  margin-right: 20px;
 }
