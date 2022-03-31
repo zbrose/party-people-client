@@ -78,7 +78,7 @@ function ProfileEvents({userInfo}) {
 
   return (
     <>
-      <h3 className="BebasNeue">Your Events: </h3>
+      <h3 className="BebasNeue" style={{color:"white"}}>Your Events: </h3>
       <Tabs id="uncontrolled-tab-example" className="mb-3 flex-tab" defaultActiveKey="Hosting">
 
         <Tab eventKey="Hosting" title="Hosting">
