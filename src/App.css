@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lilita+One&display=swap');
 
 
-#root{
+:root{
   background-color: whitesmoke;
+  --pink-theme: rgb(255,64,132);
+  --lihtblue-theme: rgb(13,102,250);
+  --blue-theme: rgb(8,60,148);
 }
 
 #uncontrolled-lab-example-tabpane-Hosting{
@@ -81,13 +84,16 @@
  
   height: 2%;
 
-  
+}
+
+.white-font{
+  color: white;
 }
 
 .navbar{
   font-size: 2em;
+  background-color: black;
 }
-
 
 
 .footer{
