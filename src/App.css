@@ -120,10 +120,13 @@
 .create-event-button{
   margin: 10px;
   font-size: 25px;
+  background-color: black;
+  
 }
 .pink-font{
   color: var(--pink-theme);
 }
+
 
 .flex-tab{
   max-width: 1500px;
