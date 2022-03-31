@@ -24,18 +24,14 @@ export default function NavbarComp({ handleLogout, currentUser }) {
         />
       </Navbar.Brand>
           {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
-
-       
               <Nav.Link className='pink-font' href="/">Home</Nav.Link>
               <Nav.Link className='pink-font' href="/profile">Profile</Nav.Link>
               <Nav.Link className='pink-font' href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
-        
-  
             {currentUser ? 
             <Navbar.Collapse className="justify-content-end pink-font">
               <Button href="/events/new" className='create-event-button pink-font' >Create Event</Button>
-              <Navbar.Text style={{color: 'white'}}  >
-                Welcome Back, <a style={{color: 'white'}} href="/profile">{currentUser.name}!</a>
+              <Navbar.Text style={{color: 'rgb(13,102,250)'}}  >
+                Welcome Back, <a style={{color: 'rgb(13,102,250)'}} href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
             </Navbar.Collapse> : 'no user found'}
 
@@ -46,7 +42,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
 
   const loggedOut = (
     <>
-      <Navbar className='BebasNeue navbar'>
+      <Navbar className='BebasNeue navbar '>
         <Container>
         <Navbar.Brand href="/">
         <img
@@ -58,11 +54,14 @@ export default function NavbarComp({ handleLogout, currentUser }) {
         />
       </Navbar.Brand>
           {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
-          <Nav className="me-auto">
-            <Nav.Link style={{color: 'white'}}  href="/">Home</Nav.Link>
-            <Nav.Link style={{color: 'white'}}  href="/register">Sign-Up</Nav.Link>
-            <Nav.Link style={{color: 'white'}}  href="/login"><span onClick={handleLogout}>Log In</span></Nav.Link>
-          </Nav>
+          <div className='container'>
+            <div style={{display: 'flex'}}>
+            <Nav.Link className='pink-font' href="/">Home</Nav.Link>
+            <Nav.Link className='pink-font' href="/register">Sign-Up</Nav.Link>
+            <Nav.Link className='pink-font' href="/login"><span onClick={handleLogout}>Log In</span></Nav.Link>
+            </div>
+          </div>
+          
         </Container>
       </Navbar>   
     </>
