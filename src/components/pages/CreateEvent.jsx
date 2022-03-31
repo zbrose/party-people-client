@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap"
-import UploadImg from "./UploadImg"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"

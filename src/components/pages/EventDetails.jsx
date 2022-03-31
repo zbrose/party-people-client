@@ -10,13 +10,16 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import "../../EventDetails.css"
 
 const dayjs = require("dayjs");
+const utc = require('dayjs/plugin/utc')
+const timezone = require("dayjs/plugin/timezone")
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 export default function EventDetails({ currentUser, fetchData }) {
     let navigate = useNavigate()
     const { id } = useParams();
     const [details, setDetails] = useState([]);
     const [date, setDate] = useState();
-    const [attendeesId, setAttendeesId] = useState([]);
     const [host, setHost] = useState();
     const [showMap, setShowMap] = useState(false);
     const [showForm, setShowForm] = useState(false)
@@ -71,7 +74,7 @@ export default function EventDetails({ currentUser, fetchData }) {
             );
             setDetails(eventDetails.data);
             setEventForm(eventDetails.data)
-            setDate(dayjs(eventDetails.data.date).format("dddd MMMM D YYYY"));
+            setDate(dayjs.tz(eventDetails.data.date, "America/New_York").format("dddd MMMM D YYYY"));
             setHost(eventDetails.data.host.name);
         }
     

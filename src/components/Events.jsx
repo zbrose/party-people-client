@@ -6,6 +6,10 @@ import Tab from 'react-bootstrap/Tab'
 import {useState} from 'react'
 import dayjs from 'dayjs';
 
+const utc = require('dayjs/plugin/utc')
+const timezone = require("dayjs/plugin/timezone")
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 
 function Events({events, filter, setFilter, currentUser}) {
@@ -42,7 +46,7 @@ function Events({events, filter, setFilter, currentUser}) {
                         <ListGroup variant="flush">
 
                         <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
-                        <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
+                        <ListGroup.Item>{dayjs.tz(event.date, "America/New_York").format('MMMM D, YYYY')}</ListGroup.Item>
                         <ListGroup.Item>Attendees: {event.attendees.length} </ListGroup.Item>
 
                         </ListGroup>

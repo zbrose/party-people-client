@@ -17,7 +17,7 @@ import jwt_decode from "jwt-decode"
 import EventDetails from "./components/pages/EventDetails"
 import axios from "axios"
 import Map from "./components/pages/Map"
-import CreateEvent from "./components/CreateEvent"
+import CreateEvent from "./components/pages/CreateEvent"
 import Footer from "./components/layout/Footer"
 
 
