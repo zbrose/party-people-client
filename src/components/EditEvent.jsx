@@ -9,7 +9,8 @@ function EditEvent({
   setImgForm,
 }) {
   return (
-    <Form onSubmit={handleSubmit}>
+    <div className="">
+    <Form className='createFormCard BebasNeue col-md-6 mx-auto row no-gutter d-flex  ' onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formGridTitle">
         <Form.Label>title:</Form.Label>
         <Form.Control
@@ -184,6 +185,7 @@ function EditEvent({
         submit
       </Button>
     </Form>
+    </div>
   )
 }
 

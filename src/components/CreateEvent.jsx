@@ -3,6 +3,7 @@ import { Row, Col, Form, Button, FloatingLabel, Card } from "react-bootstrap"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Card } from "react-bootstrap"
 
 
 export default function CreateEvent() {
@@ -43,10 +44,62 @@ export default function CreateEvent() {
     }
 
     return (
+
+      <Form className="BebasNeue createFormCard container-fluid" onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formGridTitle">
+          <Form.Label>title:</Form.Label>
+          <Form.Control
+            type="text"
+            value={eventForm.title}
+            onChange={(e) =>
+              setEventForm({ ...eventForm, title: e.target.value })
+            }
+            required
+            placeholder="lan party"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formGridAddress2">
+          <Form.Label>address:</Form.Label>
+          <Form.Control
+            type="text"
+            value={eventForm.address}
+            onChange={(e) =>
+              setEventForm({ ...eventForm, address: e.target.value })
+            }
+            required
+            placeholder="Apartment, studio, or floor"
+          />
+        </Form.Group>
+
+
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="formGridCity">
+          <Form.Label>category:</Form.Label>
+          <Form.Select
+            value={eventForm.category}
+            onChange={(e) =>
+              setEventForm({ ...eventForm, category: e.target.value })
+            }
+          >
+            <option value="Party">Party</option>
+            <option value="Concert">Concerts</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Study">Study</option>
+            <option value="Other">Other</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label>city:</Form.Label>
+
       <Card style={{ width: "50em", margin: "0 auto" }}>
         <Form className="BebasNeue" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formGridTitle">
             <Form.Label>title:</Form.Label>
+
             <Form.Control
               type="text"
               value={eventForm.title}
@@ -221,10 +274,18 @@ export default function CreateEvent() {
             </Form.Group>
           </Row>
 
+
+        <Button variant="primary" type="submit">
+          next
+        </Button>
+      </Form>
+      
+
           <Button variant="primary" type="submit">
             next
           </Button>
         </Form>
       </Card>
+
     )
   }
