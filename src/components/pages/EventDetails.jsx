@@ -10,7 +10,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 const dayjs = require("dayjs");
 
-export default function EventDetails({ currentUser }) {
+export default function EventDetails({ currentUser, fetchData }) {
     let navigate = useNavigate()
     const { id } = useParams();
     const [details, setDetails] = useState([]);
@@ -93,7 +93,7 @@ export default function EventDetails({ currentUser }) {
             await axios.delete(
                 `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
             )
-            refreshEvent()
+            fetchData()
             navigate('/')
         }
 
