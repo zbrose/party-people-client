@@ -230,7 +230,12 @@ export default function CreateEvent() {
             </Form.Group>
           </Row>
 
-          <Button variant="dark lg" type="submit">
+          <Button
+            variant="outline-dark"
+            style={{ color: "rgb(255,64,132)" }}
+            size="lg"
+            type="submit"
+          >
             next
           </Button>
         </Form>
