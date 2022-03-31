@@ -4,10 +4,11 @@ import ListGroup from "react-bootstrap/ListGroup"
 import Tabs from "react-bootstrap/Tabs"
 import Tab from "react-bootstrap/Tab"
 import dayjs from "dayjs"
-import CreateEvent from "./CreateEvent"
+import CreateEvent from "./pages/CreateEvent"
 import { useState } from "react"
 import UploadImg from "./UploadImg"
 import axios from "axios"
+
 
 function ProfileEvents({userInfo}) {
 

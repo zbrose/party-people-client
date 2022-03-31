@@ -1,15 +1,13 @@
 import { Form } from 'react-bootstrap'
-import EventDetails from './pages/EventDetails';
+import "../EventDetails.css"
 
 function EditImage({ handleSubmit, setFormImg, event, setShowImgForm, showImgForm}) {
     return (  
-        <>
+        <div>
             <div>
                 <h3>Current Event Image</h3>
-                <img src={event.image ? event.image : "http://via.placeholder.com/1300x400"}  alt={event.title} />
+                <img src={event.image ? event.image : "http://via.placeholder.com/500x500"}  alt={event.title} />
             </div>
-
-            <hr></hr>
 
             <Form onSubmit={handleSubmit}>
                 <Form.Group
@@ -29,7 +27,7 @@ function EditImage({ handleSubmit, setFormImg, event, setShowImgForm, showImgFor
                     setShowImgForm(!showImgForm)
                 }}>Exit</button>
             </Form>
-        </>
+        </div>
     );
 }
 
