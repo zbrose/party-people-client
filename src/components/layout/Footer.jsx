@@ -21,22 +21,22 @@ function Footer() {
                 <h3>Triston J. Palacios</h3>
                 <Nav.Link href="https://www.linkedin.com/in/tristonpalacios/" eventKey="LinkedIn">LinkedIn</Nav.Link>
                 <Nav.Link href="https://github.com/tristonpalacios"
-                eventKey="github">Github</Nav.Link>
+                eventKey="github">GitHub</Nav.Link>
             </Nav>
             <Nav defaultActiveKey="/home" className="flex-column">
                  <h3>Bryan Nguyen</h3>
-                 <Nav.Link eventKey="link-1">LinkedIn</Nav.Link>
-                <Nav.Link eventKey="link-2">Github</Nav.Link>
+                 <Nav.Link href="https://www.linkedin.com/in/brnguy/" eventKey="LinkedIn">LinkedIn</Nav.Link>
+                <Nav.Link href="https://github.com/brnguy" eventKey="GitHub">GitHub</Nav.Link>
             </Nav>
             <Nav defaultActiveKey="/home" className="flex-column">
                 <h3>Grace Sung</h3>
-                <Nav.Link eventKey="link-1">LinkedIn</Nav.Link>
-                <Nav.Link eventKey="link-2">Github</Nav.Link>
+                <Nav.Link href="https://www.linkedin.com/in/chanhee-grace-sung/" eventKey="LinkedIn">LinkedIn</Nav.Link>
+                <Nav.Link href="https://github.com/kokopuffz" eventKey="GitHub">GitHub</Nav.Link>
             </Nav>
             <Nav defaultActiveKey="/home" className="flex-column">
                 <h3>Zach Brose</h3>
-                <Nav.Link eventKey="link-1">LinkedIn</Nav.Link>
-                <Nav.Link eventKey="link-2">Github</Nav.Link>
+                <Nav.Link href="https://www.linkedin.com/in/zach-brose-668a9891/" eventKey="LinkedIn">LinkedIn</Nav.Link>
+                <Nav.Link href="https://github.com/zbrose" eventKey="GitHub">GitHub</Nav.Link>
             </Nav>
             
         </div>
