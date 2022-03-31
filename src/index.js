@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
