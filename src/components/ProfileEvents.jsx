@@ -23,13 +23,13 @@ function ProfileEvents({userInfo}) {
 
               <Card.Title style={{fontSize:'25px'}}>{event.title}</Card.Title>
               <Card.Text>{event.category} </Card.Text>
-              <Card.Text>{event.description} </Card.Text>
+              {/* <Card.Text>{event.description} </Card.Text> */}
 
               <ListGroup variant="flush">
 
                 <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
                 <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
-                <ListGroup.Item>Attendees Count: {event.attendees ? event.attendees.length : 'no attendees'} </ListGroup.Item>
+                <ListGroup.Item>Attendees: {event.attendees ? event.attendees.length : 'no attendees'} </ListGroup.Item>
 
               </ListGroup>
 
@@ -56,13 +56,13 @@ function ProfileEvents({userInfo}) {
 
             <Card.Title style={{ fontSize: "25px" }}>{event.title} </Card.Title>
             <Card.Text>{event.category} </Card.Text>
-            <Card.Text>{event.description} </Card.Text>
+            {/* <Card.Text>{event.description} </Card.Text> */}
 
             <ListGroup variant="flush">
 
               <ListGroup.Item>{event.city}, {event.state} {event.zipcode} </ListGroup.Item>
               <ListGroup.Item> {dayjs(event.date).format("MMMM D, YYYY")} </ListGroup.Item>
-              <ListGroup.Item>  Attendees Count: {event.attendees? event.attendees.length : "no attendees"}</ListGroup.Item>
+              <ListGroup.Item>  Attendees: {event.attendees? event.attendees.length : "no attendees"}</ListGroup.Item>
 
             </ListGroup>
 
