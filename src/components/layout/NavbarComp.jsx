@@ -17,7 +17,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
         <Navbar.Brand href="/">
         <img
           alt="party people artwork gif"
-          src="images/Untitled_Artwork 12.gif"
+          src="images/Untitled_Artwork 14.gif"
           width="250"
           height="200"
           className="d-inline-block align-top"
@@ -47,7 +47,7 @@ export default function NavbarComp({ handleLogout, currentUser }) {
         <Navbar.Brand href="/">
         <img
           alt="party people artwork gif"
-          src="images/Untitled_Artwork 12.gif"
+          src="images/Untitled_Artwork 14.gif"
           width="250"
           height="200"
           className="d-inline-block align-top"
