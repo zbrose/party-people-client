@@ -37,17 +37,17 @@ function Events({events, filter, setFilter, currentUser}) {
 
                         <Card.Title style={{fontSize:'25px'}}>{event.title}</Card.Title>
                         <Card.Text>{event.category} </Card.Text>
-                        <Card.Text>{event.description} </Card.Text>
+                        {/* <Card.Text>{event.description} </Card.Text> */}
 
                         <ListGroup variant="flush">
 
                         <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
                         <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
-                        <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
+                        <ListGroup.Item>Attendees: {event.attendees.length} </ListGroup.Item>
 
                         </ListGroup>
 
-                        <Button href={currentUser ? `/events/${event._id}` : '/login' } className='btn-block text-uppercase mb-2 rounded-pill shadow-sm' variant="outline-dark">See Details</Button>
+                        <Button href={currentUser ? `/events/${event._id}` : '/login' } className='btn-block text-uppercase mb-2 rounded-pill shadow-sm' variant="outline-dark">{currentUser ? 'See Details' : 'Log In to see details'}</Button>
 
                     </Card.Body>
                         
@@ -68,6 +68,7 @@ function Events({events, filter, setFilter, currentUser}) {
                 <Tab eventKey="Party" title="Party" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
                 <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
                 <Tab eventKey="Concert" title="Concert" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
+                <Tab eventKey="Comedy" title="Comedy" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
                 <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab tab-style'>{eventsList}</div></Tab>
                 <Tab eventKey="Other" title="Other" ><div className='flex-box tab-style'>{eventsList}</div></Tab>
 

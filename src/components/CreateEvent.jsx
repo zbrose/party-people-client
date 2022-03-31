@@ -4,6 +4,7 @@ import UploadImg from "./UploadImg"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Card } from "react-bootstrap"
 
 
 export default function CreateEvent() {
@@ -44,7 +45,7 @@ export default function CreateEvent() {
     }
 
     return (
-      <Form className="BebasNeue" onSubmit={handleSubmit}>
+      <Form className="BebasNeue createFormCard container-fluid" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGridTitle">
           <Form.Label>title:</Form.Label>
           <Form.Control
@@ -245,5 +246,6 @@ export default function CreateEvent() {
           next
         </Button>
       </Form>
+      
     )
   }

@@ -146,7 +146,7 @@ export default function EventDetails({ currentUser }) {
                 <HypeMeter details={details}/>
             </>
         )
-        ) : null}
+        ) : null }
     </>
   );
 }
