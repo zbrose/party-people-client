@@ -8,14 +8,24 @@
   --blue-theme: rgb(8,60,148);
 }
 
-#uncontrolled-lab-example-tabpane-Hosting{
+.createCardTitle{
+  color: var(--pink-theme);
+}
+#root{
   background-color: whitesmoke;
+}
+
+#uncontrolled-lab-example-tabpane-Hosting{
+  background-color: rgb(255, 64, 132);
 }
 
 .App {
   text-align: center;
   background-color: whitesmoke;
   min-height: 100vh;
+  background-image: url(./Background.png);
+  background-size: cover;
+
 }
 
 .App-logo {
@@ -201,7 +211,8 @@
   width: 50%;
  border: 1px white solid;
  border-radius: 2.5%;
- background-color: white;
+ background-color: black;
+ color: white;
  text-align: center;
 align-items: center;
  justify-content: center;
