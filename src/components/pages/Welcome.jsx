@@ -8,7 +8,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
   return (
     <>
 
-      <Carousel className='shadow BebasNeue' style={{maxWidth: "2000px",margin: "0 auto"}}>
+      <Carousel className='shadow BebasNeue' style={{maxWidth: "2000px",margin: "0 auto", borderTop: '1px solid rgb(13,102,250)',borderBottom: '1px solid rgb(13,102,250)'}}>
 
         <Carousel.Item interval={5000}>
           <img
@@ -24,7 +24,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="images/gaming.jpg"
+            src="images/controller.jpg"
             alt="Second slide"
           />
           <Carousel.Caption>
@@ -35,7 +35,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src="images/playingCards.jpg"
+            src="images/djplayer.jpg"
             alt="Third slide"
           />
           <Carousel.Caption>

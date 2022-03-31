@@ -23,7 +23,6 @@
   text-align: center;
   background-color: black;
   min-height: 100vh;
-  background-image: url(./BloomBackground.png);
   background-image: url(./Neon.png);
   /* background-image: url(./Background.png); */
   background-size: cover;
@@ -98,9 +97,13 @@
 
 }
 
-.white-font{
+.light-blue{
+  color: var(--lihtblue-theme);
+}
+.white{
   color: white;
 }
+
 
 .navbar{
   font-size: 2em;
@@ -113,6 +116,7 @@
   margin-right: 10px;
 }
 
+
 .footer{
   display: flex;
   justify-content: space-evenly;
@@ -121,7 +125,7 @@
   color: whitesmoke;
   padding: 2em;
   border-top: 1px solid var(--lihtblue-theme);
-
+  
 }
 
 .create-event-button{
@@ -142,14 +146,16 @@
   justify-content: center;
   font-family: 'Bebas Neue', cursive;
   font-size: 30px;
-  ;
+  border-bottom: none;
+
 }
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   color: black;
   background-color: var(--pink-theme);
-
-  /* border-color: #dee2e6 #dee2e6 #fff; */
+  border-radius: 5px;
+  border-color: black;
 }
+
 .nav-tabs .nav-link {
   margin-bottom: -1px;
   background: 0 0;
@@ -163,7 +169,7 @@
   padding: 0.5rem 1rem;
   color: var(--pink-theme);
   text-decoration: none;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out; */
 }
 
 .flex-box{
@@ -178,15 +184,15 @@
 
 .cardContainer{
   margin: 20px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.285);
+  box-shadow: 5px 5px 10px var(--lihtblue-theme);
   background-color: white;
 }
 
-.cardContainer:hover{
+/* .cardContainer:hover{
   transition: 0.3s;
   box-shadow: 10px 10px 20px rgba(44, 205, 0, 0.285);
   
-}
+} */
 
 .marker-button {
  background: none;
@@ -204,6 +210,7 @@
 .backgroundMap{
   text-align: center;
   background-image: url('https://cdn.edu.buncee.com/assets/c5ac54ab92fef995bb5db1368060519b/animation-birthday-102320-2.gif?timestamp=1603468819');
+
   padding: 50px;
   min-height: 100vh;
 }
@@ -253,13 +260,13 @@ align-items: center;
  margin-top: 50px;
  padding-top: 20px;
 }
-.createBack{
+/* .createBack{
   height: 100vh;
   width: 100vw;
   background-image: url('https://media0.giphy.com/media/FyoaJE2iah7WYeyxWr/200.gif');
   background-size: cover;
   
-}
+} */
 
 .noBack{
   background:none;
