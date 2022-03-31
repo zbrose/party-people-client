@@ -14,7 +14,16 @@ export default function NavbarComp({ handleLogout, currentUser }) {
       <Navbar className='BebasNeue navbar' >
         <Container>
 
-          <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand>
+        <Navbar.Brand href="/">
+        <img
+          alt="party people artwork gif"
+          src="images/Untitled_Artwork 9.gif"
+          width="250"
+          height="200"
+          className="d-inline-block align-top"
+        />
+      </Navbar.Brand>
+          {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
 
             <Nav className="me-auto">
               <Nav.Link style={{color: 'white'}} href="/">Home</Nav.Link>
