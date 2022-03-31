@@ -78,18 +78,16 @@ export default function HypeMeter({ details }) {
 displayHype()
 
   return (
-    <>
+    <div id="hype">
       {/* <h1>{details.hype}</h1> */}
-      <br></br>
-      <button onClick={hypeThis}>HYPE THIS EVENT</button>
 
       {/* <div className="app">
       <button onClick={incrementCount}>Click Here</button>
       {count}
     </div> */}
-      <h1>{numCount}</h1>
-
+      {numCount}
       {meter}
-    </>
+    <button onClick={hypeThis}>HYPE THIS EVENT</button>
+    </div>
   );
 }

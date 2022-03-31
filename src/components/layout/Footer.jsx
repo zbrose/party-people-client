@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 function Footer() {
     return ( 
         <>
-        <div className='footer BebasNeue'>
+        <div className='footer BebasNeue' id="footer">
     
             <div>
                 <h2>The Party People App</h2>
