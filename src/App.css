@@ -113,6 +113,7 @@
   font-size: 2em;
   background-color: black;
   padding: 0;
+  border-bottom: 1px solid var(--blue-theme);
 }
 
 .attendeePic{
