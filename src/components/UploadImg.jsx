@@ -7,7 +7,6 @@ export default function UploadImg({
   setFormImg, imgForm,
   setImgForm,
 }) {
-  // const [formImg, setFormImg] = useState("")
 
   const [msg, setMsg] = useState("")
 
