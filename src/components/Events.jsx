@@ -62,16 +62,16 @@ function Events({events, filter, setFilter, currentUser}) {
 
     return (
         <>
-            <h3 className='flex-box'>Filter Parties By: </h3>
+         
             <Tabs id="uncontrolled-tab-example" className="mb-3 flex-tab" activeKey={key} onSelect={(f)=>filterEvents(f)}>
 
-                <Tab eventKey="All" title="All"><div className='flex-box tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
-                <Tab eventKey="Party" title="Party" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
-                <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
-                <Tab eventKey="Concert" title="Concert" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
-                <Tab eventKey="Comedy" title="Comedy" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
-                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
-                <Tab eventKey="Other" title="Other" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="All" title="All"><div className='flex-box tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="Party" title="Party" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="Gaming" title="Gaming" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="Concert" title="Concert" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="Comedy" title="Comedy" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="Study" title="Study" ><div className='flex-box study-tab tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
+                <Tab eventKey="Other" title="Other" ><div className='flex-box tab-style'>{!eventsList[0] ? <h3 className='white'>No Events Listed In This Category</h3> : eventsList}</div></Tab>
 
             </Tabs>
         </>
