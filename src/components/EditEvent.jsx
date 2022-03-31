@@ -12,7 +12,9 @@ function EditEvent({
     <div className="">
     <Form className='createFormCard BebasNeue col-md-6 mx-auto row no-gutter d-flex  ' onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formGridTitle">
+      <h1>Edit Event</h1>
         <Form.Label>title:</Form.Label>
+        
         <Form.Control
           type="text"
           value={eventForm.title}

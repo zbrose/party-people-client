@@ -198,12 +198,14 @@ align-items: center;
  margin: auto;
  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.285);
  margin-top: 50px;
+ padding-top: 20px;
 }
 .createBack{
   height: 100vh;
   width: 100vw;
   background-image: url('https://media0.giphy.com/media/FyoaJE2iah7WYeyxWr/200.gif');
   background-size: cover;
+  
 }
 
 .noBack{
