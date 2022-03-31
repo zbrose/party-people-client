@@ -19,6 +19,7 @@ import axios from "axios"
 import Map from "./components/pages/Map"
 import CreateEvent from "./components/pages/CreateEvent"
 import Footer from "./components/layout/Footer"
+import About from "./components/pages/About"
 
 
 function App() {
@@ -123,9 +124,11 @@ function App() {
             />
             ) : (
               <Navigate to="/login" />
-            )
-            }
-           />
+            )} />
+          <Route
+           path='/about'
+           element={<About />}
+          />
          </Routes>
        </div>
        <Footer />
