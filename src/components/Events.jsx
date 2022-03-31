@@ -37,13 +37,13 @@ function Events({events, filter, setFilter, currentUser}) {
 
                         <Card.Title style={{fontSize:'25px'}}>{event.title}</Card.Title>
                         <Card.Text>{event.category} </Card.Text>
-                        <Card.Text>{event.description} </Card.Text>
+                        {/* <Card.Text>{event.description} </Card.Text> */}
 
                         <ListGroup variant="flush">
 
                         <ListGroup.Item>{event.city}, {event.state} {event.zipcode}</ListGroup.Item>
                         <ListGroup.Item>{dayjs(event.date).format('MMMM D, YYYY')}</ListGroup.Item>
-                        <ListGroup.Item>Attendees Count: {event.attendees.length} </ListGroup.Item>
+                        <ListGroup.Item>Attendees: {event.attendees.length} </ListGroup.Item>
 
                         </ListGroup>
 
