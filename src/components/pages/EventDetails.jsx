@@ -6,7 +6,7 @@ import Map from "./Map";
 import EditEvent from "../EditEvent";
 import HypeMeter from "./HypeMeter";
 import EditImage from "../EditImage";
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
 const dayjs = require("dayjs");
 
@@ -88,6 +88,11 @@ export default function EventDetails({ currentUser }) {
         )
     })) : <h3>There are no attendees</h3>}
 
+    const deleteEvent = async () => {
+        await axios.delete(
+            `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${id}`
+        )
+    }
 
   useEffect(refreshEvent, []);
 
@@ -134,7 +139,10 @@ export default function EventDetails({ currentUser }) {
                 <button onClick={showTheMap}>Show me the Map</button>
                     {showMap ? <Map details={details} showForm={showForm} /> : ""}
 
-                {currentUser.id === details.host._id ? <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> : null}
+                {currentUser.id === details.host._id ?
+                <> 
+                    <button onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button onClick={deleteEvent}><Link to='/'>Delete Event</Link></button>
+                </> : null}
                 <HypeMeter details={details}/>
             </>
         )
