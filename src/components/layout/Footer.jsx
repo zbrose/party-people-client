@@ -18,9 +18,9 @@ function Footer() {
                 <h3 style={{width: '8rem', margin: '5px'}}>Meet The Developers: </h3>
             
             <Nav defaultActiveKey="/home" className="flex-column">
-                <h3>Triston Palacios</h3>
-                <Nav.Link eventKey="link-1">LinkedIn</Nav.Link>
-                <Nav.Link eventKey="link-2">Github</Nav.Link>
+                <h3>Triston J. Palacios</h3>
+                <Nav.Link eventKey="https://www.linkedin.com/in/tristonpalacios/">LinkedIn</Nav.Link>
+                <Nav.Link eventKey="https://github.com/tristonpalacios">Github</Nav.Link>
             </Nav>
             <Nav defaultActiveKey="/home" className="flex-column">
                  <h3>Bryan Nguyen</h3>
