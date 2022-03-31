@@ -1,18 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lilita+One&display=swap');
 
 
+:root{
+  background-color: black;
+  --pink-theme: rgb(255,64,132);
+  --lihtblue-theme: rgb(13,102,250);
+  --blue-theme: rgb(8,60,148);
+}
+
+.createCardTitle{
+  color: var(--pink-theme);
+}
 #root{
-  background-color: whitesmoke;
+  background-color: black;
 }
 
 #uncontrolled-lab-example-tabpane-Hosting{
-  background-color: whitesmoke;
+  background-color: rgb(255, 64, 132);
 }
 
 .App {
   text-align: center;
-  background-color: whitesmoke;
+  background-color: black;
   min-height: 100vh;
+  background-image: url(./Background.png);
+  background-size: cover;
+
 }
 
 .App-logo {
@@ -81,13 +94,17 @@
  
   height: 2%;
 
-  
+}
+
+.white-font{
+  color: white;
 }
 
 .navbar{
   font-size: 2em;
+  background-color: black;
+  padding: 0;
 }
-
 
 
 .footer{
@@ -103,7 +120,13 @@
 .create-event-button{
   margin: 10px;
   font-size: 25px;
+  background-color: black;
+  
 }
+.pink-font{
+  color: var(--pink-theme);
+}
+
 
 .flex-tab{
   max-width: 1500px;
@@ -191,7 +214,8 @@
   width: 50%;
  border: 1px white solid;
  border-radius: 2.5%;
- background-color: white;
+ background-color: black;
+ color: white;
  text-align: center;
 align-items: center;
  justify-content: center;
@@ -209,5 +233,5 @@ align-items: center;
 }
 
 .noBack{
-  background-color: whitesmoke;
+  background:none;
 }

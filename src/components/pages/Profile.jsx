@@ -8,11 +8,11 @@ import ProfileEvents from "../ProfileEvents"
 
 export default function Profile({
   currentUser,
-  filter,
-  setFilter,
+  // filter,
+  // setFilter,
   events,
-  setEvents,
-  handleUploadImg,
+  // setEvents,
+  // handleUploadImg,
 }) {
   // const [formData, setFormData] = useState({})
   const [displayImg, setDisplayImg] = useState("")
@@ -139,7 +139,12 @@ setImgForm(true)
               setFormImg={setFormImg}
             />
           ) : (
-            <Button variant="outline-primary" size="sm" onClick={() => setImgForm(true)}>
+            <Button
+              variant="outline-dark"
+              style={{ color: "rgb(255,64,132)" }}
+              size="sm"
+              onClick={() => setImgForm(true)}
+            >
               {imgForm ? "add pic" : "change pic"}
             </Button>
           )}

@@ -8,26 +8,30 @@ import Button from 'react-bootstrap/Button'
  
 export default function NavbarComp({ handleLogout, currentUser }) {
   // if the user is logged in
-console.log(currentUser)
+  console.log(currentUser)
   const loggedIn = (
     <>
-
-      <Navbar className='BebasNeue navbar' bg="light" variant="light">
+      <Navbar className='BebasNeue navbar' >
         <Container>
 
-          <Navbar.Brand style={{fontSize:'4rem'}} href="/">Party People</Navbar.Brand>
-
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/profile">Profile</Nav.Link>
-              <Nav.Link href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
-            </Nav>
-  
+        <Navbar.Brand href="/">
+        <img
+          alt="party people artwork gif"
+          src="images/Untitled_Artwork 9.gif"
+          width="250"
+          height="200"
+          className="d-inline-block align-top"
+        />
+      </Navbar.Brand>
+          {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
+              <Nav.Link className='pink-font' href="/">Home</Nav.Link>
+              <Nav.Link className='pink-font' href="/profile">Profile</Nav.Link>
+              <Nav.Link className='pink-font' href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
             {currentUser ? 
-            <Navbar.Collapse className="justify-content-end">
-              <Button href="/events/new" className='create-event-button' variant="outline-dark">Create Event</Button>
-              <Navbar.Text>
-                Welcome Back, <a href="/profile">{currentUser.name}!</a>
+            <Navbar.Collapse className="justify-content-end pink-font">
+              <Button href="/events/new" className='create-event-button pink-font' >Create Event</Button>
+              <Navbar.Text style={{color: 'rgb(13,102,250)'}}  >
+                Welcome Back, <a style={{color: 'rgb(13,102,250)'}} href="/profile">{currentUser.name}!</a>
               </Navbar.Text>
             </Navbar.Collapse> : 'no user found'}
 
@@ -38,14 +42,26 @@ console.log(currentUser)
 
   const loggedOut = (
     <>
-      <Navbar className='BebasNeue navbar' bg="light" variant="light">
+      <Navbar className='BebasNeue navbar '>
         <Container>
-          <Navbar.Brand style={{fontSize:'4rem'}} href="/">Party People</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/register">Sign-Up</Nav.Link>
-            <Nav.Link href="/login"><span onClick={handleLogout}>Log In</span></Nav.Link>
-          </Nav>
+        <Navbar.Brand href="/">
+        <img
+          alt="party people artwork gif"
+          src="images/Untitled_Artwork 9.gif"
+          width="250"
+          height="200"
+          className="d-inline-block align-top"
+        />
+      </Navbar.Brand>
+          {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
+          <div className='container'>
+            <div style={{display: 'flex'}}>
+            <Nav.Link className='pink-font' href="/">Home</Nav.Link>
+            <Nav.Link className='pink-font' href="/register">Sign-Up</Nav.Link>
+            <Nav.Link className='pink-font' href="/login"><span onClick={handleLogout}>Log In</span></Nav.Link>
+            </div>
+          </div>
+          
         </Container>
       </Navbar>   
     </>
