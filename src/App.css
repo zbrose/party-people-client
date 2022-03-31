@@ -65,7 +65,12 @@
 }
 
 
-
+.about-page{
+  max-width: 70%;
+  width: 80%;
+  margin: 0 auto;
+  /* background-color: rgba(0, 0, 0, 0.281); */
+}
 
 .login,
 .image {
