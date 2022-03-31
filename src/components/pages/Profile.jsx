@@ -99,7 +99,7 @@ setImgForm(true)
     <>
       <div className="flex-box mb-5">
         <Card
-          className="box"
+          className="box noBack"
           style={{ width: "25rem", margin: "0 auto", border: "none" }}
         >
           {!displayImg ? (
