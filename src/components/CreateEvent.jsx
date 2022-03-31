@@ -43,12 +43,13 @@ export default function CreateEvent() {
       // .then((response) => (response.data))
       .catch(console.log)
     }
-
+// rgb(255, 64, 132)
     return (
       <>
         <Form
           className="BebasNeue createFormCard container-fluid"
           onSubmit={handleSubmit}
+          style={{ color: "rgb(255,64,132)" }}
         >
           <h1 className="createCardTitle">Create Event</h1>
           <Form.Group className="mb-3" controlId="formGridTitle">
@@ -229,7 +230,7 @@ export default function CreateEvent() {
             </Form.Group>
           </Row>
 
-          <Button variant="primary" type="submit">
+          <Button variant="dark" type="submit">
             next
           </Button>
         </Form>
