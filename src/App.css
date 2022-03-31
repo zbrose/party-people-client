@@ -93,6 +93,7 @@
 .navbar{
   font-size: 2em;
   background-color: black;
+  padding: 0;
 }
 
 
@@ -109,6 +110,9 @@
 .create-event-button{
   margin: 10px;
   font-size: 25px;
+}
+.pink-font{
+  color: var(--pink-theme);
 }
 
 .flex-tab{
