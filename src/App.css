@@ -2,7 +2,7 @@
 
 
 :root{
-  background-color: whitesmoke;
+  background-color: black;
   --pink-theme: rgb(255,64,132);
   --lihtblue-theme: rgb(13,102,250);
   --blue-theme: rgb(8,60,148);
@@ -12,7 +12,7 @@
   color: var(--pink-theme);
 }
 #root{
-  background-color: whitesmoke;
+  background-color: black;
 }
 
 #uncontrolled-lab-example-tabpane-Hosting{
@@ -21,7 +21,7 @@
 
 .App {
   text-align: center;
-  background-color: whitesmoke;
+  background-color: black;
   min-height: 100vh;
   background-image: url(./Background.png);
   background-size: cover;
@@ -233,5 +233,5 @@ align-items: center;
 }
 
 .noBack{
-  background-color: whitesmoke;
+  background:none;
 }
