@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button'
  
 export default function NavbarComp({ handleLogout, currentUser }) {
   // if the user is logged in
-
+console.log(currentUser)
   const loggedIn = (
     <>
 

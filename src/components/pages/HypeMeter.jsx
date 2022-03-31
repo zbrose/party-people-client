@@ -22,9 +22,8 @@ export default function HypeMeter({ details }) {
       `${process.env.REACT_APP_SERVER_URL}/api-v1/events/${eventId}/hype`
     );
 
-    setNumCount(numCount + 1);
-    // numCount++
-    console.log(numCount);
+        setNumCount(numCount+1)
+        // numCount++
 
     // setNewHype(newDetails.hype)
   }
@@ -75,10 +74,9 @@ export default function HypeMeter({ details }) {
         </h1>
       );
     }
-  };
-  displayHype();
-  console.log(numCount);
-  console.log(meter);
+}
+displayHype()
+
   return (
     <>
       {/* <h1>{details.hype}</h1> */}
