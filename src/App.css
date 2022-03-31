@@ -64,7 +64,6 @@
   }
 }
 
-
 .about-page{
   max-width: 70%;
   width: 80%;
@@ -119,6 +118,10 @@
 .attendeePic{
   max-width: 30px;
   margin-right: 10px;
+}
+
+.attendeePic:hover{
+  max-width: 100px;
 }
 
 
@@ -293,7 +296,7 @@ align-items: center;
   size: cover;
   max-width: 500px;
   max-height: 500px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #tabs {
@@ -347,11 +350,7 @@ align-items: center;
   margin-top: 30px;
 }
 
-#attendBtn:hover {
-  background-color: var(--pink-theme);
-}
-
-#unAttendBtn:hover {
+#unAttendBtn:hover, #hypeThisEvent:hover, #attendBtn:hover, #editBtn:hover, #deleteBtn:hover{
   background-color: var(--pink-theme);
 }
 
@@ -374,4 +373,16 @@ align-items: center;
 
 #editBtn{
   margin-right: 20px;
+}
+
+#eventTitle:hover, #eventAddress:hover, #eventTime:hover {
+  color: var(--pink-theme)
+}
+
+#eventDate:hover, #eventCity:hover {
+  color: var(--lihtblue-theme)
+}
+
+#image:hover, #map:hover {
+  border: var(--lihtblue-theme) solid 5px;
 }
