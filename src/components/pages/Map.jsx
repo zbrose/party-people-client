@@ -47,17 +47,19 @@ export default function Map({ details }) {
   }, [])
 
   return (
-    <div className="row no-gutter shadow">
+    <div className="row no-gutter">
       {latitude ? (
-        <div>
+    
           <ReactMapGl
+
             {...viewport}
             mapboxAccessToken={
               "pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ"
             }
             onMove={(evt) => setViewPort(evt.viewState)}
-            style={{ width: 500, height: 400 }}
+            style={{ width: 600, height: 400 }}
             mapStyle="mapbox://styles/mapbox/streets-v9"
+            
           >
             <GeolocateControl
               style={geolocateStyle}
@@ -75,7 +77,7 @@ export default function Map({ details }) {
               </div>
             </Marker>
           </ReactMapGl>
-        </div>
+
       ) : (
         "Address not found"
       )}

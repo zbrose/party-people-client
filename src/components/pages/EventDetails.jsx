@@ -136,7 +136,7 @@ export default function EventDetails({ currentUser, fetchData }) {
                     <div id="content">
                         <div id="left">
                             <div id="eventImage">
-                                <img
+                                <img className="blue-shadow "
                                     src={details.image ? details.image : "http://via.placeholder.com/1300x400"}
                                     alt={`${details.title}`}
                                     id="image"
@@ -165,7 +165,7 @@ export default function EventDetails({ currentUser, fetchData }) {
                                     <h1 id="eventTitle" className="white BebasNeue">{details.title}</h1>
                                     <h3 id="eventDate" className="white BebasNeue">{date}</h3>
                                     <h4 id="eventTime" className="white BebasNeue">
-                                    Starts At: {details.time} 
+                                    Starts At: {timeDisplay(details.time)} 
                                     </h4>
                                     <h3 id="eventAddress" className="white BebasNeue">{details.address}</h3>
                                     <h3 id="eventCity" className="white BebasNeue">
@@ -183,7 +183,7 @@ export default function EventDetails({ currentUser, fetchData }) {
                                 </div>
                             </div>
 
-                            <div id="map">
+                            <div>
                                <Map details={details} showForm={showForm} />
                             </div>
 

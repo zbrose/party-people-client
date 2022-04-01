@@ -1,6 +1,6 @@
 function About() {
     return (
-      <div className="white about-page mt-3">
+      <div className="white about-page pt-3">
         <h1 className="BebasNeue mt-3" style={{ fontSize: "7em" }}>
           the party people app
         </h1>
@@ -105,7 +105,7 @@ function About() {
             </a>
           </div>
         </div>
-        <div className="BebasNeue mt-5 mb-5">
+        <div className="BebasNeue pt-5 pb-5">
           <h1 className="mb-3">Patron Saint</h1>
           <h3 className="mb-3">Tom Bombadil</h3>
           <img

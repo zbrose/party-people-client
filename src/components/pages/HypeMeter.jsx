@@ -3,9 +3,6 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 
 
-
-// 8551a4986ecf350c6629756a7e5b909b
-
 export default function HypeMeter({ details }) {
   const eventId = details._id
   // setHype(details.hype)
@@ -70,7 +67,7 @@ export default function HypeMeter({ details }) {
     <div id="hype">
       <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "ITS OUTTA CONTROL" : numCount}</h3>
       {meter}
-    <button id="hypeThisEvent" className="BebasNeue" onClick={hypeThis}>HYPE THIS EVENT</button>
+    <button id="hypeThisEvent" className="BebasNeue create-event-button " onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
   )
 }
