@@ -24,8 +24,9 @@ export default function NavbarComp({ handleLogout, currentUser }) {
         />
       </Navbar.Brand>
           {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
-              <Nav.Link className='pink-font' href="/">Home</Nav.Link>
+              <Nav.Link className='pink-font' href="/">Events</Nav.Link>
               <Nav.Link className='pink-font' href="/profile">Profile</Nav.Link>
+              <Nav.Link className='pink-font' href="/about">About The App</Nav.Link>
               <Nav.Link className='pink-font' href="/"><span onClick={handleLogout}>Log Out</span></Nav.Link>
             {currentUser ? 
             <Navbar.Collapse className="justify-content-end pink-font">
@@ -55,8 +56,9 @@ export default function NavbarComp({ handleLogout, currentUser }) {
           {/* <Navbar.Brand style={{fontSize:'4rem', color: 'white'}} href="/">Party People</Navbar.Brand> */}
           <div className='container'>
             <div style={{display: 'flex'}}>
-            <Nav.Link className='pink-font' href="/">Home</Nav.Link>
+            <Nav.Link className='pink-font' href="/">Events</Nav.Link>
             <Nav.Link className='pink-font' href="/register">Sign-Up</Nav.Link>
+            <Nav.Link className='pink-font' href="/about">About The App</Nav.Link>
             <Nav.Link className='pink-font' href="/login"><span onClick={handleLogout}>Log In</span></Nav.Link>
             </div>
           </div>

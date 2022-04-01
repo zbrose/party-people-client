@@ -19,6 +19,7 @@ import axios from "axios"
 import Map from "./components/pages/Map"
 import CreateEvent from "./components/pages/CreateEvent"
 import Footer from "./components/layout/Footer"
+import About from "./components/pages/About"
 
 function App() {
   // state wi the user data when the user is logged in
@@ -107,27 +108,33 @@ function App() {
 
           <Route path="/events/new" element={<CreateEvent />} />
 
+           <Route 
+          path='/events/new'
+          element={<CreateEvent />} />
+          
+           <Route
+             path="/profile"
+             element={
+               currentUser ? (
+                 <Profile
+                   events={events}
+                   setEvents={setEvents}
+                   currentUser={currentUser}
+                   filter={filter}
+                   setFilter={setFilter}
+            />
+            ) : (
+              <Navigate to="/login" />
+            )} />
           <Route
-            path="/profile"
-            element={
-              currentUser ? (
-                <Profile
-                  events={events}
-                  setEvents={setEvents}
-                  currentUser={currentUser}
-                  filter={filter}
-                  setFilter={setFilter}
-                />
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
+           path='/about'
+           element={<About />}
           />
-        </Routes>
-      </div>
-      <Footer />
-    </Router>
-  )
+         </Routes>
+       </div>
+       <Footer />
+     </Router>
+   )
 }
 
 export default App

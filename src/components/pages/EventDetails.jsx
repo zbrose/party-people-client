@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import axios from "axios"
-import { Tab, Tabs } from "react-bootstrap"
-import Map from "./Map"
-import EditEvent from "../EditEvent"
-import HypeMeter from "./HypeMeter"
-import EditImage from "../EditImage"
-import { Navigate, useNavigate } from "react-router-dom"
-import "../../EventDetails.css"
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { Tab, Tabs } from "react-bootstrap";
+import Map from "./Map";
+import EditEvent from "../EditEvent";
+import HypeMeter from "./HypeMeter";
+import EditImage from "../EditImage";
+import { Navigate, useNavigate } from 'react-router-dom'
+import "../../App.css"
 
 const dayjs = require("dayjs")
 const utc = require("dayjs/plugin/utc")
@@ -90,8 +90,9 @@ export default function EventDetails({ currentUser, fetchData }) {
   {
     details.attendees ? (
       (attendeesList = details.attendees.map((attendee, i) => {
-        return <p>{attendee.name}</p>
-      }))
+        return (
+        <p id={`attendee-${i}`} className="white"><img class="attendeePic" src={attendee.image} />{attendee.name}</p>
+      )}))
     ) : (
       <h3>There are no attendees</h3>
     )
@@ -125,122 +126,76 @@ export default function EventDetails({ currentUser, fetchData }) {
 
   useEffect(refreshEvent, [])
 
-  return (
-    <>
-      {currentUser && details.host ? (
-        showForm ? (
-          <EditEvent
-            event={details}
-            setShowForm={setShowForm}
-            showForm={showForm}
-            eventForm={eventForm}
-            setEventForm={setEventForm}
-            handleSubmit={handleSubmit}
-          />
-        ) : showImgForm ? (
-          <EditImage
-            handleSubmit={editEventImg}
-            setFormImg={setFormImg}
-            event={details}
-            setShowImgForm={setShowImgForm}
-            showImgForm={showImgForm}
-          />
-        ) : (
-          <div id="eventDetails">
-            <div id="content">
-              <div id="left">
-                <div id="eventImage">
-                  <img
-                    src={
-                      details.image
-                        ? details.image
-                        : "http://via.placeholder.com/1300x400"
-                    }
-                    alt={`${details.title}`}
-                    id="image"
-                  />
-                  <button
-                    id="editImgBtn"
-                    onClick={() => {
-                      setShowImgForm(!showImgForm)
-                    }}
-                  >
-                    Edit Image
-                  </button>
+    return (
+        <>
+        {currentUser && details.host? 
+            (showForm ? <EditEvent event={details} setShowForm={setShowForm} showForm={showForm} eventForm={eventForm} setEventForm={setEventForm} handleSubmit={handleSubmit}/> : showImgForm ? <EditImage handleSubmit={editEventImg} setFormImg={setFormImg} event={details} setShowImgForm={setShowImgForm} showImgForm={showImgForm}/> :
+                (
+                <div id="eventDetails">
+                    <div id="content">
+                        <div id="left">
+                            <div id="eventImage">
+                                <img
+                                    src={details.image ? details.image : "http://via.placeholder.com/1300x400"}
+                                    alt={`${details.title}`}
+                                    id="image"
+                                />
+                                <button id="editImgBtn" onClick={() => {setShowImgForm(!showImgForm)}}>Edit Image</button>
+                            </div>
+
+                            <div id="tabs">
+                                <Tabs defaultActiveKey="description" id="tabs" className="mb-3 flex-tab">
+                                    <Tab eventKey="description" title="Description" className="flex-box tab-style detailsTab">
+                                        <p className="white">Hosted By: {host} </p>
+                                        <p className="white">Type of Event: {details.category}</p>
+                                        <p className="white">Description: {details.description}</p>
+                                    </Tab>
+
+                                    <Tab eventKey="attendees" title={`Attendees`} className="flex-box tab-style detailsTab">
+                                        {attendeesList}
+                                    </Tab>
+                                </Tabs>
+                            </div>
+                        </div>
+
+                        <div id="right">
+                            <div id="detailsHype">
+                                <div id="details">
+                                    <h1 id="eventTitle" className="white BebasNeue">{details.title}</h1>
+                                    <h3 id="eventDate" className="white BebasNeue">{date}</h3>
+                                    <h4 id="eventTime" className="white BebasNeue">
+                                    Starts At: {details.time} 
+                                    </h4>
+                                    <h3 id="eventAddress" className="white BebasNeue">{details.address}</h3>
+                                    <h3 id="eventCity" className="white BebasNeue">
+                                    {details.city}, {details.state} {details.zipcode}
+                                    </h3>
+                                    <h2>
+                                    <button id={attendeesListId.includes(currentUser.id) ? "unAttendBtn" : "attendBtn"} className="BebasNeue" onClick={currentUser ? handleClick : <Navigate to='/login'/>}>
+                                    {attendeesListId.includes(currentUser.id) ? "Unattend" : "Attend"}
+                                    </button>
+                                    </h2>
+                                </div>
+
+                                <div id="hypeMeter">
+                                    <HypeMeter details={details}/>
+                                </div>
+                            </div>
+
+                            <div id="map">
+                               <Map details={details} showForm={showForm} />
+                            </div>
+
+                            <div id="editEvent">
+                                {currentUser.id === details.host._id ?
+                                <> 
+                                    <button className="BebasNeue" id="editBtn" onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button id="deleteBtn" className="BebasNeue" onClick={deleteEvent}>Delete Event</button>
+                                </> : null}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="tabs">
-                  <Tabs
-                    defaultActiveKey="description"
-                    id="tabs"
-                    className="right"
-                  >
-                    <Tab eventKey="description" title="Description">
-                      <p>Hosted By: {host} </p>
-                      <p>Type: {details.category}</p>
-                      <p>Description: {details.description}</p>
-                    </Tab>
-
-                    <Tab eventKey="attendees" title={`Attendees`}>
-                      {attendeesList}
-                    </Tab>
-                  </Tabs>
-                </div>
-              </div>
-
-              <div id="right">
-                <div id="detailsHype">
-                  <div id="details">
-                    <h1>{details.title}</h1>
-                    <p>{date}</p>
-                    {/* <p>{details.time} </p> */}
-                    <p>{timeDisplay(details.time)} </p>
-                    <button
-                      onClick={
-                        currentUser ? handleClick : <Navigate to="/login" />
-                      }
-                    >
-                      {attendeesListId.includes(currentUser.id)
-                        ? "Unattend"
-                        : "Attend"}
-                    </button>
-                    <p>{details.address}</p>
-                    <p>
-                      {details.city}, {details.state} {details.zipcode}
-                    </p>
-                  </div>
-
-                  <div id="hypeMeter">
-                    <HypeMeter details={details} />
-                  </div>
-                </div>
-
-                <div id="map">
-                  <button onClick={showTheMap}>Show me the Map</button>
-                  {showMap ? (
-                    <Map details={details} showForm={showForm} />
-                  ) : (
-                    <Map details={details} showForm={showForm} />
-                  )}
-                </div>
-
-                <div id="editEvent">
-                  {currentUser.id === details.host._id ? (
-                    <>
-                      <button
-                        onClick={() => {
-                          setShowForm(!showForm)
-                        }}
-                      >
-                        Edit Event
-                      </button>{" "}
-                      <button onClick={deleteEvent}>Delete Event</button>
-                    </>
-                  ) : null}
-                </div>
-              </div>
-            </div>
-          </div>
         )
       ) : null}
     </>

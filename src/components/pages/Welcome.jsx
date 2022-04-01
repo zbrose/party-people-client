@@ -8,7 +8,7 @@ export default function Welcome({events, currentUser, filter, setFilter}) {
   return (
     <>
 
-      <Carousel className='shadow BebasNeue' style={{maxWidth: "2000px",margin: "0 auto", borderTop: '0.1px solid rgb(8,60,148',borderBottom: '0.1px solid rgb(8,60,148)'}}>
+      <Carousel className='shadow BebasNeue' style={{maxWidth: "2000px",margin: "0 auto",borderBottom: '0.1px solid rgb(8,60,148)'}}>
 
         <Carousel.Item interval={5000}>
           <img
