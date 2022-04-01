@@ -323,13 +323,14 @@ align-items: center;
 
 #editImgBtn {
   position: absolute;
-  background-color: transparent;
+  background-color: var(--lihtblue-theme);
   border: none;
-  color: blue;
+  color: white;
 }
 
 #editImgBtn:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--pink-theme);
+
 }
 
 #detailsHype {
