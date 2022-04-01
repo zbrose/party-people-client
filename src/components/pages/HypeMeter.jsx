@@ -63,7 +63,7 @@ export default function HypeMeter({ details }) {
 
   return (
     <div id="hype">
-      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "ITS OUTTA CONTROL" : numCount}</h3>
+      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "It's about to blow!" : numCount}</h3>
       {meter}
     <button id="hypeThisEvent" className="BebasNeue create-event-button " onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
