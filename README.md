@@ -128,7 +128,11 @@ We agreed on one idea we were all excited about. On a miro.com, we created wired
 
 ## sources used
 - TOM BOMBADIL - https://www.youtube.com/watch?v=hhFAB-Z9Kb0
-- 
-
+- images from Unsplash.com
+- original artwork(logos, gifs, background) by Triston 
+- Starbucks/stella/
 ## post project reflections
-- 
+- learning when to put a variable in a state vs creating a variable on the front end
+- using routes to have static state
+- using ternary to delay react states
+- effective/constant communication and team collaboration was very important to all of us and it kept the project work smooth and overall a great experience
