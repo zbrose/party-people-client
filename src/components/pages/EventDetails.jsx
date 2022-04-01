@@ -147,12 +147,12 @@ export default function EventDetails({ currentUser, fetchData }) {
                             <div id="tabs">
                                 <Tabs defaultActiveKey="description" id="tabs" className="mb-3 flex-tab">
                                     <Tab eventKey="description" title="Description" className="flex-box tab-style detailsTab">
-                                        <p className="white">Hosted By: {host} </p>
-                                        <p className="white">Type of Event: {details.category}</p>
-                                        <p className="white">Description: {details.description}</p>
+                                        <p className="white font30">Hosted By: {host} </p>
+                                        <p className="white font30">Type of Event: {details.category}</p>
+                                        <p className="white font30">Description: {details.description}</p>
                                     </Tab>
 
-                                    <Tab eventKey="attendees" title={`Attendees`} className="flex-box tab-style detailsTab">
+                                    <Tab eventKey="attendees" title={`Attendees`} className="flex-box font30 tab-style detailsTab">
                                         {attendeesList}
                                     </Tab>
                                 </Tabs>
