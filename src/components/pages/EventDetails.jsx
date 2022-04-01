@@ -111,10 +111,10 @@ export default function EventDetails({ currentUser, fetchData }) {
 
   function timeDisplay(e) {
     let hours = parseInt(e.split(":")[0])
-    let minutes = parseInt(e.split(":")[1])
+    let minutes = (e.split(":")[1])
     let amPm = hours >= 12 ? "pm" : "am"
     hours = hours % 12 || 12
-    return `${hours}: ${minutes} ${amPm}`
+    return `${hours}:${minutes} ${amPm}`
   }
 
   const deleteEvent = async () => {
