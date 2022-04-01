@@ -269,6 +269,21 @@ align-items: center;
  margin-top: 50px;
  padding-top: 20px;
 }
+
+.createFormCardTwo{
+  width: 1300px;
+ border: 1px white solid;
+ border-radius: 2.5%;
+ background-color: black;
+ color: white;
+ text-align: center;
+align-items: center;
+ justify-content: center;
+ margin: auto;
+ box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.285);
+ margin-top: 50px;
+ padding-top: 20px;
+}
 /* .createBack{
   height: 100vh;
   width: 100vw;
@@ -364,7 +379,7 @@ align-items: center;
 }
 
 #hypeMeter{
-  background: var(--blue-theme)
+  background: none;
 }
 
 #editEvent{

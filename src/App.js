@@ -21,7 +21,6 @@ import CreateEvent from "./components/pages/CreateEvent"
 import Footer from "./components/layout/Footer"
 import About from "./components/pages/About"
 
-
 function App() {
   // state wi the user data when the user is logged in
   const [currentUser, setCurrentUser] = useState(null)
@@ -43,19 +42,11 @@ function App() {
     // set the user state to be null
     setCurrentUser(null)
   }
-  // make the auth headers
-  // const options = {
-  //   headers: {
-  //     'Authorization': token
-  //   }
-  // }
-  // hit the auth locked endpoint
-  // axios.get(url, options)
-  // axios.post(url, body, options) (same thing w put)
+  
   const [events, setEvents] = useState([])
   const [filter, setFilter] = useState([])
 
-  const fetchData = async() => {
+  const fetchData = async () => {
     const eventData = await axios.get(
       `${process.env.REACT_APP_SERVER_URL}/api-v1/events`
     )
@@ -65,47 +56,57 @@ function App() {
 
   useEffect(fetchData, [])
 
-   return (
-     <Router>
-       <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
-       <div className="App">
-         <Routes>
-           <Route
-             path="/"
-             element={
-               <Welcome
-                 events={events}
-                 setEvents={setEvents}
-                 currentUser={currentUser}
-                 filter={filter}
-                 setFilter={setFilter}
-               />
-             }
-           />
+  return (
+    <Router>
+      <NavbarComp handleLogout={handleLogout} currentUser={currentUser} />
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Welcome
+                events={events}
+                setEvents={setEvents}
+                currentUser={currentUser}
+                filter={filter}
+                setFilter={setFilter}
+              />
+            }
+          />
 
-           <Route
-             path="/register"
-             element={
-               <Register
-                 currentUser={currentUser}
-                 setCurrentUser={setCurrentUser}
-               />
-             }
-           />
+          <Route
+            path="/register"
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
 
-           <Route
-             path="/login"
-             element={
-               <Login
-                 currentUser={currentUser}
-                 setCurrentUser={setCurrentUser}
-               />
-             }
-           />
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
 
-           <Route 
-          path='/events/:id'
-          element={<EventDetails events={events} Map={Map} currentUser={currentUser} fetchData={fetchData} />} />
+          <Route
+            path="/events/:id"
+            element={
+              <EventDetails
+                events={events}
+                Map={Map}
+                currentUser={currentUser}
+                fetchData={fetchData}
+              />
+            }
+          />
+
+          <Route path="/events/new" element={<CreateEvent />} />
 
            <Route 
           path='/events/new'
