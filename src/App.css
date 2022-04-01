@@ -402,3 +402,7 @@ align-items: center;
 #image:hover, #map:hover {
   border: var(--lihtblue-theme) solid 5px;
 }
+
+.font30{
+  font-size: 2.5rem;
+}
