@@ -8,6 +8,7 @@ import HypeMeter from "./HypeMeter";
 import EditImage from "../EditImage";
 import { Navigate, useNavigate } from 'react-router-dom'
 import "../../App.css"
+import Button from 'react-bootstrap/Button'
 
 const dayjs = require("dayjs")
 const utc = require("dayjs/plugin/utc")
@@ -140,7 +141,7 @@ export default function EventDetails({ currentUser, fetchData }) {
                                     alt={`${details.title}`}
                                     id="image"
                                 />
-                                <button id="editImgBtn" onClick={() => {setShowImgForm(!showImgForm)}}>Edit Image</button>
+                                <Button className="BebasNeue create-event-button pink-font" id="editImgBtn" onClick={() => {setShowImgForm(!showImgForm)}}>Edit Image</Button>
                             </div>
 
                             <div id="tabs">
@@ -171,9 +172,9 @@ export default function EventDetails({ currentUser, fetchData }) {
                                     {details.city}, {details.state} {details.zipcode}
                                     </h3>
                                     <h2>
-                                    <button id={attendeesListId.includes(currentUser.id) ? "unAttendBtn" : "attendBtn"} className="BebasNeue" onClick={currentUser ? handleClick : <Navigate to='/login'/>}>
+                                    <Button id={attendeesListId.includes(currentUser.id) ? "unAttendBtn" : "attendBtn"} className="BebasNeue create-event-button pink-font" onClick={currentUser ? handleClick : <Navigate to='/login'/>}>
                                     {attendeesListId.includes(currentUser.id) ? "Unattend" : "Attend"}
-                                    </button>
+                                    </Button>
                                     </h2>
                                 </div>
 
@@ -189,7 +190,7 @@ export default function EventDetails({ currentUser, fetchData }) {
                             <div id="editEvent">
                                 {currentUser.id === details.host._id ?
                                 <> 
-                                    <button className="BebasNeue" id="editBtn" onClick={() => {setShowForm(!showForm)}}>Edit Event</button> <button id="deleteBtn" className="BebasNeue" onClick={deleteEvent}>Delete Event</button>
+                                    <Button className="BebasNeue create-event-button pink-font" id="editBtn" onClick={() => {setShowForm(!showForm)}}>Edit Event</Button> <Button id="deleteBtn" className="BebasNeue create-event-button pink-font" onClick={deleteEvent}>Delete Event</Button>
                                 </> : null}
                             </div>
                         </div>
