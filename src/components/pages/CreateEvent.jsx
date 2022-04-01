@@ -1,10 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap"
-import UploadImg from "../UploadImg"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Card } from "react-bootstrap"
+
 
 
 export default function CreateEvent() {
@@ -14,7 +13,6 @@ export default function CreateEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("HANDLESBMIT", handleSubmit)
 
      const token = localStorage.getItem("jwt")
      console.log("token", token)
@@ -31,9 +29,7 @@ export default function CreateEvent() {
       )
       .then((response) => {
         setEventForm({})
-        console.log("HANDLESUBMITRESPONSE", response)
         const eventId = response.data[1]._id
-        console.log("EVENTID", eventId)
         navigate(`/events/${eventId}`)
         //this updates events
         // return axios.get(process.env.REACT_APP_SERVER_URL + "/api-v1/events")
