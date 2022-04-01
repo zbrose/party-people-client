@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import ReactMapGl, { Marker, GeolocateControl } from "react-map-gl";
 import axios from "axios";
 
-let accessToken =
-  "pk.eyJ1IjoidHJpc3RvbnBhbGFjaW9zIiwiYSI6ImNsMWF5bXJwZTJheDIzbHYwMnMzZnZucmcifQ.dZGAzZPAmn39U28QyzwPVQ"
-
 const geolocateStyle = {
   float: "left",
   margin: "50px",

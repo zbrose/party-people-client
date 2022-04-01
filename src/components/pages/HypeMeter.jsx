@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+
 
 
 export default function HypeMeter({ details }) {
@@ -15,8 +15,6 @@ export default function HypeMeter({ details }) {
     )
     setNumCount(numCount + 1)
   }
-
-  const [count, setCount] = useState()
 
   let meter
 
