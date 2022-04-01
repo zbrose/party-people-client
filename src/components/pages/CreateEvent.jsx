@@ -4,6 +4,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+
 export default function CreateEvent() {
   const navigate = useNavigate()
   // return( <h1> create event</h1>)
@@ -11,7 +12,6 @@ export default function CreateEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("HANDLESBMIT", handleSubmit)
 
     const token = localStorage.getItem("jwt")
     console.log("token", token)
@@ -29,9 +29,7 @@ export default function CreateEvent() {
       )
       .then((response) => {
         setEventForm({})
-        console.log("HANDLESUBMITRESPONSE", response)
         const eventId = response.data[1]._id
-        console.log("EVENTID", eventId)
         navigate(`/events/${eventId}`)
       })
       .catch(console.log)
