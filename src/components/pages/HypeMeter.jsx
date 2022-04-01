@@ -61,7 +61,7 @@ export default function HypeMeter({ details }) {
 
   return (
     <div id="hype">
-      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? (numCount > 124 ? <a href='https://www.youtube.com/watch?v=hhFAB-Z9Kb0'>Unmissable</a> : "It's about to blow!") : numCount}</h3>
+      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? (numCount > 124 ? <a target="_blank" href='https://www.youtube.com/watch?v=hhFAB-Z9Kb0'>Unmissable</a> : "It's about to blow!") : numCount}</h3>
       {meter}
     <button id="hypeThisEvent" className="BebasNeue create-event-button " onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
