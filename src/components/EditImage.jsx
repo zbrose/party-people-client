@@ -31,9 +31,9 @@ function EditImage({
             // id="image"
             onChange={(e) => setFormImg(e.target.files[0])}
           />
-          <input type="submit" />
+          <input className='create-event-button pink-font' type="submit" />
         </Form.Group>
-        <button
+        <button className='create-event-button pink-font'
           onClick={() => {
             setShowImgForm(!showImgForm)
           }}
