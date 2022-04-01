@@ -8,7 +8,9 @@ function EditImage({
   showImgForm,
 }) {
   return (
-    <div>
+    <div
+    className="BebasNeue createFormCardTwo container-fluid mb-5"
+    >
       <div>
         <h3>Current Event Image</h3>
         <img
@@ -29,9 +31,9 @@ function EditImage({
             // id="image"
             onChange={(e) => setFormImg(e.target.files[0])}
           />
-          <input type="submit" />
+          <input className='create-event-button pink-font' type="submit" />
         </Form.Group>
-        <button
+        <button className='create-event-button pink-font'
           onClick={() => {
             setShowImgForm(!showImgForm)
           }}
