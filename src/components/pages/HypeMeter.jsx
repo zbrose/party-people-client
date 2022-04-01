@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
-// import lowHype from "../low.png"
-// import semiHype from "../semihype.png"
-// import ultraHype from "../ultrahype.png"
-// import middleHype from "../middleHype.png"
-// import highHype from "../highHype.png"
+
 
 
 // 8551a4986ecf350c6629756a7e5b909b
@@ -13,9 +9,6 @@ import { useParams } from "react-router-dom"
 export default function HypeMeter({ details }) {
   const eventId = details._id
   // setHype(details.hype)
-  const [refresh, setRefresh] = useState()
-  const [HypeCount, setHypeCount] = useState(details.hype)
-  const [displayCount, setDisplayCount] = useState()
   const [numCount, setNumCount] = useState(details.hype)
   //   let numCount = details.hype
 
