@@ -9,8 +9,8 @@ import EditImage from "../EditImage";
 import { Navigate, useNavigate } from 'react-router-dom'
 import "../../App.css"
 
-const dayjs = require("dayjs");
-const utc = require('dayjs/plugin/utc')
+const dayjs = require("dayjs")
+const utc = require("dayjs/plugin/utc")
 const timezone = require("dayjs/plugin/timezone")
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -108,16 +108,13 @@ export default function EventDetails({ currentUser, fetchData }) {
     )
   }
 
-    // console.log(details.time)
-    // console.log(parseInt(details.time.split(":")[0]))
-
-    function timeDisplay(e) {
-      let hours = parseInt(e.split(":")[0])
-      let minutes = parseInt(e.split(":")[1])
-      let amPm = hours >= 12 ? "pm" : "am"
-      hours = hours % 12 || 12
-      return `${hours}: ${minutes} ${amPm}`
-    }
+  function timeDisplay(e) {
+    let hours = parseInt(e.split(":")[0])
+    let minutes = parseInt(e.split(":")[1])
+    let amPm = hours >= 12 ? "pm" : "am"
+    hours = hours % 12 || 12
+    return `${hours}: ${minutes} ${amPm}`
+  }
 
   const deleteEvent = async () => {
     await axios.delete(
@@ -126,7 +123,6 @@ export default function EventDetails({ currentUser, fetchData }) {
     fetchData()
     navigate("/")
   }
-
 
   useEffect(refreshEvent, [])
 
@@ -199,9 +195,9 @@ export default function EventDetails({ currentUser, fetchData }) {
                         </div>
                     </div>
                 </div>
+
         )
       ) : null}
     </>
   )
 }
-

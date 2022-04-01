@@ -3,10 +3,13 @@
 ## Project Idea
 Are you a party person? Have you ever been at home and wondered where the party's at? Well, we got the solution for you! Welcome to Party People! The website where you can see the best parties near you. And if none of them interest you, you can create your own event!
 
+#### Disclaimer*
+We understand this app would have been better served on a relational database but since the focus of the project was to create a MERN app, we opted to simulate join tables using Mongoose.
+
 ## User Stories
 As a user, I want to be able to create my own account
 As a user, I want to login to my account
-As a user, I want to find events by location, category, date, etc
+As a user, I want to find events by category
 As a user, I want to see event details
 As a user, I want to RSVP events
 As a user, I want to see all the events I RSVP'ed to or am hosting
@@ -14,6 +17,10 @@ As a user, I want to create my own events
 As a user(host), I want to be able to edit and delete my hosted event
 As a user, I want to review the events I attended (stretch)
 As a user(host), I want to review the attendees (stretch)
+
+## Approach
+
+We agreed on one idea we were all excited about. On a miro.com, we created wiredframes and flowchart of our vision for the app. We made a routing chart and routes and decided on our schemas. We mob-coded all the backend and then split front end components between the team. We colloborated on resolving bugs.
 
 ## MVP
 - [x] See all events on the Home Page
@@ -47,7 +54,7 @@ As a user(host), I want to review the attendees (stretch)
 | DELETE | /event/:id | Delete | delete event |
 
 
-## Server ROUTING CHART
+## Server ROUTES
 
 | VERB | URL pattern | Action | Description |
 |------|-------------|--------|-------------|
@@ -60,11 +67,11 @@ As a user(host), I want to review the attendees (stretch)
 | PUT | /users/:id/upload | update  | update user's photo |
 | POST | /events | Create | create event|
 | GET  | /events/:id       | Read  | display event|
-| PUT | event/:id | Update | update event posting |
-| PUT | event/:id/upload | Update | update event photo |
-| DELETE | /event/:id | Delete | delete event |
-| DELETE | /event/:eventId/:userId/unattend | Delete | delete user off attendance list |
-| PUT | /event/:eventId/:userId/attend | Update | add user to attendance list |
+| PUT | events/:id | Update | update event posting |
+| PUT | events/:id/upload | Update | update event photo |
+| DELETE | /events/:id | Delete | delete event |
+| DELETE | /events/:eventId/:userId/unattend | Delete | delete user off attendance list |
+| PUT | /events/:eventId/:userId/attend | Update | add user to attendance list |
 
 
 ## WIREFRAMES
@@ -75,66 +82,53 @@ As a user(host), I want to review the attendees (stretch)
 ![usertable](https://cdn.discordapp.com/attachments/919468128432455700/956715040273235998/Capture3.JPG)
 
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-
 ## tech used
 ### client
-- react 
-- react-bootstrap
-- cryptoJS - encrypts user's login
-- dayjs -
-- axios
-- react-router-dom
-- react-map-gl
+- react - used as frontend framework
+- react-bootstrap - style frontend
+- dayjs - easily format dates from server
+- axios - pull data from database
+- react-router-dom - implement/simulate dynamic routing in webapp
+- react-map-gl - facilitate use of mapbox
+
 ### server
 - express - web framework 
 - mongoose - mongodb database manager
 - mongodb - nonrelational database
-- dotenv -stores configuration in the environment separate fom code
+- dotenv -stored configuration in the environment separate from code
 - bcrypt - hashes users pw
-- cors -
-- jsonwebtoken
-- multer
-- cloudinary
+- cors - allows our server to request information from cloudinary
+- jsonwebtoken - used for user authorization
+- multer - middleware for handling uploading images
+ 
 
+### other
 - canva.com (wireframes)
-- draw.io (ERD)
-- TheCatApi - where i got the cat pictures
-- axios - gets api info
+- mapbox - third party app to map user and event locations
+- cloudinary - third party app to upload/access/edit images
 
 
 ## installation instructions
+### client
+1. fork and clone to your terminal, then run `[npm i]` to install:
+```[react [react-bootstrap] [dayjs] [react-router-dom] [react-map-gl] [axios]```
+4. open code
+5. add your react server url to .env.local
+6. "npm start" on terminal to start
+
 ### server 
 1. head over to https://github.com/brnguy/party-people-server 
 2. fork and clone to your terminal, then run [npm i] to install:
-[express] [bcrypt] [dotenv] [ejs] [env] [express] [cors] [jsonwebtoken] [multer] [cloudinary]
+```[express] [bcrypt] [dotenv] [ejs] [env] [express] [cors] [jsonwebtoken] [multer] [cloudinary]```
 3. create a cloudinary account
-2. open code
-3. add the mongodb url, port, jwtsecret='(your secret here)', cloudinaryurl, cloudname into your .env file.
-4. [sequelize db.seed:all] to run alt-text seed (54 prompts)
-5. to get more images for creating more prompts, go to https://thecatapi.com/signup and sign up for key. You will get your key via email.
-6. create .env file and add CAT_API_KEY=*******
-7. nodemon on terminal to start
+4. open code
+5. add the mongodb url, port, jwtsecret='(your secret here)', cloudinaryurl, cloudname into your .env file
+6. "nodemon" on terminal to start
 
 
 ## sources used
-
-- bootswatch
-- https://css-tricks.com/responsive-images-css/
-- alot alot of classnotes
-- mdbootstrap.com
-- https://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
-- and as always, yaak, paulina, my awesome cohort and instructors. \o/
+- TOM BOMBADIL - https://www.youtube.com/watch?v=hhFAB-Z9Kb0
+- 
 
 ## post project reflections
-
-- i thought routes were just set up in a way you want to your urls.  i quickly found out i was very wrong.
-- algorithms and datastructures are really relevant. i spent an obscene of time on one problem... no i won't tell you what it was. >.> maybe.
-- refractoring is scary and causes a domino effect of damages on your sanity and code :D
-- i think the importance of route naming was the biggest hurdle for me.
-- also, i was trying to console log less but now i'm just going to consolelog even harder. :3
-- i tried not to make it pink but i still made it pink >.>
-- bonus: centering still sucks (╯°□°）╯︵ ┻━┻
+- 
