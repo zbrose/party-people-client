@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+
 
 
 export default function HypeMeter({ details }) {
@@ -15,8 +15,6 @@ export default function HypeMeter({ details }) {
     )
     setNumCount(numCount + 1)
   }
-
-  const [count, setCount] = useState()
 
   let meter
 
@@ -65,7 +63,7 @@ export default function HypeMeter({ details }) {
 
   return (
     <div id="hype">
-      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "ITS OUTTA CONTROL" : numCount}</h3>
+      <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "It's about to blow!" : numCount}</h3>
       {meter}
     <button id="hypeThisEvent" className="BebasNeue create-event-button " onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
