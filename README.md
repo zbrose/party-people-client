@@ -125,12 +125,14 @@ We agreed on one idea we were all excited about. On a miro.com, we created wired
 5. add the mongodb url, port, jwtsecret='(your secret here)', cloudinaryurl, cloudname into your .env file
 6. "nodemon" on terminal to start
 
-
 ## sources used
 - TOM BOMBADIL - https://www.youtube.com/watch?v=hhFAB-Z9Kb0
 - images from Unsplash.com
 - original artwork(logos, gifs, background) by Triston 
-- Starbucks/stella/
+- https://gist.github.com/RichLogan/9903043 (dropdown for the states)
+- https://devtrium.com/posts/async-functions-useeffect (how to use async functions in useEffects)
+- Starbucks/stella
+
 ## post project reflections
 - learning when to put a variable in a state vs creating a variable on the front end
 - using routes to have static state
