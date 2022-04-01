@@ -10,7 +10,7 @@ function EditEvent({
   setImgForm,
 }) {
   return (
-    <div className="">
+    <div style={{padding: '50px'}}>
       <Form
         className="createFormCard BebasNeue col-md-6 mx-auto row no-gutter d-flex  "
         onSubmit={handleSubmit}
@@ -189,7 +189,7 @@ function EditEvent({
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="create-event-button pink-font"  style={{width: '10vw'}}>
           submit
         </Button>
       </Form>

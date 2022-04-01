@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
-// import lowHype from "../low.png"
-// import semiHype from "../semihype.png"
-// import ultraHype from "../ultrahype.png"
-// import middleHype from "../middleHype.png"
-// import highHype from "../highHype.png"
 
-
-// 8551a4986ecf350c6629756a7e5b909b
 
 export default function HypeMeter({ details }) {
   const eventId = details._id
@@ -77,7 +69,7 @@ export default function HypeMeter({ details }) {
     <div id="hype">
       <h3 id="numCounter" className="white-font BebasNeue">{numCount > 100 ? "ITS OUTTA CONTROL" : numCount}</h3>
       {meter}
-    <button id="hypeThisEvent" className="BebasNeue" onClick={hypeThis}>HYPE THIS EVENT</button>
+    <button id="hypeThisEvent" className="BebasNeue create-event-button " onClick={hypeThis}>HYPE THIS EVENT</button>
     </div>
   )
 }

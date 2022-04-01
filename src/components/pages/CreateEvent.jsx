@@ -37,6 +37,7 @@ export default function CreateEvent() {
   
   return (
     <>
+    <div style={{padding: '50px'}}>
       <Form
         className="BebasNeue createFormCard container-fluid mb-5"
         onSubmit={handleSubmit}
@@ -231,6 +232,7 @@ export default function CreateEvent() {
           next
         </Button>
       </Form>
+      </div>
     </>
   )
 }
