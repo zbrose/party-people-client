@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { useParams } from "react-router-dom"
 
 
 export default function HypeMeter({ details }) {
   const eventId = details._id
   // setHype(details.hype)
-  const [refresh, setRefresh] = useState()
-  const [HypeCount, setHypeCount] = useState(details.hype)
-  const [displayCount, setDisplayCount] = useState()
   const [numCount, setNumCount] = useState(details.hype)
   //   let numCount = details.hype
 
@@ -58,7 +56,7 @@ export default function HypeMeter({ details }) {
         meter = (
           <h1>
             {" "}
-            <img src="/images/explosive.png" alt="" style={{ width: 250, height: 250 }} />
+            <img src="/images/explosion.gif" alt="" style={{ width: 250, height: 250 }} />
           </h1>
         )
       }
