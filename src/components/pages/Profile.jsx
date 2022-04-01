@@ -6,22 +6,12 @@ import UploadImg from "../UploadImg"
 import Events from "../Events"
 import ProfileEvents from "../ProfileEvents"
 
-export default function Profile({
-  currentUser,
-  // filter,
-  // setFilter,
-  events,
-  // setEvents,
-  // handleUploadImg,
-}) {
-  // const [formData, setFormData] = useState({})
+export default function Profile({ currentUser, events }) {
   const [displayImg, setDisplayImg] = useState("")
   const [formImg, setFormImg] = useState("")
   const [userInfo, setUserInfo] = useState("")
   const [imgForm, setImgForm] = useState(false)
-  // const [showForm, setShowForm] = useState
 
-  console.log("payload", currentUser)
   // use useEffect to get data from the back
   useEffect(() => {
     ;(async () => {
@@ -49,8 +39,6 @@ export default function Profile({
     })()
   }, [])
 
-  
-
   const getUserData = async () => {
     const userData = await axios.get(
       `${process.env.REACT_APP_SERVER_URL}/api-v1/users/${currentUser.id}`
@@ -58,15 +46,13 @@ export default function Profile({
     setUserInfo(userData.data)
     // setDisplayImg(userInfo)
     setDisplayImg(userData.data.image)
-    if (!userData.data.image){
-
+    if (!userData.data.image) {
       setImgForm(true)
     }
   }
 
   //get user info
   useEffect(getUserData, [])
-
 
   const handleImgSubmit = async (e) => {
     e.preventDefault()
@@ -83,24 +69,25 @@ export default function Profile({
       setImgForm(false)
     } catch (err) {
       console.log(err)
-      
     }
   }
 
-const handleImgError= ()=> {
-  console.log("herro")
-// e.target.src = "https://cdn.pixabay.com/photo/2021/01/14/14/09/cat-5916926_1280.jpg"
-setImgForm(true)
+  const handleImgError = () => {
+    setImgForm(true)
   }
-  // console.log(!displayImg)
-  console.log("currentimgformmmm",imgForm)
+  console.log("currentimgformmmm", imgForm)
 
   return (
     <>
       <div className="flex-box mb-5">
         <Card
           className="box noBack"
-          style={{ width: "25rem", margin: "0 auto", border: "none", color:"white" }}
+          style={{
+            width: "25rem",
+            margin: "0 auto",
+            border: "none",
+            color: "white",
+          }}
         >
           {!displayImg ? (
             <Card.Img
@@ -118,17 +105,11 @@ setImgForm(true)
             <Card.Img
               className="img-fluid mt-5"
               variant="top"
-              // src={
-              //   displayImg ||
-              //   "https://cdn.pixabay.com/photo/2021/01/14/14/09/cat-5916926_1280.jpg"
-              // }
               src={displayImg}
-              // onError={ e=> handleImgError}
               alt="uploaded user profile"
             />
           )}
 
-          {/* {displayImg && <img src={displayImg} alt="uploaded user profile" />} */}
           <h3 className="card-title mt-3"> {currentUser.name}'s Profile</h3>
 
           {imgForm ? (
@@ -160,5 +141,3 @@ setImgForm(true)
     </>
   )
 }
-
-
